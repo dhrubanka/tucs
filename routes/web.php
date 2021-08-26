@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Spatie\Permission\Traits\HasRoles;
+use App\Http\Controllers\ForumController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::group(['middleware' => ['role:admin|moderator']], function () {
+
+
+        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'admin'])->name('dashboard');
+
+    });
+
+    //place routes below for auth enabled features
+
+});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');
+
