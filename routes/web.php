@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,12 @@ Route::middleware('auth')->group(function () {
         Route::put('/user/update/{id}',  [UserController::class, 'update']);
         Route::get('/user/delete/{id}',  [UserController::class, 'destroy']);
         Route::get('/user/show/{id}',  [UserController::class, 'show']);
+
+    });
+
+    Route::group(['middleware' => ['role:student|alumni|professor']], function () {
+        //profile management
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
     });
 
