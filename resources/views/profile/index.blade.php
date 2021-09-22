@@ -6,10 +6,10 @@
                 </div> -->
                 <div class="card col-12 offset-md-1 col-md-10">
                     <div class="card-header">
-                        <h4 class="card-title">NAME</h4>
+                        <h4 class="card-title">{{ Auth::user()->name}}</h4>
                     </div>
                     <div class="card-body row">
-                        <img class="col-12 col-md-3" src="lfc.jpg" style="border-radius: 50%;">                        
+                        <img class="col-12 col-md-3" src="lfc.jpg" style="border-radius: 50%;">
                         <div class="col-12 offset-md-1 col-md-8">
                             <h6>ABOUT</h6>
                             <p>This is my short data</p>
@@ -48,27 +48,27 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <h6 class="col-12 col-md-3">Date of Birth</h6>
-                                            <p class="col-12 col-md-9">01-01-1997</p>    
+                                            <p class="col-12 col-md-9">{{$profile->dob}}</p>
                                         </div>
                                         <div class="row">
                                             <h6 class="col-12 col-md-3">Gender</h6>
-                                            <p class="col-12 col-md-9">Male</p>    
+                                            <p class="col-12 col-md-9">{{ $profile->gender}}</p>
                                         </div>
                                         <div class="row">
                                             <h6 class="col-12 col-md-3">Year of Admission</h6>
-                                            <p class="col-12 col-md-9">2019</p>    
+                                            <p class="col-12 col-md-9">{{ $profile->academic_start_date}}</p>
                                         </div>
                                         <div class="row">
                                             <h6 class="col-12 col-md-3">Year of Graduation</h6>
-                                            <p class="col-12 col-md-9">2022</p>    
+                                            <p class="col-12 col-md-9">{{$profile->academic_end_date}}</p>
                                         </div>
                                         <div class="row">
                                             <h6 class="col-12 col-md-3">Programme</h6>
-                                            <p class="col-12 col-md-9">MCA</p>    
+                                            <p class="col-12 col-md-9">{{$profile->programme}}</p>
                                         </div>
                                         <div class="row">
                                             <h6 class="col-12 col-md-3">Phone</h6>
-                                            <p class="col-12 col-md-9">3213213221</p>    
+                                            <p class="col-12 col-md-9">{{$profile->phone}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -82,14 +82,14 @@
                                                 <h5 class="col-12 col-md-6">TITLE</h6>
                                                 <h5 class="col-12 col-md-3">CREATED</h6>
                                                 <h5 class="col-12 col-md-1"><i class="fas fa-thumbs-up"></i></h6>
-                                                <h5 class="col-12 col-md-1"><i class="fas fa-thumbs-down"></i></h6>    
+                                                <h5 class="col-12 col-md-1"><i class="fas fa-thumbs-down"></i></h6>
                                             </div>
                                             <div class="row">
                                                 <h6 class="col-12 col-md-1">1</h6>
                                                 <h6 class="col-12 col-md-6">Why this kolaveri di</h6>
                                                 <h6 class="col-12 col-md-3">now</h6>
                                                 <h6 class="col-12 col-md-1">2</h6>
-                                                <h6 class="col-12 col-md-1">200</h6>    
+                                                <h6 class="col-12 col-md-1">200</h6>
                                             </div>
 
                                         </div>
@@ -99,7 +99,7 @@
                                                 <h6 class="col-4 col-md-4">10</h6>
                                                 <h6 class="col-8 col-md-8">TOTAL <i class="fas fa-thumbs-up"></i></h6>
                                                 <h6 class="col-4 col-md-4">10</h6>
-                                                <h6 class="col-8 col-md-8">TOTAL <i class="fas fa-thumbs-down"></i></h6>    
+                                                <h6 class="col-8 col-md-8">TOTAL <i class="fas fa-thumbs-down"></i></h6>
                                                 <h6 class="col-4 col-md-4">10</h6>
                                             </div>
                                         </div>
@@ -116,14 +116,14 @@
                                                 <h5 class="col-12 col-md-6">TITLE</h6>
                                                 <h5 class="col-12 col-md-3">CREATED</h6>
                                                 <h5 class="col-12 col-md-1"><i class="fas fa-thumbs-up"></i></h6>
-                                                <h5 class="col-12 col-md-1"><i class="fas fa-thumbs-down"></i></h6>    
+                                                <h5 class="col-12 col-md-1"><i class="fas fa-thumbs-down"></i></h6>
                                             </div>
                                             <div class="row">
                                                 <h6 class="col-12 col-md-1">1</h6>
                                                 <h6 class="col-12 col-md-6">Why this kolaveri di</h6>
                                                 <h6 class="col-12 col-md-3">now</h6>
                                                 <h6 class="col-12 col-md-1">2</h6>
-                                                <h6 class="col-12 col-md-1">200</h6>    
+                                                <h6 class="col-12 col-md-1">200</h6>
                                             </div>
 
                                         </div>
@@ -133,7 +133,7 @@
                                                 <h6 class="col-4 col-md-4">10</h6>
                                                 <h6 class="col-8 col-md-8">TOTAL <i class="fas fa-thumbs-up"></i></h6>
                                                 <h6 class="col-4 col-md-4">10</h6>
-                                                <h6 class="col-8 col-md-8">TOTAL <i class="fas fa-thumbs-down"></i></h6>    
+                                                <h6 class="col-8 col-md-8">TOTAL <i class="fas fa-thumbs-down"></i></h6>
                                                 <h6 class="col-4 col-md-4">10</h6>
                                             </div>
                                         </div>
@@ -224,7 +224,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 </x-layouts.app>

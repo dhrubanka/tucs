@@ -99,7 +99,7 @@
                             <label for="programme" class="col-md-4 col-form-label text-md-right">{{ __('Programme') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-select @error('programme') is-invalid @enderror" required autofocus>
+                                <select name="programme" class="form-select @error('programme') is-invalid @enderror" required autofocus>
                                     <option selected>Select Programme</option>
                                     <option value="MCA">MCA</option>
                                     <option value="PHD">PHD</option>
@@ -114,7 +114,7 @@
                                 @enderror
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
 
@@ -161,11 +161,11 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-select @error('role') is-invalid @enderror" required autofocus>
+                                <select name="role" class="form-select @error('role') is-invalid @enderror" required autofocus>
                                     <option selected>Select Role</option>
-                                    <option value="Student">Student</option>
-                                    <option value="Alumni">Alumni</option>
-                                    <option value="Professor">Professor</option>
+                                    <option value="student">Student</option>
+                                    <option value="alumni">Alumni</option>
+                                    <option value="professor">Professor</option>
                                 </select>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
