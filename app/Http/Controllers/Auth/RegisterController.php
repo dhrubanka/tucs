@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,6 +54,14 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gender' => ['required'],
+            'phone' => ['required'],
+            'programme' => ['required'],
+            'dob' => ['required'],
+            'startDate' => ['required'],
+            'endDate' => ['required'],
+            'role' => ['required']
+
         ]);
     }
 
@@ -64,10 +73,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        //dd($user);
+        $user->assignRole($data['role']);
+
+        Profile::create([
+            'user_id' => $user->id,
+            'gender' =>  $data['gender'],
+            'phone' =>  $data['phone'],
+            'programme' =>  $data['programme'],
+            'dob' =>  $data['dob'],
+            'academic_start_date' =>  $data['startDate'],
+            'academic_end_date' =>  $data['endDate'],
+
+        ]);
+
+        return $user;
     }
 }

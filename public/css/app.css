@@ -10872,3 +10872,6 @@ textarea.form-control-lg {
   }
 }
 
+.form-group {
+    padding: 5px;
+}
