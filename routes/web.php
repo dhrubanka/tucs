@@ -5,7 +5,11 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\BlogController;
+
+use App\Http\Controllers\ParentCommunityController;
+use App\Http\Controllers\CommunityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +46,12 @@ Route::middleware('auth')->group(function () {
         Route::put('/user/update/{id}',  [UserController::class, 'update']);
         Route::get('/user/delete/{id}',  [UserController::class, 'destroy']);
         Route::get('/user/show/{id}',  [UserController::class, 'show']);
+        //forum parent community
+        Route::get('/parent-community',  [ParentCommunityController::class, 'index']);
+        Route::post('/parent-community/store',  [ParentCommunityController::class, 'store']);
+
+        Route::get('/community',  [CommunityController::class, 'index']);
+        Route::post('/community/store',  [CommunityController::class, 'store']);
 
     });
 
