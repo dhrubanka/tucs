@@ -26,12 +26,22 @@
             Blog
           </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="layers"></span>
-            Forum
-          </a>
-        </li>
+
+            <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#forum-collapse" aria-expanded="true">
+                <span data-feather="layers"></span>
+         Forum
+            </button>
+
+            <div class="collapse show" id="forum-collapse">
+              <ul  >
+                  <li><a href="/parent-community" class="nav-link  rounded">Parent Communities</a></li>
+                  <li><a href="/community" class="nav-link   rounded">Communities</a></li>
+              </ul>
+            </div>
+          </li>
+
       </ul>
 
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -60,12 +70,12 @@
 
           <li class="nav-item">
 
-            <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="true">
+            <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#profile-collapse" aria-expanded="true">
               <span data-feather="users"></span>
               Profile Management
             </button>
 
-            <div class="collapse show" id="users-collapse">
+            <div class="collapse show" id="profile-collapse">
               <ul  >
                   <li><a href="/users" class="nav-link  rounded">All Users</a></li>
                   <li><a href="/users/create" class="nav-link   rounded">Convert User</a></li>

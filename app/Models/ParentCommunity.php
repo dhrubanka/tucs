@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class ParentCommunity extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'name',
+        'description',
+        'image',
+    ];
+    public function communities(){
+        return $this->hasMany(Community::class); //select * from subcategories where category_id= 2
+    }
+
+}
