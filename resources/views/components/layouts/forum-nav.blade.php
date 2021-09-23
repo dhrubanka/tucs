@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+git checkout <!DOCTYPE html>
 <html>
     <head>
         <title></title>
@@ -44,7 +44,7 @@
                         <a class="elements" href="#"><i class="fa fa-info"></i><span>ABOUT</span></a>
                         <a class="elements" href="#"><i class="fa fa-tasks"></i><span>EVENTS</span></a>
                         <a class="elements" href="#"><i class="fas fa-award"></i><span>AWARDS</span></a>
-                        <a class="elements" href="#"><i class="fas fa-blog"></i><span>BLOG</span></a>    
+                        <a class="elements" href="/blog"><i class="fas fa-blog"></i><span>BLOG</span></a>    
                         <a class="elements" href="/forum"><i class="fa fa-comments"></i><span>FORUM</span></a>    
                         <a class="elements" href="#"><i class="fas fa-address-card"></i><span>CONTACT</span></a>    
                     </div>

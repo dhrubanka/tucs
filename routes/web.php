@@ -5,6 +5,8 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BlogController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,5 +55,8 @@ Route::middleware('auth')->group(function () {
 
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');
+
+Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 
