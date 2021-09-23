@@ -45,12 +45,12 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a id="navbarDropdown" class="nav-link " href="forum"  >
-                                Forum
+                            <a id="navbarDropdown" class="nav-link " href="/forum"  >
+                                Forump
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a id="navbarDropdown" class="nav-link " href="#"  >
+                            <a id="navbarDropdown" class="nav-link " href="/blog"  >
                                Blogs
                             </a>
                         </li>
