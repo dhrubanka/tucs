@@ -10873,6 +10873,8 @@ textarea.form-control-lg {
   }
 }
 
+
+
 #navigation{
     display: flex;
     /* background-color: dodgerblue; */
@@ -10930,7 +10932,7 @@ textarea.form-control-lg {
 
 }
 
-//forum
+/*forum*/
 .threads{
     padding: 0px;
     font-family: 'Poppins', sans-serif;
