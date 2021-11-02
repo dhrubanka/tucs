@@ -10,16 +10,108 @@
     <title>TUCS Home Page</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Open+Sans:wght@600&family=Poppins:wght@300&display=swap" rel="stylesheet"> --}}
 
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Open+Sans:wght@600&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-lg">
+        <div class="container" id="navigation">
+
+            <!-- TOGGLER -->
+            <!-- <div class="col-2 d-md-none"> -->
+                <button class="navbar-toggler" type="button" id="togBtn" data-bs-toggle="collapse" data-bs-target="#dropMenu" aria-controls="dropMenu" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            <!-- </div> -->
+
+            <!-- BRAND -->
+            <!-- <div class="col-2 offset-md-1 col-md-1 d-none d-md-block"> -->
+                <a class="navbar-brand" id="logo" href="#" style="margin-left: 10px;"><img src="/storage/logo.png" style=" height:80px; width: 80px"></a>
+            <!-- </div> -->
+
+
+            <!-- MENU -->
+            <!-- <div class="col-2 col-md-3" style="padding-top: 1%;"> -->
+                <div class="collapse navbar-collapse" id="dropMenu" style="width: 30% !important;">
+                    <ul class="nav navbar-nav nav-justified" style="width: 100% !important;">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">BLOG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/forum">COMMUNITIES</a>
+                        </li>
+
+                    </ul>
+                </div>
+            <!-- </div> -->
+
+            <!-- SEARCH BAR -->
+            <!-- <div class="col-2 col-md-3" style="padding-top: 1%;"> -->
+                <div id="search"  style="width: 30% !important;">
+                    <form>
+                        <input type="search" id="searchBar" class="fas form-control text-center" placeholder="&#xf002; Search" style="border-radius: 50px;">
+                    </form>
+                </div>
+            <!-- </div> -->
+
+            <!-- PROFILE -->
+            <!-- <div class="col-4 col-md-3" style="padding-top: 1%;"> -->
+                <ul class="nav navbar-nav nav-justified" id="user"  style="width: 30%;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-comments"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                    </li>
+                    @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item ">
+                        <a id="navbarDropdown" class="nav-link " href="/profile"  >
+                            {{ Auth::user()->name }}
+                        </a>
+
+                    </li>
+                    <li class="nav-item ">
+                            <a class="nav-link " href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+
+                @endguest
+                </ul>
+            <!-- </div> -->
+        </div>
+    </nav>
+    <!--
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -31,17 +123,17 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    -- Left Side Of Navbar --
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+
                         <li class="nav-item ">
                             <a id="navbarDropdown" class="nav-link " href="/"  >
-                                Home
+                                Home n
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -93,13 +185,14 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
         <main class="py-4">
             {{ $slot }}
         </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
 </body>
 </html>
