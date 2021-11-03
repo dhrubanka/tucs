@@ -47,7 +47,7 @@
 
 body {
   margin: 0;
-  font-family: var(--bs-font-sans-serif);
+  font-family: 'Cabin', sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
@@ -3963,6 +3963,7 @@ textarea.form-control-lg {
   justify-content: space-between;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-family: 'Open Sans', sans-serif;
 }
 .navbar > .container,
 .navbar > .container-fluid,
@@ -10872,6 +10873,89 @@ textarea.form-control-lg {
   }
 }
 
-.form-group {
-    padding: 5px;
+
+
+#navigation{
+    display: flex;
+    /* background-color: dodgerblue; */
+}
+
+#dropMenu{
+    width: 300px;
+}
+
+#search{
+    width: 200px;
+}
+
+@media only screen and (max-width: 1124px) {
+    #dropMenu{
+        font-size: 80%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    #searchBar{
+        width: 80%;
+    }
+
+    #togBtn{
+        order: 1;
+    }
+
+    #logo{
+        order: 2;
+    }
+
+    #dropMenu{
+        font-size: 80%;
+        order: 5;
+    }
+
+    #search{
+        order: 3;
+    }
+
+    #user{
+        width: 100px !important;
+        order: 4;
+        flex-direction: row;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+
+    #logo img{
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+}
+
+/*forum*/
+.threads{
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.threads .card-header{
+    padding: 20px;
+    font-family: 'Cabin', sans-serif;
+}
+
+.threads h5, .threads h6{
+    padding: 10px 20px;
+}
+
+.threads .card-body{
+    padding: 20px;
+}
+
+.trends{
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.trends .card-header{
+    font-family: 'Cabin', sans-serif;
 }

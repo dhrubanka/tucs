@@ -8,8 +8,8 @@ git checkout <!DOCTYPE html>
 
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">      
-        <link rel="stylesheet" href="/css/styles2.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+         
         <!-- Styles -->
         <link href="{{ asset('css/forum.css') }}" rel="stylesheet">
 
@@ -20,15 +20,15 @@ git checkout <!DOCTYPE html>
 
                 <button class="btn col-1 col-md-1" type="button" id="b1" onclick="navToggle()">
                     <i class="fas fa-angle-double-right" id="sideMenuIcon"></i>
-                </button>    
-        
+                </button>
+
                 <a class="navbar-brand col-2 col-md-1" href="/forum">FORUM</a>
 
                 <div class="col-8 offset-md-2 col-md-4">
                     <form class="form-inline">
                         <input class="form-control" type="text" placeholder="&#xf075; Search" style="font-family: FontAwesome;">
                         <button class="btn btn-sm btn-primary" type="submit">Search</button>
-                      </form> 
+                      </form>
                 </div>
 
             </nav>
@@ -37,22 +37,22 @@ git checkout <!DOCTYPE html>
         <div class="row">
 
             <div class="col-4 col-md-2" id="side_bar">
-                
+
                 <div id="side_menu">
                     <div style="margin-top: 150px;">
                         <a class="elements" href="/"><i class="fa fa-home"></i><span>HOME</span></a>
                         <a class="elements" href="#"><i class="fa fa-info"></i><span>ABOUT</span></a>
                         <a class="elements" href="#"><i class="fa fa-tasks"></i><span>EVENTS</span></a>
                         <a class="elements" href="#"><i class="fas fa-award"></i><span>AWARDS</span></a>
-                        <a class="elements" href="/blog"><i class="fas fa-blog"></i><span>BLOG</span></a>    
-                        <a class="elements" href="/forum"><i class="fa fa-comments"></i><span>FORUM</span></a>    
-                        <a class="elements" href="#"><i class="fas fa-address-card"></i><span>CONTACT</span></a>    
+                        <a class="elements" href="/blog"><i class="fas fa-blog"></i><span>BLOG</span></a>
+                        <a class="elements" href="/forum"><i class="fa fa-comments"></i><span>FORUM</span></a>
+                        <a class="elements" href="#"><i class="fas fa-address-card"></i><span>CONTACT</span></a>
                     </div>
                 </div>
 
             </div>
 
-            {{ $slot }}    
+            {{ $slot }}
 
         </div>
 
@@ -82,9 +82,10 @@ git checkout <!DOCTYPE html>
                     side_menu_icon.classList.remove("fa-angle-double-left");
                     side_menu_icon.classList.add("fa-angle-double-right");
                 }
-          
+
             }
 
         </script>
     </body>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </html>
