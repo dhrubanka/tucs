@@ -10921,6 +10921,16 @@ textarea.form-control-lg {
         order: 4;
         flex-direction: row;
     }
+
+    #user i{
+        font-size: 20px !important;
+    }
+
+    #dropdownMenuLink img{
+        height: 30px !important;
+        width: 30px !important;
+    }
+
 }
 
 @media only screen and (max-width: 520px) {
@@ -10958,4 +10968,8 @@ textarea.form-control-lg {
 
 .trends .card-header{
     font-family: 'Cabin', sans-serif;
+}
+
+#user i{
+    font-size: 20px;
 }
