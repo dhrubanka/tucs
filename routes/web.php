@@ -3,11 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-
 use App\Http\Controllers\BlogController;
-
 use App\Http\Controllers\ParentCommunityController;
 use App\Http\Controllers\CommunityController;
 
@@ -25,6 +24,7 @@ use App\Http\Controllers\CommunityController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Auth::routes();
 
@@ -65,8 +65,9 @@ Route::middleware('auth')->group(function () {
 
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//forum
 Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');
+Route::post('/search', [App\Http\Controllers\SearchController::class, 'search']);
 
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 
