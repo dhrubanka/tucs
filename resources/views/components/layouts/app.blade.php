@@ -60,8 +60,11 @@
             <!-- SEARCH BAR -->
             <!-- <div class="col-2 col-md-3" style="padding-top: 1%;"> -->
                 <div id="search"  style="width: 30% !important;">
-                    <form>
-                        <input type="search" id="searchBar" class="fas form-control text-center" placeholder="&#xf002; Search" style="border-radius: 50px;">
+                    <form  id="search-form" action="/search" method="POST">
+                        @csrf
+                        <input type="search" id="searchBar" name="search" class="fas form-control text-center" placeholder="&#xf002; Search" style="border-radius: 50px;"
+                        onclick="event.preventDefault();
+                        document.getElementById('search-form').addEventListener("keyup", function(event)).submit();">
                     </form>
                 </div>
             <!-- </div> -->
@@ -69,12 +72,7 @@
             <!-- PROFILE -->
             <!-- <div class="col-4 col-md-3" style="padding-top: 1%;"> -->
                 <ul class="nav navbar-nav nav-justified" id="user"  style="width: 30%;">
-                    <li class="nav-item" style="padding-top: 4%;">
-                        <a class="nav-link" href="#"><i class="fas fa-comments"></i></a>
-                    </li>
-                    <li class="nav-item" style="padding-top: 4%;">
-                        <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-                    </li>
+
                     @guest
                     @if (Route::has('login'))
                         <li class="nav-item">
@@ -88,6 +86,13 @@
                         </li>
                     @endif
                 @else
+
+                <li class="nav-item" style="padding-top: 4%;">
+                    <a class="nav-link" href="#"><i class="fas fa-comments"></i></a>
+                </li>
+                <li class="nav-item" style="padding-top: 4%;">
+                    <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+                </li>
                     <li class="nav-item ">
                         <div class="dropdown">
                             <a class="btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
