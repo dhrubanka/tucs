@@ -8,18 +8,26 @@
         <div class="row">
             <h5>Communities</h5>
             @foreach ($communities as $item)
-            <div class="col-3">
+            <div class="col-3" style="padding: 10px;">
 
-                <div class="card" >
+                <div class="card shadow-sm">
                     <div class="card-body">
                       <h5 class="card-title">{{ $item->name}}</h5>
                       <h6 class="card-subtitle mb-2 text-muted">{{$item->parentCommunity->name}}</h6>
                       <p class="card-text">{{$item->description}}</p>
 
                       @if ($item->profile_id)
-                      <a href="#" class="card-link">Unsubscribe</a>
+                      <form method="POST" action="/community/unsubscribe">
+                        @csrf
+                        <input type="hidden" name="community_id" value="{{$item->id}}">
+                        <button type="submit" class="btn btn-primary">Unsubscribe</button>
+                      </form>
                       @else
-                      <a href="#" class="card-link">Subscribe</a>
+                      <form method="POST" action="/community/subscribe">
+                        @csrf
+                        <input type="hidden" name="community_id" value="{{$item->id}}">
+                        <button type="submit" class="btn btn-success">Subscribe</button>
+                      </form>
                       @endif
 
 

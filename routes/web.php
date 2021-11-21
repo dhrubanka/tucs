@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ParentCommunityController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\SubcriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,10 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['role:student|alumni|professor']], function () {
         //profile management
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+        //community subscription
+        Route::post('/community/subscribe', [SubcriptionController::class,'subscribe']);
+        Route::post('/community/unsubscribe', [SubcriptionController::class,'unsubscribe']);
 
     });
 
