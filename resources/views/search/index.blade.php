@@ -20,12 +20,14 @@
                       <form method="POST" action="/community/unsubscribe">
                         @csrf
                         <input type="hidden" name="community_id" value="{{$item->id}}">
+                        <input type="hidden" name="search" value="{{$search}}">
                         <button type="submit" class="btn btn-primary">Unsubscribe</button>
                       </form>
                       @else
                       <form method="POST" action="/community/subscribe">
                         @csrf
                         <input type="hidden" name="community_id" value="{{$item->id}}">
+                        <input type="hidden" name="search" value="{{$search}}">
                         <button type="submit" class="btn btn-success">Subscribe</button>
                       </form>
                       @endif

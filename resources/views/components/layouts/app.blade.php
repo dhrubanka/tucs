@@ -60,8 +60,8 @@
             <!-- SEARCH BAR -->
             <!-- <div class="col-2 col-md-3" style="padding-top: 1%;"> -->
                 <div id="search"  style="width: 30% !important;">
-                    <form  id="search-form" action="/search" method="POST">
-                        @csrf
+                    <form  id="search-form" action="/search" method="get">
+                        
                         <input type="search" id="searchBar" name="search" class="fas form-control text-center" placeholder="&#xf002; Search" style="border-radius: 50px;"
                         onclick="event.preventDefault();
                         document.getElementById('search-form').addEventListener("keyup", function(event)).submit();">
