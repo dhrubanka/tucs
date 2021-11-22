@@ -72,7 +72,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');
-Route::post('/search', [App\Http\Controllers\SearchController::class, 'search']);
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');
 
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
 
