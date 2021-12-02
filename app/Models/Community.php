@@ -11,6 +11,7 @@ class Community extends Model
     protected $fillable = [
         'parent_community_id',
         'name',
+        'slug',
         'description',
         'image',
     ];

@@ -27,6 +27,9 @@
                   <input class="form-control" type="text" name="communityTitle" id="communityTitle" class="form-control" placeholder="TITLE" required autofocus>
                 </div>
                 <div class="form-group">
+                    <input class="form-control" type="text" name="slug" id="communityTitle" class="form-control" placeholder="SLUG" required autofocus>
+                  </div>
+                <div class="form-group">
                     <textarea class="form-control" name="communityDesc" id="communityDesc" placeholder="DESCRIPTION" rows="3"></textarea>
                 </div>
                 <div class="form-group">
@@ -35,7 +38,7 @@
               </div>
             <div class="modal-footer form-group">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">POST</button>
+                <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </form>
       </div>

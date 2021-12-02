@@ -39,9 +39,11 @@ class ParentCommunityController extends Controller
     {
         $validatedData = $request->validate([
             'communityTitle' => 'required|string|max:255',
+            'slug' => 'required|unique:parent_communities,slug'
         ]);
         ParentCommunity::create([
             'name' => strtoupper(Str::of(request('communityTitle'))->trim()),
+            'slug' => request('slug'),
             'description' => request('communityDesc'),
             'image' => request('communityPhoto')
         ]);
