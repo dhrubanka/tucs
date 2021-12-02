@@ -82,6 +82,20 @@
               </ul>
             </div>
           </li>
+
+          <li class="nav-item">
+
+            <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#skillset-collapse" aria-expanded="true">
+              <span data-feather="users"></span>
+              Skill Management
+            </button>
+
+            <div class="collapse show" id="skillset-collapse">
+              <ul  >
+                  <li><a href="/skillset" class="nav-link  rounded">All Skills</a></li>
+              </ul>
+            </div>
+          </li>
       </ul>
     </div>
   </nav>
