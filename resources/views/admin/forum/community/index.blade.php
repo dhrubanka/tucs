@@ -35,6 +35,9 @@
                   <input class="form-control" type="text" name="communityTitle" id="communityTitle" class="form-control" placeholder="TITLE"  required autofocus>
                 </div>
                 <div class="form-group">
+                    <input class="form-control" type="text" name="slug" class="form-control" placeholder="SLUG" required autofocus>
+                  </div>
+                <div class="form-group">
                     <textarea class="form-control" name="communityDesc" id="communityDesc" placeholder="DESCRIPTION" rows="3"></textarea>
                 </div>
                 <div class="form-group">

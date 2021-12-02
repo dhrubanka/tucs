@@ -11,6 +11,7 @@ class ParentCommunity extends Model
     protected $fillable = [
         'name',
         'description',
+        'slug',
         'image',
     ];
     public function communities(){

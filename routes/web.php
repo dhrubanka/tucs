@@ -5,11 +5,14 @@ use Spatie\Permission\Traits\HasRoles;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ParentCommunityController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\SubcriptionController;
+use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::middleware('auth')->group(function () {
@@ -37,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['role:admin|moderator']], function () {
 
 
-        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'admin'])->name('dashboard');
+        Route::get('/dashboard', [HomeController::class, 'admin'])->name('dashboard');
 
         //user management
         Route::get('/users', [UserController::class, 'index'])->name('users');
@@ -64,15 +67,20 @@ Route::middleware('auth')->group(function () {
         Route::post('/community/subscribe', [SubcriptionController::class,'subscribe']);
         Route::post('/community/unsubscribe', [SubcriptionController::class,'unsubscribe']);
 
+        Route::get('/post/create',[PostController::class, 'create']);
+        Route::post('/post/store',[PostController::class, 'store']);
+
     });
 
     //place routes below for auth enabled features
 
 });
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
-Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');
-Route::get('/search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');
+Route::get('/forum', [ForumController::class, 'index'])->name('forum');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
-Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog');
+//community
+Route::get('/community/{slug}',[CommunityController::class, 'show']);
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 

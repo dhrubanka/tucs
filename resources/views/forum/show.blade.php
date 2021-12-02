@@ -1,268 +1,113 @@
-<x-layouts.forum-nav>
-<div class="col-7 col-md-7" style="margin-top: 150px;">
-     
-                
-     <!------------------------------------------ posts ---------------------------------------->
-         <div class="row forumPostPrototypeSolo">
-             <div class="card col-12 col-md-12">
-                 <div class="card-header">
-                     <div class="row">
-                         <h5 class="card-title col-12 col-md-8">POST TITLE</h5>                        
-                         <h5 class=" col-md-4"><span class="badge badge-pill badge-primary">POST TOPIC</span></h5>                                
-                     </div>
-                     <div class="row">
-                         <h6 class="col-12 col-md-4">POST AUTHOR</h5>                        
-                         <h6 class="col-md-4">CREATED</h5>                                
-                     </div>
+<x-layouts.app>
+    <div class="container">
 
-                 </div>
-                 <div class="card-body">
-                     <p>semi content.
-                         The :nth-child(n) selector matches every element that is the nth child, regardless of type, of its parent. n can be a number, a keyword, or a formula.Tip: Look at the :nth-of-type() selector to select the element that is the nth child, of a particular type, of its parent.
-                         The :nth-child(n) selector matches every element that is the nth child, regardless of type, of its parent. n can be a number, a keyword, or a formula.Tip: Look at the :nth-of-type() selector to select the element that is the nth child, of a particular type, of its parent.
-                         The :nth-child(n) selector matches every element that is the nth child, regardless of type, of its parent. n can be a number, a keyword, or a formula.Tip: Look at the :nth-of-type() selector to select the element that is the nth child, of a particular type, of its parent.
-                         The :nth-child(n) selector matches every element that is the nth child, regardless of type, of its parent. n can be a number, a keyword, or a formula.Tip: Look at the :nth-of-type() selector to select the element that is the nth child, of a particular type, of its parent.
-                     </p>
-                     <hr class="rounded" style="margin: 0%;">
-                     <div class="row" style="margin-top: 2%;">
-                         <h6 class="col-6 col-md-3">Likes</h6>
-                         <h6 class="col-6 col-md-3">Comments</h6>
-                     </div>
-                     <hr class="rounded" style="margin: 0% 0% 5% 0%;">
-                     <div class="row">
-                         <h6 class="col-12 offset-md-1 col-md-5">LOG IN OR REGISTER TO POST COMMENTS</h6>
-                         <button class="col-12 col-md-2 btn btn-lg btn-primary" role="button">LOG IN</button>
-                         <button class="col-12 offset-md-1 col-md-2 btn btn-lg btn-primary" role="button">REGISTER</button>
-                     </div>
-                     <hr class="rounded" style="margin: 0% 0% 5% 0%;">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="row" style="margin-top: 2%;">
+                    <h3 class="col-8 col-md-10">
+                        {{ $communites->name }}
+                    </h3>
+                    <div class="col-4 col-md-2">
+                        @if ($communites->profile_id)
+                            <form method="POST" action="/community/unsubscribe">
+                                @csrf
+                                <input type="hidden" name="community_id" value="{{ $communites->id }}">
+                                {{-- <input type="hidden" name="search" value="{{$search}}"> --}}
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>
+                                    Unsubscribe</button>
+                            </form>
+                        @else
+                            <form method="POST" action="/community/subscribe">
+                                @csrf
+                                <input type="hidden" name="community_id" value="{{ $communites->id }}">
+                                {{-- <input type="hidden" name="search" value="{{$search}}"> --}}
+                                <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>
+                                    Subscribe</button>
+                            </form>
+                        @endif
+                    </div>
+                    <div class="col-12">
+                        <p>{{ $communites->description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                     <div class="row forumPostCreate">
-                         <div class="card col-12 col-md-12">
-                             <div class="card-header row" style="padding-top: 25px;">
-                                 <h5 class="card-title col-12 col-md-8">COMMENT AS (YOUR NAME)</h5>
-                             </div>
-                             <div class="card-body">
-                                 <form method="POST" action="">
-                                     <div class="form-group">
-                                         <div class="bg-light">
-                                             <button class="btn" type="button"><i class="fa fa-bold"></i></button>
-                                             <button class="btn" type="button"><i class="fa fa-italic"></i></button>
-                                             <button class="btn" type="button"><i class="far fa-file-image"></i></button>
- 
-                                         </div>
-                                         <textarea class="form-control" name="formBody" id="formBody" placeholder="CONTENT" rows="3"></textarea>
-                                     </div>
-                                     <div class="form-group">
-                                         <button type="submit" class="btn btn-primary">COMMENT</button>
-                                     </div>
-                                 </form>
-                             </div>
-                         </div>
-                     </div>
- 
-                     <!-- post comments-->
-                     <div class="row postComments">
-                         <div class="card col-12 col-md-12">
-                             <div class="card-header">
-                                 <div class="row">
-                                     <h6 class="col-12 col-md-4">AUTHOR</h6>
-                                     <h6 class="col-md-4">TIME</h6>        
-                                 </div>
-                             </div>
-                             <div class="card-body">
-                                 comment goes here
-                                 <br>
-                                 <div class="row" style="margin-top: 2%;">
-                                     <h6 class="col-6 col-md-3">Likes</h6>
-                                     <button class="col-6 col-md-3 btn reply-btn" type="button" onclick="replyToggle()" name="replyButton">REPLY</button>
-                                 </div>
-                                 <div class="row forumPostreply">
-                                     <div class="card col-12 col-md-12">
-                                         <div class="card-header row" style="padding-top: 25px;">
-                                             <h5 class="card-title col-12 col-md-8">REPLY AS (YOUR NAME)</h5>
-                                         </div>
-                                         <div class="card-body">
-                                             <form method="POST" action="">
-                                                 <div class="form-group">
-                                                     <div class="bg-light">
-                                                         <button class="btn" type="button"><i class="fa fa-bold"></i></button>
-                                                         <button class="btn" type="button"><i class="fa fa-italic"></i></button>
-                                                         <button class="btn" type="button"><i class="far fa-file-image"></i></button>
-             
-                                                     </div>
-                                                     <textarea class="form-control" name="formBody" id="formBody" placeholder="CONTENT" rows="3"></textarea>
-                                                 </div>
-                                                 <div class="form-group">
-                                                     <button type="submit" class="btn btn-primary">REPLY</button>
-                                                 </div>
-                                             </form>
-                                         </div>
-                                     </div>
-                                 </div>
- 
-                                 <div class="row">
-                                     <div class="card col-12 col-md-12">
-                                         <div class="card-header">
-                                             <div class="row">
-                                                 <h6 class="col-12 col-md-4">AUTHOR</h6>
-                                                 <h6 class="col-md-4">TIME</h6>        
-                                             </div>
-                                         </div>
-                                         <div class="card-body">
-                                             comment goes here
-                                             <br>
-                                             <div class="row" style="margin-top: 2%;">
-                                                 <h6 class="col-6 col-md-3">Likes</h6>
-                                                 <button class="col-6 col-md-3 btn reply-btn" type="button" onclick="replyToggle()" name="replyButton">REPLY</button>
-                                             </div>
-                                             <div class="row forumPostreply">
-                                                 <div class="card col-12 col-md-12">
-                                                     <div class="card-header row" style="padding-top: 25px;">
-                                                         <h5 class="card-title col-12 col-md-8">REPLY AS (YOUR NAME)</h5>
-                                                     </div>
-                                                     <div class="card-body">
-                                                         <form method="POST" action="">
-                                                             <div class="form-group">
-                                                                 <div class="bg-light">
-                                                                     <button class="btn" type="button"><i class="fa fa-bold"></i></button>
-                                                                     <button class="btn" type="button"><i class="fa fa-italic"></i></button>
-                                                                     <button class="btn" type="button"><i class="far fa-file-image"></i></button>
-                         
-                                                                 </div>
-                                                                 <textarea class="form-control" name="formBody" id="formBody" placeholder="CONTENT" rows="3"></textarea>
-                                                             </div>
-                                                             <div class="form-group">
-                                                                 <button type="submit" class="btn btn-primary">REPLY</button>
-                                                             </div>
-                                                         </form>
-                                                     </div>
-                                                 </div>
-                                             </div>
+        <!-- FILTER -->
 
-                                             <div class="row">
-                                                 <div class="card col-12 col-md-12">
-                                                     <div class="card-header">
-                                                         <div class="row">
-                                                             <h6 class="col-12 col-md-4">AUTHOR</h6>
-                                                             <h6 class="col-md-4">TIME</h6>        
-                                                         </div>
-                                                     </div>
-                                                     <div class="card-body">
-                                                         comment goes here
-                                                         <br>
-                                                         <div class="row" style="margin-top: 2%;">
-                                                             <h6 class="col-6 col-md-3">Likes</h6>
-                                                             <button class="col-6 col-md-3 btn reply-btn" type="button" onclick="replyToggle()" name="replyButton">REPLY</button>
-                                                         </div>
-                                                         <div class="row forumPostreply">
-                                                             <div class="card col-12 col-md-12">
-                                                                 <div class="card-header row" style="padding-top: 25px;">
-                                                                     <h5 class="card-title col-12 col-md-8">REPLY AS (YOUR NAME)</h5>
-                                                                 </div>
-                                                                 <div class="card-body">
-                                                                     <form method="POST" action="">
-                                                                         <div class="form-group">
-                                                                             <div class="bg-light">
-                                                                                 <button class="btn" type="button"><i class="fa fa-bold"></i></button>
-                                                                                 <button class="btn" type="button"><i class="fa fa-italic"></i></button>
-                                                                                 <button class="btn" type="button"><i class="far fa-file-image"></i></button>
-                                     
-                                                                             </div>
-                                                                             <textarea class="form-control" name="formBody" id="formBody" placeholder="CONTENT" rows="3"></textarea>
-                                                                         </div>
-                                                                         <div class="form-group">
-                                                                             <button type="submit" class="btn btn-primary">REPLY</button>
-                                                                         </div>
-                                                                     </form>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
+        <div class="row" style="margin-top: 2%;">
+            <div class="col-4 col-md-3" style="padding: 10px;">
+                <a class="btn btn-lg" role="button"><span class="badge rounded-pill btn-danger"><i
+                            class="far fa-star"></i> POPULAR</span></a>
+            </div>
+            <div class="col-4 col-md-3" style="padding: 10px;">
+                <a class="btn btn-lg" role="button"><span class="badge rounded-pill btn-success"><i
+                            class="fas fa-level-up-alt"></i> VOTES</span></a>
+            </div>
+            <div class="col-4 col-md-3" style="padding: 10px;">
+                <a class="btn btn-lg" role="button"><span class="badge rounded-pill btn-warning"><i
+                            class="far fa-calendar"></i> LATEST</span></a>
+            </div>
+            <div class="col-12 col-md-3" style="padding: 10px;">
+                <a class="btn btn-block btn-primary" href="/post/create" role="button" style="width: 100%;"><i
+                        class="fas fa-pencil-alt"></i> CREATE THREAD</a>
+            </div>
 
-                                                     </div>
-                                                 </div>
-                                             </div>
-                     
-                                         </div>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="row postComments">
-                         <div class="card col-12 col-md-12">
-                             <div class="card-header">
-                                 <div class="row">
-                                     <h6 class="col-12 col-md-4">AUTHOR</h6>
-                                     <h6 class="col-md-4">TIME</h6>        
-                                 </div>
-                             </div>
-                             <div class="card-body">
-                                 comment goes here
-                                 <br>
-                                 <div class="row" style="margin-top: 2%;">
-                                     <h6 class="col-6 col-md-3">Likes</h6>
-                                     <button class="col-6 col-md-3 btn reply-btn" type="button" onclick="replyToggle()" name="replyButton">REPLY</button>
-                                 </div>
-                                 <div class="row forumPostreply">
-                                     <div class="card col-12 col-md-12">
-                                         <div class="card-header row" style="padding-top: 25px;">
-                                             <h5 class="card-title col-12 col-md-8">REPLY AS (YOUR NAME)</h5>
-                                         </div>
-                                         <div class="card-body">
-                                             <form method="POST" action="">
-                                                 <div class="form-group">
-                                                     <div class="bg-light">
-                                                         <button class="btn" type="button"><i class="fa fa-bold"></i></button>
-                                                         <button class="btn" type="button"><i class="fa fa-italic"></i></button>
-                                                         <button class="btn" type="button"><i class="far fa-file-image"></i></button>
-             
-                                                     </div>
-                                                     <textarea class="form-control" name="formBody" id="formBody" placeholder="CONTENT" rows="3"></textarea>
-                                                 </div>
-                                                 <div class="form-group">
-                                                     <button type="submit" class="btn btn-primary">REPLY</button>
-                                                 </div>
-                                             </form>
-                                         </div>
-                                     </div>
-                                 </div>
+        </div>
 
-                             </div>
-                         </div>
-                     </div>
+        <!-- THREADS -->
 
-                 </div>
-             </div>
-         </div>
+        <div class="row">
+            <div class="col-12 col-md-8" style="margin-top: 50px;">
 
-         
 
- </div>
- <div class="col-md-2" style="margin-top: 150px;">
-         <div class="card" id="communityList" >
-             <div class="card-header">
-                 <h5 class="card-title">SPORTS</h5>
-                 <button class="btn btn-lg col-md">
-                         <span class="badge badge-pill badge-danger">JOIN</span>
-                 </button>
-             </div>
-             <div class="card-body">
-                 <h6>CREATED: </h6>
-                 <h6>MEMBERS: </h6>
-                 <h6>TOTAL POSTS: </h6><br>
-                 <p>
-                     This is a sports community where there are discussions related to different topics of sports.<br>
-                     This community has the following topics
-                 </p>
-                 <h6>TOPICS</h6>
-                 <ul class="list-inline">
-                     <li class="list-inline-item"><a href="#">Cricket</a></li>
-                     <li class="list-inline-item"><a href="#">Lionel Messi</a></li>
-                     <li class="list-inline-item"><a href="#">Olympics</a></li>
-                     <li class="list-inline-item"><a href="#">Paralympics</a></li>
-                 </ul>
-             </div>
-         </div>
- </div>
+                <div class="row forumPostPrototype">
+                    @foreach ($posts as $post)
+                        <div class="card threads col-12 col-md-12 shadow">
+                            <div class="card-header">
+                                <div class="row">
+                                    <h5 class="card-title col-12 col-md-8">{{ $post->title }}</h5>
+                                    <button class="btn btn-lg col-12 col-md-4"><span
+                                            class="badge rounded-pill btn-info">POST TOPIC</span></button>
+                                </div>
+                                <div class="row">
+                                    <h6 class="col-12 col-md-4">{{ $post->user->name }}</h5>
+                                        <h6 class=" col-md-4">CREATED</h5>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>semi content ...Read more</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
 
-</x-layouts.forum-nav>
+            </div>
+
+            <div class="offset-md-1 col-md-3" style="margin-top: 50px;">
+                <!-- COMMUNITIES  -->
+
+                <a class="btn btn-block btn-secondary" role="button" style="width: 100%; margin-bottom: 10%;"><i
+                        class="fas fa-warehouse"></i> VIEW COMMUNITIES </a>
+
+                <!-- TRENDING COMMUNITIES -->
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <h5 class="card-title" style="color: whitesmoke;"><i class="fab fa-hotjar"></i> TREDING
+                            TOPIC</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">TOPIC 1</a>
+                            <a href="#" class="list-group-item list-group-item-action">TOPIC 2</a>
+                            <a href="#" class="list-group-item list-group-item-action">TOPIC 3</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</x-layouts.app>
