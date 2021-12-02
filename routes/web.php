@@ -12,6 +12,7 @@ use App\Http\Controllers\ParentCommunityController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SkillsetController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -50,12 +51,20 @@ Route::middleware('auth')->group(function () {
         Route::put('/user/update/{id}',  [UserController::class, 'update']);
         Route::get('/user/delete/{id}',  [UserController::class, 'destroy']);
         Route::get('/user/show/{id}',  [UserController::class, 'show']);
+
         //forum parent community
         Route::get('/parent-community',  [ParentCommunityController::class, 'index']);
         Route::post('/parent-community/store',  [ParentCommunityController::class, 'store']);
 
+        //forum community
         Route::get('/community',  [CommunityController::class, 'index']);
         Route::post('/community/store',  [CommunityController::class, 'store']);
+
+        //skillset
+        Route::get('/skillset', [SkillsetController::class, 'index'])->name('skillset');
+        Route::get('/skillset/create', [SkillsetController::class, 'create'])->name('skillset-create');
+        Route::post('/skillset/store', [SkillsetController::class, 'store'])->name('skillset-store');
+
 
     });
 
