@@ -13,6 +13,7 @@ use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SkillsetController;
+use App\Http\Controllers\UserSkillController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -71,6 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['role:student|alumni|professor']], function () {
         //profile management
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+        Route::post('/profile/store', [UserSkillController::class, 'store'])->name('userskill');
 
         //community subscription
         Route::post('/community/subscribe', [SubcriptionController::class,'subscribe']);

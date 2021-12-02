@@ -12,11 +12,15 @@ class Profile extends Model
     protected $guarded = [];
 
     public function user(){
-        return $this->belongsTo(User::class); //$product->category /
-        //select * from category where product_id = 1
+        return $this->belongsTo(User::class);
     }
 
     public function subscription(){
         return $this->hasMany(Subscription::class);
     }
+
+    public function userskills(){
+        return $this->hasMany(UserSkill::class);
+    }
+
 }

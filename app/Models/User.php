@@ -44,6 +44,8 @@ class User extends Authenticatable
     ];
 
     public function profile(){
-        return $this->hasOne(Profile::class); //select * from subcategories where category_id= 2
+        return $this->hasOne(Profile::class); 
     }
+
+
 }
