@@ -13,4 +13,8 @@ class Skillset extends Model
         'name',
     ];
 
+    public function userskills(){
+        return $this->hasMany(UserSkill::class);
+    }
+
 }

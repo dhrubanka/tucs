@@ -15,7 +15,7 @@ class ParentCommunity extends Model
         'image',
     ];
     public function communities(){
-        return $this->hasMany(Community::class); //select * from subcategories where category_id= 2
+        return $this->hasMany(Community::class);
     }
 
 }

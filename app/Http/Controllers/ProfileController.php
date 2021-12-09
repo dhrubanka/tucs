@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
+use App\Models\Skillset;
+use App\Models\UserSkill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +19,17 @@ class ProfileController extends Controller
     public function index()
     {
         $profile = Profile::where('user_id', Auth::user()->id)->first();
-        //dd($profile);
-        return view("profile.index", ['profile' => $profile]);
+
+        $skillset =Skillset::query()
+        ->whereNotIn('id', function($query){
+            $query->select('user_skills.skillset_id')
+            ->from('user_skills')
+            ->where('user_skills.profile_id', '=', Auth::user()->profile->id);
+        })->get();
+
+//        dd($profile->userskills);
+        
+        return view("profile.index", ['profile' => $profile, 'skillsets' => $skillset]);
     }
 
     /**
