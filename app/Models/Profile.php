@@ -23,4 +23,12 @@ class Profile extends Model
         return $this->hasMany(UserSkill::class);
     }
 
+    public function projects(){
+        return $this->hasMany(UserSkill::class);
+    }
+
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
+
 }
