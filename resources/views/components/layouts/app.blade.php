@@ -50,6 +50,12 @@
                             <a class="nav-link" href="/blog">BLOG</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/project">PROJECT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/event">EVENT</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/forum">COMMUNITIES</a>
                         </li>
 
