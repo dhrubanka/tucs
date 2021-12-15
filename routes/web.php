@@ -73,6 +73,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/skillset/create', [SkillsetController::class, 'create'])->name('skillset-create');
         Route::post('/skillset/store', [SkillsetController::class, 'store'])->name('skillset-store');
 
+        //event
+        Route::get('/event/list',  [EventController::class, 'list'])->name('event-list');
+        Route::get('/event/list/{id}',  [EventController::class, 'listView'])->name('event-listView');
+        Route::get('/event/create',  [EventController::class, 'create'])->name('event-create');
+        Route::post('/event/store',  [EventController::class, 'store'])->name('event-store');
 
     });
 
@@ -124,4 +129,5 @@ Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::get('/project/show', [ProjectController::class, 'show'])->name('project.show');
 //event
 Route::get('/event', [EventController::class, 'index'])->name('event');
-Route::get('/event/show', [EventController::class, 'show'])->name('event.show');
+Route::get('/event/show/{id}',  [EventController::class, 'show'])->name('event.show');
+
