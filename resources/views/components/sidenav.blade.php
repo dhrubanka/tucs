@@ -14,10 +14,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
-            <span data-feather="shopping-cart"></span>
-            Events
-          </a>
+
+          <button class="nav-link btn collapsed" data-bs-toggle="collapse" data-bs-target="#event-collapse" aria-expanded="true">
+              <span data-feather="layers"></span>
+       Events
+          </button>
+
+          <div class="collapse show" id="event-collapse">
+            <ul  >
+                <li><a href="/event/list" class="nav-link rounded">View Events</a></li>
+                <li><a href="/event/create" class="nav-link rounded">Create Events</a></li>
+            </ul>
+          </div>
         </li>
 
         <li class="nav-item">
@@ -41,7 +49,6 @@
               </ul>
             </div>
           </li>
-
       </ul>
 
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
