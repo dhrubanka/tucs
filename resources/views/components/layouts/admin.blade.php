@@ -7,6 +7,8 @@
     <title> {{ $title ?? 'TUCS' }}</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
