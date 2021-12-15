@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class EventController extends Controller
 {
     function index(){
-        $event = Event::all();
+        $event = Event::query()
+        ->orderBy('start_date_time')
+        ->get();
         return view('events.index', ['events' => $event]);
     }
 
@@ -37,8 +39,8 @@ class EventController extends Controller
         $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'start_date_time' => 'required',
-            'end_date_time' => 'required',
+            'start_date_time' => 'required|date|after:today',
+            'end_date_time' => 'required|date|after:start_date_time',
             'organizer' => 'required',
             'mode' => 'required',
             'venue' => 'nullable',

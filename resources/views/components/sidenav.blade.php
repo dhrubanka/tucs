@@ -17,10 +17,10 @@
 
           <button class="nav-link btn collapsed" data-bs-toggle="collapse" data-bs-target="#event-collapse" aria-expanded="true">
               <span data-feather="layers"></span>
-       Events
+       Events <i class="fas fa-caret-down"></i>
           </button>
 
-          <div class="collapse show" id="event-collapse">
+          <div class="collapse" id="event-collapse">
             <ul  >
                 <li><a href="/event/list" class="nav-link rounded">View Events</a></li>
                 <li><a href="/event/create" class="nav-link rounded">Create Events</a></li>
@@ -39,10 +39,10 @@
 
             <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#forum-collapse" aria-expanded="true">
                 <span data-feather="layers"></span>
-         Forum
+         Forum <i class="fas fa-caret-down"></i>
             </button>
 
-            <div class="collapse show" id="forum-collapse">
+            <div class="collapse" id="forum-collapse">
               <ul  >
                   <li><a href="/parent-community" class="nav-link  rounded">Parent Communities</a></li>
                   <li><a href="/community" class="nav-link   rounded">Communities</a></li>
@@ -63,10 +63,10 @@
 
             <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="true">
               <span data-feather="users"></span>
-              User Management
+              User Management <i class="fas fa-caret-down"></i>
             </button>
 
-            <div class="collapse show" id="users-collapse">
+            <div class="collapse" id="users-collapse">
               <ul  >
                   <li><a href="/users" class="nav-link  rounded">All Users</a></li>
                   <li><a href="/users/create" class="nav-link   rounded">Create User</a></li>
@@ -79,10 +79,10 @@
 
             <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#profile-collapse" aria-expanded="true">
               <span data-feather="users"></span>
-              Profile Management
-            </button>
+              Profile Management <i class="fas fa-caret-down"></i>
+            </button> 
 
-            <div class="collapse show" id="profile-collapse">
+            <div class="collapse" id="profile-collapse">
               <ul  >
                   <li><a href="/users" class="nav-link  rounded">All Users</a></li>
                   <li><a href="/users/create" class="nav-link   rounded">Convert User</a></li>
@@ -94,10 +94,10 @@
 
             <button class="nav-link btn  collapsed" data-bs-toggle="collapse" data-bs-target="#skillset-collapse" aria-expanded="true">
               <span data-feather="users"></span>
-              Skill Management
+              Skill Management <i class="fas fa-caret-down"></i>
             </button>
 
-            <div class="collapse show" id="skillset-collapse">
+            <div class="collapse" id="skillset-collapse">
               <ul  >
                   <li><a href="/skillset" class="nav-link  rounded">All Skills</a></li>
               </ul>
