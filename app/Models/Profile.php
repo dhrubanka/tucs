@@ -22,7 +22,18 @@ class Profile extends Model
     public function userSkills(){
         return $this->hasMany(UserSkill::class);
     }
+
     public function posts(){
         return $this->hasMany(Post::class); 
     }
+
+
+    public function projects(){
+        return $this->hasMany(UserSkill::class);
+    }
+
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
+
 }

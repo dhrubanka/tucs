@@ -14,8 +14,13 @@ use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SkillsetController;
 use App\Http\Controllers\UserSkillController;
+
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CKEditorController;
+
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EventController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -88,6 +93,14 @@ Route::middleware('auth')->group(function () {
         //cOMMENT
         Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
+        //project management
+        Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
+        Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
+
+        //blog creation
+        Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+        Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
+
     });
 
     //place routes below for auth enabled features
@@ -96,9 +109,19 @@ Route::middleware('auth')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
+//search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
 Route::get('/post/{slug}', [PostController::class, 'show']);
+
 //community
 Route::get('/community/{slug}',[CommunityController::class, 'show']);
+//blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-
+Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');
+//project
+Route::get('/project', [ProjectController::class, 'index'])->name('project');
+Route::get('/project/show', [ProjectController::class, 'show'])->name('project.show');
+//event
+Route::get('/event', [EventController::class, 'index'])->name('event');
+Route::get('/event/show', [EventController::class, 'show'])->name('event.show');
