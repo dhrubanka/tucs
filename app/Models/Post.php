@@ -21,4 +21,11 @@ class Post extends Model
     public function comments(){
         return $this->hasMany(Comment::class)->whereNull('parent_id');
     }
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    public function dislikes(){
+        return $this->hasMany(Dislike::class);
+    }
+
 }

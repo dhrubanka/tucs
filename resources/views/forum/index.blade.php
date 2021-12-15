@@ -54,15 +54,59 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
+                            {{-- <div class="card-footer bg-white">
                                 <div class="row">
+                                        <div class="col-2">
+                                            @if (is_null($post->like->profile_id))
+                                                <form method="POST" action="/post/unlike">
+                                                    @csrf
+                                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                                    <button type="submit" class="btn"><i class="far fa-thumbs-up bg-success fa-2x"></i></button>
+                                                </form>
+                                            @else
+                                                @if ($post->like->profile_id)
+                                                <form method="POST" action="/post/unlike">
+                                                    @csrf
+                                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                                    <button type="submit" class="btn"><i class="far fa-thumbs-up bg-success fa-2x"></i></button>
+                                                </form>
+                                                @else
+                                                <form method="POST" action="/post/like">
+                                                    @csrf
+                                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                                    <button type="submit" class="btn"><i class="far fa-thumbs-up bg-primary fa-2x"></i></button>
+                                                </form>
+                                                @endif
+                                            @endif
+                                        </div>
+    
+                                        <div class="col-2">
+                                            @if (is_null($post->dislike->profile_id))
+                                                <form method="POST" action="/post/undislike">
+                                                    @csrf
+                                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                                    <button type="submit" class="btn"><i class="far fa-thumbs-down bg-success fa-2x"></i></button>
+                                                </form>
+                                            @else
+                                                @if ($post->dislike->profile_id)
+                                                <form method="POST" action="/post/undislike">
+                                                    @csrf
+                                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                                    <button type="submit" class="btn"><i class="far fa-thumbs-down bg-success fa-2x"></i></button>
+                                                </form>
+                                                @else
+                                                <form method="POST" action="/post/dislike">
+                                                    @csrf
+                                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                                    <button type="submit" class="btn"><i class="far fa-thumbs-down bg-primary fa-2x"></i></button>
+                                                </form>
+                                                @endif    
+                                            @endif
 
-                                    <div class="col-2"><a href=""><i class="far fa-thumbs-up"></i> 20</a></div>
-                                    <div class="col-2"><a href=""><i class="far fa-thumbs-down"></i> 12</a></div>
-                                    <div class="col-2"><a href=""><i class="far fa-comments"></i> 125</a></div>
-                                    <div class="col-2"><a href=""><i class="fas fa-share"></i> Share</a></div>
+                                        </div>
+    
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </a>
                 </div>
