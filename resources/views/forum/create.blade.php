@@ -12,8 +12,8 @@
                      <h5 class="card-title col-12 col-md-8">CREATE A POST</h5>
                      <form class="col-md-4" method="POST" action="/post/store">
                         @csrf
-                         <select class="form-select col-md-12" name="community_id">
-                             <option selected>CHOOSE A COMMUNITY</option>
+                         <select class="form-select col-md-12" name="community_id"  required >
+                             <option value="" selected>CHOOSE A COMMUNITY</option>
                              @foreach ($communities as $item)
                                  <option value="{{ $item->id }}">{{ $item->name }}</option>
                              @endforeach
@@ -23,10 +23,10 @@
                  <div class="card-body" style="marginn: 20px;">
 
                          <div class="form-group">
-                           <input class="form-control" type="text" name="title" id="title" class="form-control" placeholder="TITLE">
+                           <input class="form-control" required type="text" name="title" id="title" class="form-control" placeholder="TITLE">
                          </div>
                          <div class="form-group">
-                             <textarea class="form-control" name="content" id="content" placeholder="CONTENT" rows="3"></textarea>
+                             <textarea class="form-control" required name="content" id="content" placeholder="CONTENT" rows="3"></textarea>
                          </div>
                          <div class="form-group">
                              <button type="submit" class="btn btn-primary">POST</button>
@@ -36,5 +36,11 @@
              </div>
          </div>
 
-
-</x-layouts.forum-nav>
+ <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script type="text/javascript">
+CKEDITOR.replace('content', {
+    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+    filebrowserUploadMethod: 'form'
+});
+</script>
+</x-layouts.app>

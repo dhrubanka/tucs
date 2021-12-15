@@ -17,14 +17,14 @@
                         <p class="card-text">{{$item->description}}</p>
 
                         @if ($item->profile_id)
-                        <form method="POST" action="/community/unsubscribe">
+                        <form method="POST" action="/community/unsubscribeS">
                             @csrf
                             <input type="hidden" name="community_id" value="{{$item->id}}">
                             <input type="hidden" name="search" value="{{$search}}">
                             <button type="submit" class="btn btn-primary">Unsubscribe</button>
                         </form>
                         @else
-                        <form method="POST" action="/community/subscribe">
+                        <form method="POST" action="/community/subscribeS">
                             @csrf
                             <input type="hidden" name="community_id" value="{{$item->id}}">
                             <input type="hidden" name="search" value="{{$search}}">

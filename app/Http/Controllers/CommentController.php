@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
-use App\Models\User;
-use App\Models\Skillset;
-use App\Models\UserSkill;
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class ProfileController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +14,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile = Profile::where('user_id', Auth::user()->id)->first();
-
-        $skillset =Skillset::query()
-        ->whereNotIn('id', function($query){
-            $query->select('user_skills.skillset_id')
-            ->from('user_skills')
-            ->where('user_skills.profile_id', '=', Auth::user()->profile->id);
-        })->get();
-      // dd($profile->userSkills[0]);
-        
-        return view("profile.index", ['profile' => $profile, 'skillsets' => $skillset]);
+        //
     }
 
     /**
@@ -49,16 +35,22 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $request->validate([
+            'body'=>'required',
+        ]);
+        $input['profile_id'] = auth()->user()->profile->id;
+        Comment::create($input);
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Profile $profile)
+    public function show(Comment $comment)
     {
         //
     }
@@ -66,10 +58,10 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Profile $profile)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -78,10 +70,10 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -89,10 +81,10 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Profile  $profile
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profile)
+    public function destroy(Comment $comment)
     {
         //
     }

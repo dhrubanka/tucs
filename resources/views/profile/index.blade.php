@@ -7,9 +7,9 @@
                 <div class="card shadow">
                     <div class="card-header row text-center">
                         <div class="col-12 col-md-6">
-                            <img src="panda.png" style="height:150px; width: 150px; border-radius: 50%;">
+                            <img src="https://avatars.dicebear.com/api/{!! ($profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" style="height:150px; width: 200px; border-radius: 50%;">
                             <h5 class="card-title">
-                                NAME
+                                {{$profile->user->name}}
                             </h5>
                         </div>
                         <div class="col-12 col-md-6">
@@ -148,10 +148,10 @@
                                         </div>          
 
                                         <div class="row">
-                                            @foreach ($profile->userskills as $userSkill)
+                                            @foreach ($profile->userSkills as $userSkill)
                                             <div class="col-12 col-md-4">
                                                 {{-- {{$userSkill->skillsets->name}} --}}
-                                                {{$userSkill->skillset_id}}
+                                                {{$userSkill->skill->name}}
                                             </div>
                                             @endforeach
                                         </div>

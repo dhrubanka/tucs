@@ -1,0 +1,27 @@
+.card{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.card{
+    border-radius: 10px;
+}
+#top-growing{
+    margin: 1em; margin-top: 0; height: 80px; background-color: cornflowerblue;
+    border-top-right-radius:  10px ; 
+    border-top-left-radius: 10px;
+}
+#top-growing-list{
+    border-style: solid; border-color: cornflowerblue; margin: 1em; margin-top: -1em;
+    border-width: 2px;
+     
+}
+#request-comm{
+    background-color: cornflowerblue;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-align: center;
+    margin:  0 11px 0 11px;
+    border-radius: 10px;
+    margin: 0em 2em 0em 2em;
+}
