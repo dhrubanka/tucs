@@ -1,0 +1,48 @@
+.side-list1>li {
+    padding: 1em;
+    color:cornflowerblue;
+}
+
+.side-list1>li:hover {
+    border-radius: 10px;
+    background-color: cornflowerblue;
+    color: blanchedalmond;
+}
+
+.side-list1 {
+    list-style: none;
+    margin-left: -2em;
+    margin-top: 10%;
+    
+}
+
+.side-list2 {
+    list-style: none;
+    margin-left: -2em;
+    margin-top: 10%;
+}
+
+.side-list2>li {
+    padding: 1em;
+}
+
+.side-list3>li {
+    padding: 10px;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+#left_nav{
+  
+  color: cornflowerblue;
+  background-color: rgb(255, 255, 255);
+  margin: 0px 10px 0px 30px;
+  width: 280px;
+  border-radius: 10px;
+}
+.forum-home{
+
+  font-family: 'Roboto', sans-serif; 
+   
+}

@@ -19,8 +19,10 @@ class Profile extends Model
         return $this->hasMany(Subscription::class);
     }
 
-    public function userskills(){
+    public function userSkills(){
         return $this->hasMany(UserSkill::class);
     }
-
+    public function posts(){
+        return $this->hasMany(Post::class); 
+    }
 }

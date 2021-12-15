@@ -66,13 +66,26 @@ class CommunityController extends Controller
      */
     public function show($id)
     {
-        $community = Community::where('slug', '=', $id)->first();
+        // $community = Community::where('slug', '=', $id)->first();
+
+        $community = Community::query()
+        ->leftJoin('subscriptions', function ($join) {
+            $join->on('communities.id', '=', 'subscriptions.community_id')
+            ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
+        })->where('slug', '=', $id)->first();
+
         $posts = Post::where('community_id','=',$community->id)
                // ->where('user_id','=', Auth::user()->id)
                 ->get();
 
-
-
+        // $subscription =Community::query()
+        // ->leftJoin('subscriptions', function ($join) {
+        //     $join->on('communities.id', '=', 'subscriptions.community_id')
+        //     ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
+        // })->where('communities.slug', '=', $id)
+        // ->first();
+        
+//        dd($posts);
         return view('forum.show', ['communites' => $community, 'posts' => $posts]);
     }
 

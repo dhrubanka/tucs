@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac17ebef12a75418927f8d90e81af6a0",
+    "content-hash": "7cc780bc47566b8715b6891454e02606",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -121,6 +121,54 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "ckeditor/ckeditor",
+            "version": "4.17.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ckeditor/ckeditor4-releases.git",
+                "reference": "b71b8bf724174f2feaf53f64ee424bf1f5ba61fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/b71b8bf724174f2feaf53f64ee424bf1f5ba61fa",
+                "reference": "b71b8bf724174f2feaf53f64ee424bf1f5ba61fa",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "https://cksource.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor.",
+            "homepage": "https://ckeditor.com/ckeditor-4/",
+            "keywords": [
+                "CKEditor",
+                "ckeditor4",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "support": {
+                "forum": "https://stackoverflow.com/tags/ckeditor",
+                "issues": "https://github.com/ckeditor/ckeditor4/issues",
+                "source": "https://github.com/ckeditor/ckeditor4",
+                "wiki": "https://ckeditor.com/docs/ckeditor4/latest/"
+            },
+            "time": "2021-11-17T16:15:01+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

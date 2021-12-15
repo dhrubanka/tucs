@@ -14,6 +14,8 @@ use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SkillsetController;
 use App\Http\Controllers\UserSkillController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CKEditorController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -77,9 +79,14 @@ Route::middleware('auth')->group(function () {
         //community subscription
         Route::post('/community/subscribe', [SubcriptionController::class,'subscribe']);
         Route::post('/community/unsubscribe', [SubcriptionController::class,'unsubscribe']);
+        Route::post('/community/subscribeS', [SubcriptionController::class,'subscribeS']);
+        Route::post('/community/unsubscribeS', [SubcriptionController::class,'unsubscribeS']);
 
         Route::get('/post/create',[PostController::class, 'create']);
         Route::post('/post/store',[PostController::class, 'store']);
+        Route::post('/ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
+        //cOMMENT
+        Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
     });
 
@@ -90,7 +97,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
-
+Route::get('/post/{slug}', [PostController::class, 'show']);
 //community
 Route::get('/community/{slug}',[CommunityController::class, 'show']);
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
