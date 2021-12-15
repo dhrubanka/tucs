@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="{{ asset('css/forum/side.css') }}">
 <div class="col-md-3 " id="left_nav">
                 <ul class="side-list1">
+                    @if(Auth::check())
                     <li><a href="forum"><i class="fas fa-home "></i> &nbsp Home</a></li>
                     <li><a href=""><i class="fas fa-level-up-alt"></i>  &nbsp Popular</a></li>
+                    @endif
                     <li><a href=""><i class="fas fa-globe-asia"></i> &nbsp All</a></li>
 
                 </ul>
@@ -11,6 +13,7 @@
                     padding: 5px 15px 5px 15px;  border-width: 2px; display: inline;
                     color:beige; background-color:cornflowerblue;
                     " href=""> Explore Communities</a></li>
+                    @if(Auth::check())
                     <li>
                         <button class=" btn collapsed" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="true" style="padding-left: 0px; color:rgb(6, 84, 252);">
                             <span data-feather="users"></span>
@@ -29,6 +32,7 @@
                             </ul>
                         </div>
                     </li>
+                    @endif
                 </ul>
 
             </div>

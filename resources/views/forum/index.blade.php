@@ -6,7 +6,11 @@
     <div class="forum-home">
         <div class="row">
             <!-- side nav community-->
+            @if(Auth::check())
             <x-layouts.ForumSide :communities="$communities" />
+            @else
+            <x-layouts.ForumSide  />
+            @endif
             <!--post cards-->
             <div class="col-md-6">
                 <!--create post demo-->

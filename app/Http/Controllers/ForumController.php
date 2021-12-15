@@ -16,7 +16,8 @@ class ForumController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $posts = Post::query()
+    {   if(Auth::check()){ 
+         $posts = Post::query()
         ->join('subscriptions', function ($join) {
             $join->on('posts.community_id', '=', 'subscriptions.community_id')
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
@@ -29,6 +30,10 @@ class ForumController extends Controller
         })->get();
        // dd($posts);
         return view('forum.index', ['posts' => $posts, 'communities' => $communities]);
+    }else{
+        $posts= Post::paginate(5);;
+        return view('forum.index', ['posts' => $posts]);
+    }
     }
 
 
