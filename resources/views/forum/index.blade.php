@@ -1,134 +1,122 @@
 <x-layouts.app>
 
-    <div class="container">
+    <link rel="stylesheet" href="{{ asset('css/forum/forum_show.css') }}">
 
-        <!-- TRENDING -->
-        <!-- <h3">Treding Today</h3> -->
+
+    <div class="forum-home">
         <div class="row">
-            <div class="col-6 col-md-3" style="padding: 10px;">
-                <div class="card trends shadow">
-                    <div class="card-header">
-                        <h6 class="card-title">TITLE</h6>
-                    </div>
-                    <div class="card-body">
-                        <h6>posted by</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" style="padding: 10px;">
-                <div class="card trends shadow">
-                    <div class="card-header">
-                        <h6 class="card-title">TITLE</h6>
-                    </div>
-                    <div class="card-body">
-                        <h6>posted by</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" style="padding: 10px;">
-                <div class="card trends shadow">
-                    <div class="card-header">
-                        <h6 class="card-title">TITLE</h6>
-                    </div>
-                    <div class="card-body">
-                        <h6>posted by</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3" style="padding: 10px;">
-                <div class="card trends shadow">
-                    <div class="card-header">
-                        <h6 class="card-title">TITLE</h6>
-                    </div>
-                    <div class="card-body">
-                        <h6>posted by</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- FILTER -->
-
-        <div class="row" style="margin-top: 2%;">
-            <div class="col-4 col-md-3" style="padding: 10px;">
-                <a class="btn btn-lg" role="button"><span class="badge rounded-pill btn-danger" style="padding: 14px;" ><i class="far fa-star"></i> POPULAR</span></a>
-            </div>
-            <div class="col-4 col-md-3" style="padding: 10px;">
-                <a class="btn btn-lg" role="button"><span class="badge rounded-pill btn-success" style="padding: 14px;"><i class="fas fa-level-up-alt"></i> VOTES</span></a>
-            </div>
-            <div class="col-4 col-md-3" style="padding: 10px;">
-                <a class="btn btn-lg" role="button"><span class="badge rounded-pill btn-warning" style="padding: 14px;"><i class="far fa-calendar"></i> LATEST</span></a>
-            </div>
-            <div class="col-12 col-md-3" style="padding: 10px;">
-                <a class="btn btn-primary" role="button" style="width: 100%;"><span class="badge" style="padding: 14px 0px; font-size: medium;"><i class="fas fa-pencil-alt"></i> CREATE THREAD</span></a>
-            </div>
-
-        </div>
-
-        <!-- THREADS -->
-
-        <div class="row">
-            <div class="col-12 col-md-8" style="margin-top: 50px;">
-                <div class="row forumPostPrototype shadow">
-                    <div class="card threads col-12 col-md-12">
-                        <div class="card-header">
-                            <div class="row">
-                                <h5 class="card-title col-12 col-md-8">POST TITLE</h5>
-                                <button class="btn btn-lg col-12 col-md-4"><span class="badge rounded-pill btn-info">POST TOPIC</span></button>
-                            </div>
-                            <div class="row">
-                                <h6 class="col-12 col-md-4">POST AUTHOR</h5>
-                                <h6 class=" col-md-4">CREATED</h5>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p>semi content ...Read more</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row forumPostPrototype">
-                    <div class="card threads col-12 col-md-12 shadow">
-                        <div class="card-header">
-                            <div class="row">
-                                <h5 class="card-title col-12 col-md-8">POST TITLE</h5>
-                                <button class="btn btn-lg col-12 col-md-4"><span class="badge rounded-pill btn-info">POST TOPIC</span></button>
-                            </div>
-                            <div class="row">
-                                <h6 class="col-12 col-md-4">POST AUTHOR</h5>
-                                <h6 class=" col-md-4">CREATED</h5>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p>semi content ...Read more</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="offset-md-1 col-md-3" style="margin-top: 50px;">
-                <!-- COMMUNITIES  -->
-
-                <a class="btn btn-block btn-secondary" role="button" style="width: 100%; margin-bottom: 10%;"><i class="fas fa-warehouse"></i> VIEW COMMUNITIES </a>
-
-                <!-- TRENDING COMMUNITIES -->
+            <!-- side nav community-->
+            <x-layouts.ForumSide :communities="$communities" />
+            <!--post cards-->
+            <div class="col-md-6">
+                <!--create post demo-->
                 <div class="card">
-                    <div class="card-header bg-danger">
-                        <h5 class="card-title" style="color: whitesmoke;"><i class="fab fa-hotjar"></i> TREDING TOPIC</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-group">
-                            <a href="#" class="list-group-item list-group-item-action">TOPIC 1</a>
-                            <a href="#" class="list-group-item list-group-item-action">TOPIC 2</a>
-                            <a href="#" class="list-group-item list-group-item-action">TOPIC 3</a>
+                    <div class="card-body" style="padding:5px">
+                        <div class="row">
+                            <div class="col-11">
+                                <a class="btn" href="/post/create"  style="border:solid; border-color: silver; border-width:1px; width:100%; border-radius: 20px;"> Create a post</a>
+                            </div>
+                            <div class="col-1">
+                                <a><i class="fas fa-image fa-2x"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--posts-->
+                @foreach($posts as $post)
+                <div class="card" style="margin: 10px 0px 10px 0px;">
+                    <a href="/post/{{$post->id}}">
+                        <div class="card-header bg-white">
+                            <div class="row">
+                                <h3><b>{{$post->title}}</b> </h3>
+                            </div>
+                        </div>
+                        <div class="row" style="padding: 5px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
 
+                                            <div style="color:cornflowerblue ;border-style: solid; border-radius: 10px;
+                                         padding: 5px 15px 5px 15px;  border-width: 2px; display: inline;">
+                                                <small> </small>{{ $post->community->name}}
+                                            </div>
+                                        </h5>
+                                        <p class="card-text">{!! Str::limit( strip_tags( $post->content), 200 ) !!}</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white">
+                                <div class="row">
+
+                                    <div class="col-2"><a href=""><i class="far fa-thumbs-up"></i> 20</a></div>
+                                    <div class="col-2"><a href=""><i class="far fa-thumbs-down"></i> 12</a></div>
+                                    <div class="col-2"><a href=""><i class="far fa-comments"></i> 125</a></div>
+                                    <div class="col-2"><a href=""><i class="fas fa-share"></i> Share</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+                <div class="d-flex justify-content-center">
+                {!! $posts->links() !!}
+                </div>
+               
             </div>
+            <!--right side pane-->
+            <div class="col-md-3">
 
+                <div class="text-white text-center" id="top-growing">
+                    <div style="padding-top: 40px;">
+                        <div style=" border-style: solid; border-radius: 10px; padding: 5px 15px 5px 15px;;
+                     border-width: 2px; display: inline;">Top Growing Communities <i class="fas fa-fire" style="color: orange;"></i></div>
+                    </div>
+                </div>
+                <ol class="side-list3" id="top-growing-list">
+                    <li>
+                        <div class="row">
+                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
+                            </div>
+                            <div class="col-1"> <small> <i> </small>Web Development</i></div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
+                            </div>
+                            <div class="col-1"> <small> <i> </small>AI</i></div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
+                            </div>
+                            <div class="col-1"> <small> <i> </small>Computer Vision</i></div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
+                            </div>
+                            <div class="col-1"> <small> <i> </small>Machine Learning</i></div>
+                    </li>
+                    <li>
+                        <div class="row">
+                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
+                            </div>
+                            <div class="col-1"> <small> <i> </small>OS</i></div>
+                    </li>
+
+                </ol>
+                <div class="" id="request-comm"> Request Community</div>
+            </div>
         </div>
-
     </div>
+    <script>
+        function postRedirect(post) {
+            window.location = '{{ url("/post/' + post + '")}}';
+        }
+    </script>
 </x-layouts.app>

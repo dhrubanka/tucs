@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Community;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,7 +53,7 @@ class PostController extends Controller
         ]);
         Post::create([
             'community_id' => request('community_id'),
-            'user_id' => Auth::user()->id,
+            'profile_id' => Auth::user()->profile->id,
             'title' => request('title'),
             'content' => request('content'),
         ]);
@@ -66,9 +68,20 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post,$id)
     {
-        //
+        $post = Post::find($id);
+        $memberstot = Subscription::where('community_id',$post->community_id);
+        $members= $memberstot->count();
+        $comments= Comment::where('post_id', $id)->count();
+
+        $community = Community::query()
+        ->leftJoin('subscriptions', function ($join) {
+            $join->on('communities.id', '=', 'subscriptions.community_id')
+            ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
+        })->where('id', '=', $post->community->id)->first();
+
+        return view('forum.post.index', ['post' => $post,'members'=>$members, 'comments'=>$comments, 'communities'=>$community]);
     }
 
     /**

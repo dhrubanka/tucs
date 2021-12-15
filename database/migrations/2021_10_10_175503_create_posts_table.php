@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
 
             $table->foreign('profile_id')
             ->references('id')
-            ->on('users')
+            ->on('profiles')
             ->onDelete('cascade');
 
             $table->foreign('community_id')

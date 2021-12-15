@@ -9,12 +9,12 @@ class UserSkill extends Model
 {
     use HasFactory;
 
-    public function profiles(){
+    public function profile(){
         return $this->belongsTo(Profile::class);
     }
 
-    public function skillsets(){
-        return $this->belongsTo(Skillset::class);
+    public function skill(){
+        return $this->belongsTo(Skillset::class, 'skillset_id');
     }
 
 }
