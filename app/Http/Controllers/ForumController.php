@@ -6,6 +6,8 @@ use App\Models\Community;
 use App\Models\Forum;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Like;
+use App\Models\Dislike;
 use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
@@ -16,21 +18,45 @@ class ForumController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {   if(Auth::check()){ 
          $posts = Post::query()
         ->join('subscriptions', function ($join) {
             $join->on('posts.community_id', '=', 'subscriptions.community_id')
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
         })
+        ->leftJoin('likes', function ($join2) {
+            $join2->on('posts.id', '=', 'likes.post_id')
+            ->where('likes.profile_id', '=', Auth::user()->profile->id);
+        })
+        ->leftJoin('dislikes', function ($join3) {
+            $join3->on('posts.id', '=', 'dislikes.post_id')
+            ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
+        })
         ->paginate(5);
+
         $communities = Community::query()
         ->join('subscriptions', function ($join) {
             $join->on('communities.id', '=', 'subscriptions.community_id')
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
         })->get();
-       // dd($posts);
+
+        // $postLike = Post::query()
+        // ->leftJoin('likes', function ($join){
+        //     $join->on('posts.id', '=', 'likes.post_id')
+        //     ->where('likes.profile_id', '=', Auth::user()->profile->id);
+        // })->get();
+
+        // $postDislike = Post::query()
+        // ->leftJoin('dislikes', function ($join){
+        //     $join->on('posts.id', '=', 'dislikes.post_id')
+        //     ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
+        // })->get();
+
+        // dd($posts);
         return view('forum.index', ['posts' => $posts, 'communities' => $communities]);
     }else{
+
         $posts= Post::paginate(5);;
         return view('forum.index', ['posts' => $posts]);
     }
@@ -43,9 +69,17 @@ class ForumController extends Controller
      * @param  \App\Models\Forum  $forum
      * @return \Illuminate\Http\Response
      */
-    public function show(Forum $forum)
+    public function explore(Forum $forum)
     {
-        //
+        $allCommunities = Community::all();
+
+        $communities = Community::query()
+        ->join('subscriptions', function ($join) {
+            $join->on('communities.id', '=', 'subscriptions.community_id')
+            ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
+        })->get();
+
+        return view('forum.explore', ['communities' => $communities, 'allcommunitites' => $allCommunities]);
     }
 
   

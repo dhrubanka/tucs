@@ -10888,10 +10888,16 @@ textarea.form-control-lg {
     width: 200px;
 }
 
+@media only screen and (max-width: 1400px) {
+  #dropMenu{
+      font-size: 85%;
+  }
+}
+
 @media only screen and (max-width: 1124px) {
-    #dropMenu{
-        font-size: 80%;
-    }
+  #dropMenu{
+      font-size: 80%;
+  }
 }
 
 @media only screen and (max-width: 991px) {
@@ -10917,7 +10923,7 @@ textarea.form-control-lg {
     }
 
     #user{
-        width: 100px !important;
+        width: 30% !important;
         order: 4;
         flex-direction: row;
     }
@@ -10933,13 +10939,72 @@ textarea.form-control-lg {
 
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 538px) {
 
-    #logo img{
-        width: 30px !important;
-        height: 30px !important;
-    }
+  #logo img{
+      width: 30px !important;
+      height: 30px !important;
+  }
 
+  #search{
+    width: 20% !important;
+  }
+
+
+}
+@media only screen and (max-width: 424px) {
+
+  #search{
+    width: 100px !important;
+  }
+
+  #user{
+    width: 150px !important;
+  }
+}
+
+@media only screen and (max-width: 384px) {
+
+  #togBtn span{
+    width: 30px !important;
+  }
+
+  #search{
+    width: 70px !important;
+  }
+
+  #logo img{
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  #user img{
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  #user{
+    width: 120px !important;
+  }
+}
+
+@media only screen and (max-width: 326px) {
+
+  #togBtn span{
+    width: 5px !important;
+  }
+
+  #user img{
+    width: 10px !important;
+  }
+
+  #logo img{
+    width: 10px !important;
+  }
+
+  #search{
+    width: 60px !important;
+  }
 }
 
 /*forum*/
