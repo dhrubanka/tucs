@@ -45,7 +45,7 @@ class BlogController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required',
-            'content' => 'required|string|max:255',
+            'content' => 'required',
         ]);
         Blog::create([
             'title' => request('title'),

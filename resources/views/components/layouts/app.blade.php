@@ -43,8 +43,8 @@
             <!-- <div class="col-2 col-md-3" style="padding-top: 1%;"> -->
                 <div class="collapse navbar-collapse" id="dropMenu" style="width: 30% !important;">
                     <ul class="nav navbar-nav nav-justified" style="width: 100% !important;">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/">HOME</a>
+                    <li class="nav-item">
+                            <a class="nav-link" href="/forum">COMMUNITIES</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/blog">BLOG</a>
@@ -55,9 +55,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/event">EVENT</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/forum">COMMUNITIES</a>
-                        </li>
+                        
 
                     </ul>
                 </div>
