@@ -35,6 +35,9 @@ class ForumController extends Controller
         })
         ->paginate(5);
 
+
+        
+        // ddd($posts);
         $communities = Community::query()
         ->join('subscriptions', function ($join) {
             $join->on('communities.id', '=', 'subscriptions.community_id')

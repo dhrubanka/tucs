@@ -54,17 +54,18 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="card-footer bg-white">
+                            
+                            <div class="card-footer bg-white">
                                 <div class="row">
                                         <div class="col-2">
-                                            @if (is_null($post->like->profile_id))
+                                            @if (is_null($post->like))
                                                 <form method="POST" action="/post/unlike">
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{$post->id}}">
                                                     <button type="submit" class="btn"><i class="far fa-thumbs-up bg-success fa-2x"></i></button>
                                                 </form>
                                             @else
-                                                @if ($post->like->profile_id)
+                                                @if ($post->like)
                                                 <form method="POST" action="/post/unlike">
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -81,14 +82,14 @@
                                         </div>
     
                                         <div class="col-2">
-                                            @if (is_null($post->dislike->profile_id))
+                                            @if (is_null($post->dislike))
                                                 <form method="POST" action="/post/undislike">
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{$post->id}}">
                                                     <button type="submit" class="btn"><i class="far fa-thumbs-down bg-success fa-2x"></i></button>
                                                 </form>
                                             @else
-                                                @if ($post->dislike->profile_id)
+                                                @if ($post->dislike)
                                                 <form method="POST" action="/post/undislike">
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -106,7 +107,7 @@
                                         </div>
     
                                 </div>
-                            </div> --}}
+                            </div> 
                         </div>
                     </a>
                 </div>
