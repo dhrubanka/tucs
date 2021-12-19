@@ -48,10 +48,49 @@
                             </div>
                             <div class="card-footer bg-white">
                                 <div class="row">
-                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="far fa-thumbs-up"></i> 20</a></div>
-                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="far fa-thumbs-down"></i> 12</a></div>
-                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="far fa-comments"></i></i> {{$comments}}</a></div>
-                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="fas fa-share"></i> Share</a></div>
+                                    <div class="col-2">
+                                        @if ($postLike->profile_id)
+                                        <form method="POST" action="/post/unlike">
+                                            @csrf
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <button type="submit" class="btn"><i class="far fa-thumbs-up fa-2x" style="color: green"></i>
+                                                {{$likes}}
+                                            </button>
+                                        </form>
+                                        @else
+                                        <form method="POST" action="/post/like">
+                                            @csrf
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <button type="submit" class="btn"><i class="far fa-thumbs-up fa-2x" style="color: rgb(0, 153, 255)"></i>
+                                                {{$likes}}
+                                            </button>
+                                        </form>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-2">
+                                        @if ($postDislike->profile_id)
+                                        <form method="POST" action="/post/undislike">
+                                            @csrf
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <button type="submit" class="btn"><i class="far fa-thumbs-down fa-2x" style="color: green"></i>
+                                                {{$dislikes}}
+                                            </button>
+                                        </form>
+                                        @else
+                                        <form method="POST" action="/post/dislike">
+                                            @csrf
+                                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                                            <button type="submit" class="btn"><i class="far fa-thumbs-down fa-2x" style="color: rgb(0, 153, 255)"></i>
+                                                {{$dislikes}}
+                                            </button>
+                                        </form>
+                                        @endif    
+                                    </div>
+
+                                    {{-- <div class="col-2"><a href="" style="text-decoration: none"><i class="far fa-thumbs-down"></i> 12</a></div> --}}
+                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="far fa-comments fa-2x"></i></i> {{$comments}}</a></div>
+                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="fas fa-share fa-2x"></i> Share</a></div>
                                 </div>
                             </div>
 
@@ -94,16 +133,13 @@
                             <form method="POST" action="/community/unsubscribe">
                                 @csrf
                                 <input type="hidden" name="community_id" value="{{ $post->community->id }}">
-                                {{-- <input type="hidden" name="search" value="{{$search}}"> --}}
                                 <button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>
                                     Unsubscribe</button>
                             </form>
                         @else
                             <form method="POST" action="/community/subscribe">
                                 @csrf
-                                <input type="hidden" name="community_id" value="{
-                                    { $post->community->id }}">
-                                {{-- <input type="hidden" name="search" value="{{$search}}"> --}}
+                                <input type="hidden" name="community_id" value="{{ $post->community->id }}">
                                 <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>
                                     Subscribe</button>
                             </form>

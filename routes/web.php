@@ -21,6 +21,9 @@ use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
 
+use App\Http\Controllers\LikeController;
+use App\Http\Controllers\DislikeController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -95,6 +98,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/post/create',[PostController::class, 'create']);
         Route::post('/post/store',[PostController::class, 'store']);
         Route::post('/ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
+
+        //post upvote
+        Route::post('/post/like',[LikeController::class, 'like']);
+        Route::post('/post/unlike',[LikeController::class, 'unlike']);
+
+        //post upvote
+        Route::post('/post/dislike',[DislikeController::class, 'dislike']);
+        Route::post('/post/undislike',[DislikeController::class, 'undislike']);
+
         //cOMMENT
         Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
@@ -114,6 +126,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
+Route::get('/forum/explore', [ForumController::class, 'explore'])->name('forum.explore');
+
 //search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 
@@ -121,6 +135,7 @@ Route::get('/post/{slug}', [PostController::class, 'show']);
 
 //community
 Route::get('/community/{slug}',[CommunityController::class, 'show']);
+
 //blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');

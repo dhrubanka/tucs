@@ -36,4 +36,11 @@ class Profile extends Model
         return $this->hasMany(Blog::class);
     }
 
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    public function dislikes(){
+        return $this->hasMany(Dislike::class);
+    }
+
 }

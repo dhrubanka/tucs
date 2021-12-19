@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Community;
+use App\Models\Like;
+use App\Models\Dislike;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,10 +72,25 @@ class PostController extends Controller
      */
     public function show(Post $post,$id)
     {
-        $post = Post::find($id);
+         $post = Post::find($id);
+
+        $postLike = Post::query()
+        ->leftJoin('likes', function ($join){
+            $join->on('posts.id', '=', 'likes.post_id')
+            ->where('likes.profile_id', '=', Auth::user()->profile->id);
+        })->where('posts.id', '=', $id)->first();
+ 
+        $postDislike = Post::query() 
+        ->leftJoin('dislikes', function ($join){
+            $join->on('posts.id', '=', 'dislikes.post_id')
+            ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
+        })->where('posts.id', '=', $id)->first();
+
         $memberstot = Subscription::where('community_id',$post->community_id);
         $members= $memberstot->count();
         $comments= Comment::where('post_id', $id)->count();
+        $likes= Like::where('post_id', $id)->count();
+        $dislikes= Dislike::where('post_id', $id)->count();
 
         $community = Community::query()
         ->leftJoin('subscriptions', function ($join) {
@@ -81,7 +98,8 @@ class PostController extends Controller
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
         })->where('id', '=', $post->community->id)->first();
 
-        return view('forum.post.index', ['post' => $post,'members'=>$members, 'comments'=>$comments, 'communities'=>$community]);
+
+        return view('forum.post.index', ['post' => $post,'members'=>$members, 'comments'=>$comments, 'communities'=>$community, 'postLike'=>$postLike, 'postDislike'=>$postDislike, 'likes'=>$likes, 'dislikes'=>$dislikes]);
     }
 
     /**
