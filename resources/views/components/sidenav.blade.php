@@ -8,7 +8,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/auth/projects">
             <span data-feather="file"></span>
             Projects
           </a>

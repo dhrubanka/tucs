@@ -14,6 +14,7 @@ use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SkillsetController;
 use App\Http\Controllers\UserSkillController;
+use App\Http\Controllers\AuthProjectController;
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CKEditorController;
@@ -76,6 +77,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/skillset/create', [SkillsetController::class, 'create'])->name('skillset-create');
         Route::post('/skillset/store', [SkillsetController::class, 'store'])->name('skillset-store');
 
+        //projects
+        Route::get('/auth/projects', [AuthProjectController::class, 'index']);
+        Route::get('/auth/projects/approve/{id}', [AuthProjectController::class, 'approve']);
+        Route::get('/auth/projects/reject/{id}', [AuthProjectController::class, 'reject']);
+
         //event
         Route::get('/event/list',  [EventController::class, 'list'])->name('event-list');
         Route::get('/event/list/{id}',  [EventController::class, 'listView'])->name('event-listView');
@@ -113,7 +119,7 @@ Route::middleware('auth')->group(function () {
         //project management
         Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
         Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
-
+        Route::get('/project/myprojects', [ProjectController::class, 'myprojects'])->name('project.myprojects');
         //blog creation
         Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
         Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');

@@ -38,7 +38,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+      
     }
 
     /**
@@ -49,7 +49,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

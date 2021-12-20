@@ -15,10 +15,13 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->string('url');
             $table->unsignedBigInteger('profile_id');
+            $table->string('title');
+            $table->text('description');
+            $table->string('url');
+            $table->string('domain');
+            $table->string('approval')->default('N');
+            $table->text('remark')->nullable();
             $table->timestamps();
 
             $table->foreign('profile_id')
