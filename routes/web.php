@@ -39,7 +39,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return redirect("/forum");
+    return redirect("/home");
 });
 
 

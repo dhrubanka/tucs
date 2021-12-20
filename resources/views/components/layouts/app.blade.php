@@ -35,7 +35,7 @@
 
             <!-- BRAND -->
             <!-- <div class="col-2 offset-md-1 col-md-1 d-none d-md-block"> -->
-                <a class="navbar-brand" id="logo" href="#" style="margin-left: 10px;"><img src="/storage/logo.png" style=" height:80px; width: 80px"></a>
+                <a class="navbar-brand" id="logo" href="/" style="margin-left: 10px;"><img src="/storage/logo.png" style=" height:80px; width: 80px"></a>
             <!-- </div> -->
 
 
