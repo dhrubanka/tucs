@@ -92,7 +92,7 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['middleware' => ['role:student|alumni|professor']], function () {
         //profile management
-        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+        Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
         Route::post('/profile/store', [UserSkillController::class, 'store'])->name('userskill');
 
         //community subscription

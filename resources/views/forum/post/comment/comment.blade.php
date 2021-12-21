@@ -6,7 +6,11 @@
         </strong></div>
         <div class="col-2"></div>
         <div class="col-4">{{$comment->created_at}}</div>
-        <div class="col-2"> <?php echo $comment->user->user->role; ?></div>
+        <div class="col-2"> 
+        <?php $role=$comment->user->user->getRoleNames();
+                                $role= $role[0]; ?>
+                              <x-badge :role="$role" />
+    </div>
         </div>    
     <div class="card-body"> <p>{{ $comment->body }}</p> </div>
         

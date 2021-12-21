@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\Project;
 use App\Models\User;
+use App\Models\Post;
 use App\Models\Skillset;
 use App\Models\UserSkill;
 use Illuminate\Http\Request;
@@ -16,19 +18,23 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $profile = Profile::where('user_id', Auth::user()->id)->first();
-
+        $profile = Profile::where('user_id', $id)->first();
+        $user= User::find($id);
         $skillset =Skillset::query()
-        ->whereNotIn('id', function($query){
+        ->whereNotIn('id', function($query) use(&$user) {
+//            $query=UserSkill::where('user_skills.profile_id', $id)->first();
             $query->select('user_skills.skillset_id')
             ->from('user_skills')
-            ->where('user_skills.profile_id', '=', Auth::user()->profile->id);
+            ->where('user_skills.profile_id', '=', $user->profile->id);
         })->get();
+        $projects = Project::where('profile_id','=', $user->profile->id)->get();
+        $posts = Post::where('profile_id','=', $user->profile->id)->get();
+      //  ddd($posts);
       // dd($profile->userSkills[0]);
         
-        return view("profile.index", ['profile' => $profile, 'skillsets' => $skillset]);
+        return view("profile.index", ['profile' => $profile, 'skillsets' => $skillset, 'projects' => $projects, 'posts' => $posts]);
     }
 
     /**

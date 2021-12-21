@@ -14,9 +14,7 @@ class UserSkillController extends Controller
             'skillset_id' => $request['skillId']
         ]);
 
-       return redirect()->action(
-        [ProfileController::class, 'index']);
-
+       return back();
     }
 
 }
