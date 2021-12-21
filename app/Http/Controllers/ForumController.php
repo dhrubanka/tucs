@@ -25,14 +25,14 @@ class ForumController extends Controller
             $join->on('posts.community_id', '=', 'subscriptions.community_id')
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
         })
-        ->leftJoin('likes', function ($join2) {
-            $join2->on('posts.id', '=', 'likes.post_id')
-            ->where('likes.profile_id', '=', Auth::user()->profile->id);
-        })
-        ->leftJoin('dislikes', function ($join3) {
-            $join3->on('posts.id', '=', 'dislikes.post_id')
-            ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
-        })
+        // ->leftJoin('likes', function ($join2) {
+        //     $join2->on('posts.id', '=', 'likes.post_id')
+        //     ->where('likes.profile_id', '=', Auth::user()->profile->id);
+        // })
+        // ->leftJoin('dislikes', function ($join3) {
+        //     $join3->on('posts.id', '=', 'dislikes.post_id')
+        //     ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
+        // })
         ->paginate(5);
 
 

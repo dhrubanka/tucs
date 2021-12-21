@@ -32,7 +32,7 @@
                     <a href="/post/{{$post->id}}">
                         <div class="card-header bg-white">
                             <div class="row">
-                                <h3><b>{{$post->title}}</b> </h3>
+                                <h3><b>{{$post->title}} </b> </h3>
                             </div>
                         </div>
                         <div class="row" style="padding: 5px;">
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             
-                            <div class="card-footer bg-white">
+                            <!-- <div class="card-footer bg-white">
                                 <div class="row">
                                         <div class="col-2">
                                             @if (is_null($post->like))
@@ -107,7 +107,7 @@
                                         </div>
     
                                 </div>
-                            </div> 
+                            </div>  -->
                         </div>
                     </a>
                 </div>
