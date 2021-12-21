@@ -129,6 +129,7 @@ Route::middleware('auth')->group(function () {
     //place routes below for auth enabled features
 
 });
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');

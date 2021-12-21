@@ -31,42 +31,45 @@
                             @endforeach
                         </div>
                         <div style="padding: 1em;">
-                            <a class="btn btn-primary" href="/forum" style="color: white; margin-bottom: 1em;">Explore Communitites</a>
+                            <a class="btn btn-primary" href="/forum/explore" style="color: white; margin-bottom: 1em;">Explore Communitites</a>
                         </div>
 
                         <!--posts-->
-                        @foreach($posts as $post)
-                        <div class="card" style="margin: 10px 0px 10px 0px;">
-                            <a href="/post/{{$post->id}}" style="color: black; text-decoration: none;">
-                                <div class="card-header bg-white">
-                                    <div class="row">
-                                        <h3><b>{{$post->title}}</b> </h3>
-                                    </div>
-                                </div>
-                                <div class="row" style="padding: 5px;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="img-fluid rounded-start" alt="...">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">
-        
-                                                    <div style="color:cornflowerblue ;border-style: solid; border-radius: 10px;
-                                                 padding: 5px 15px 5px 15px;  border-width: 2px; display: inline;">
-                                                        <small> </small>{{ $post->community->name}}
-                                                    </div>
-                                                </h5>
-                                                <p class="card-text">{!! Str::limit( strip_tags( $post->content), 200 ) !!}</p>
-                                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="row" style="padding: 1em;">
+                            @foreach($posts as $post)
+                            <div class="col-12 col-md-6">
+                                <div class="card" style="margin: 10px 0px 10px 0px;">
+                                    <a href="/post/{{$post->id}}" style="color: black; text-decoration: none;">
+                                        <div class="card-header bg-white">
+                                            <div class="row">
+                                                <h3><b>{{$post->title}}</b> </h3>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                            </a>
+                                        <div class="row" style="padding: 5px;">
+                                            <div class="row g-0">
+                                                <div class="col-md-4">
+                                                    <img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="img-fluid rounded-start" alt="...">
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                
+                                                            <div style="color:cornflowerblue ;border-style: solid; border-radius: 10px;
+                                                         padding: 5px 15px 5px 15px;  border-width: 2px; display: inline;">
+                                                                <small> </small>{{ $post->community->name}}
+                                                            </div>
+                                                        </h5>
+                                                        <p class="card-text">{!! Str::limit( strip_tags( $post->content), 200 ) !!}</p>
+                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>    
+                            </div>
+                            @endforeach                                
                         </div>
-                        @endforeach
                         <div style="padding: 1em;">
                             <a class="btn btn-primary" href="/forum" style="color: white; margin-bottom: 1em;">View More</a>
                         </div>
@@ -196,11 +199,6 @@
                                                     <div class="col-12">
                                                         <div class="row">
                                                             <h2 class="card-title col-8">{{$event->title}}</h2>
-                                                            <h2 class="col-2">
-                                                                <span class="badge bg-danger">
-                                                                    {{$diff = Carbon\Carbon::parse($event->start_date_time)->diffForHumans() }}
-                                                                </span>
-                                                            </h2>        
                                                         </div>
                                                     </div>
                     
@@ -234,7 +232,7 @@
                         @endif
 
                         <div style="padding: 1em;">
-                            <a class="btn btn-primary" href="/blog" style="color: white; margin-bottom: 1em;">View More</a>
+                            <a class="btn btn-primary" href="/event" style="color: white; margin-bottom: 1em;">View More</a>
                         </div>
 
                     </div>
