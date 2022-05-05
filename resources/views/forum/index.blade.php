@@ -3,25 +3,33 @@
     <link rel="stylesheet" href="{{ asset('css/forum/forum_show.css') }}">
 
 
-    <div class="forum-home">
-        <div class="row">
-            <!-- side nav community-->
-            @if(Auth::check())
-            <x-layouts.ForumSide :communities="$communities" />
-            @else
-            <x-layouts.ForumSide  />
-            @endif
+    <div class="wrapper" style="margin-top: -1.7em">
+        <!-- side nav community-->
+        @if(Auth::check())
+        <x-layouts.ForumSide :communities="$communities" />
+        @else
+        <x-layouts.ForumSide :communities="[] " />
+        @endif
+        <div class="row" id="content">
             <!--post cards-->
-            <div class="col-md-6">
-                <!--create post demo-->
-                <div class="card">
-                    <div class="card-body" style="padding:5px">
-                        <div class="row">
-                            <div class="col-11">
-                                <a class="btn" href="/post/create"  style="border:solid; border-color: silver; border-width:1px; width:100%; border-radius: 20px;"> Create a post</a>
-                            </div>
-                            <div class="col-1">
-                                <a><i class="fas fa-image fa-2x"></i></a>
+            <div class="col-md-9"   >
+                <div class="row">
+                    <div class="col-sm-1 col-md-1 text-center">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i> 
+                    </button></div>
+                    <div class="col-sm-9 col-md-11">
+                    <!--create post demo-->
+                        <div class="card">
+                            <div class="card-body" style="padding:5px">
+                                <div class="row">
+                                    <div class="col-11">
+                                        <a class="btn" href="/post/create"  style="border:solid; border-color: silver; border-width:1px; width:100%; border-radius: 20px;"> Create a post</a>
+                                    </div>
+                                    <div class="col-1">
+                                        <a><i class="fas fa-image fa-2x"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

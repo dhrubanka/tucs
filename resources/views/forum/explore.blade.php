@@ -9,7 +9,7 @@
             @if(Auth::check())
             <x-layouts.ForumSide :communities="$communities" />
             @else
-            <x-layouts.ForumSide  />
+            <x-layouts.ForumSide :communities="[] " />
             @endif
             <!--post cards-->
             <div class="col-md-9">
