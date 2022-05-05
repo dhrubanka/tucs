@@ -77,13 +77,16 @@ class ForumController extends Controller
     {
         $allCommunities = Community::all();
 
-        $communities = Community::query()
+        if(Auth::check()){ 
+            $communities = Community::query()
         ->join('subscriptions', function ($join) {
             $join->on('communities.id', '=', 'subscriptions.community_id')
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
         })->get();
-
         return view('forum.explore', ['communities' => $communities, 'allcommunitites' => $allCommunities]);
+        }else{
+            return view('forum.explore', ['allcommunitites' => $allCommunities]);
+        }
     }
 
   
