@@ -28,7 +28,7 @@
                             <input type="text" class="form-control" id="title" required name="title" placeholder="Give your project a title">
                             </div>
                             <div class="mb-3">
-                            <label for="url" class="form-label">Project Title</label>
+                            <label for="url" class="form-label">Project Link</label>
                             <input type="text" class="form-control" id="url" required name="url" placeholder="Paste Github link">
                             </div>
                             <div class="mb-3">

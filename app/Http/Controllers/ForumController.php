@@ -25,6 +25,7 @@ class ForumController extends Controller
             $join->on('posts.community_id', '=', 'subscriptions.community_id')
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
         })
+        ->orderby('posts.created_at','desc')
         // ->leftJoin('likes', function ($join2) {
         //     $join2->on('posts.id', '=', 'likes.post_id')
         //     ->where('likes.profile_id', '=', Auth::user()->profile->id);
