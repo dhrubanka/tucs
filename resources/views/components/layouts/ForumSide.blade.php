@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="{{ asset('css/forum/side.css') }}">
-<div class="col-md-3 " id="left_nav">
+{{-- <div class="col-md-3 " id="left_nav">
                 <ul class="side-list1">
                     @if(Auth::check())
                     <li><a href="forum"><i class="fas fa-home "></i> &nbsp Home</a></li>
@@ -31,7 +31,68 @@
                             </ul>
                         </div>
                     </li>
+                    @else
+                        <div></div>
                     @endif
                 </ul>
 
+</div> --}}
+
+<div  >
+     
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Forum Map</h3>
             </div>
+
+            <ul class="list-unstyled components">
+                @if(Auth::check())
+                <p>Home</p>
+                <p>Popular</p>
+                @endif
+                <p>All</p>
+                @if(Auth::check())
+                <li class="active">
+                    <a href="#homeSubmenu" data-bs-toggle="collapse" data-bs-target="#homeSubmenu" aria-expanded="false" class="collapsed">My Communities</a>
+                    <div class="collapse show" id="homeSubmenu">
+                    <ul class="  list-unstyled" >
+                        @foreach($communities as $community) 
+                        <li>
+                            <a href="/community/{{$community->slug}}">{{$community->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    </div>
+                </li>
+                @else
+                        <li></li>
+                @endif
+                
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="/forum/explore" class="download">Explore Communities</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Explore Communities</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Page Content  -->
+         
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+</script>
