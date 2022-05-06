@@ -186,5 +186,83 @@
         </div>
     </div>
 </div>
+    <div class="container">
+    <div class="row card shadow" style="margin: 2em; ">
+        <h2 class="card-header"> Register</h2>
+        <form class="row g-3 card-body">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">First Name</label>
+                <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Last Name</label>
+                <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="autoSizingInputGroup">Username</label>
+                <div class="input-group">
+                    <div class="input-group-text">@</div>
+                    <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Phone</label>
+                <input type="email" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label" for="specificSizeSelect">Choose Your Role</label>
+                <select class="form-select" id="specificSizeSelect">
+                    <option selected>Choose...</option>
+                    <option value="1">Student</option>
+                    <option value="2">Alumni</option>
+                    <option value="3">Professor</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Current Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label">Permanent Address</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="col-md-4">
+                <label for="inputCity" class="form-label">State</label>
+                <input type="text" class="form-control" id="inputCity">
+            </div>
 
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+        </form>
+    </div>
+    </div>
 </x-layouts.app>
