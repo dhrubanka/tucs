@@ -12,31 +12,24 @@
         @endif
         <div class="row" id="content">
             <!--post cards-->
-            <div class="col-md-9"   >
+            <div class="col-md-8 mid-col">
                 <div class="row">
-                    <div class="col-sm-1 col-md-1 text-center">
+                    <div class="col-1 text-center">
                         <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i> 
                     </button></div>
-                    <div class="col-sm-9 col-md-11">
+                    <div class="offset-1 col-10">
                     <!--create post demo-->
                         <div class="card">
                             <div class="card-body" style="padding:5px">
-                                <div class="row">
-                                    <div class="col-11">
                                         <a class="btn" href="/post/create"  style="border:solid; border-color: silver; border-width:1px; width:100%; border-radius: 20px;"> Create a post</a>
-                                    </div>
-                                    <div class="col-1">
-                                        <a><i class="fas fa-image fa-2x"></i></a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--posts-->
                 @foreach($posts as $post)
-                <div class="card" style="margin: 10px 0px 10px 0px;">
+                <div class="card post-card">
                     <a href="/post/{{$post->id}}">
                         <div class="card-header bg-white">
                             <div class="row">
@@ -45,10 +38,10 @@
                         </div>
                         <div class="row" style="padding: 5px;">
                             <div class="row g-0">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="img-fluid rounded-start" alt="...">
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-9">
                                     <div class="card-body">
                                         <h5 class="card-title">
 
@@ -58,7 +51,9 @@
                                             </div>
                                         </h5>
                                         <p class="card-text">{!! Str::limit( strip_tags( $post->content), 200 ) !!}</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <p class="card-text"><small class="text-muted">
+                                            created {{Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                                        </small></p>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +121,7 @@
                
             </div>
             <!--right side pane-->
-            <div class="col-md-3">
+            <div class="d-none d-md-block col-md-4 right-bar">
 
                 <div class="text-white text-center" id="top-growing">
                     <div style="padding-top: 40px;">
@@ -139,31 +134,31 @@
                         <div class="row">
                             <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
                             </div>
-                            <div class="col-1"> <small> <i> </small>Web Development</i></div>
+                            <div class="offset-1 col-9"> <small> <i> </small>Web Development</i></div>
                     </li>
                     <li>
                         <div class="row">
                             <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
                             </div>
-                            <div class="col-1"> <small> <i> </small>AI</i></div>
+                            <div class="offset-1 col-9"> <small> <i> </small>AI</i></div>
                     </li>
                     <li>
                         <div class="row">
                             <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
                             </div>
-                            <div class="col-1"> <small> <i> </small>Computer Vision</i></div>
+                            <div class="offset-1 col-9"> <small> <i> </small>Computer Vision</i></div>
                     </li>
                     <li>
                         <div class="row">
                             <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
                             </div>
-                            <div class="col-1"> <small> <i> </small>Machine Learning</i></div>
+                            <div class="offset-1 col-9"> <small> <i> </small>Machine Learning</i></div>
                     </li>
                     <li>
                         <div class="row">
                             <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
                             </div>
-                            <div class="col-1"> <small> <i> </small>OS</i></div>
+                            <div class="offset-1 col-9"> <small> <i> </small>OS</i></div>
                     </li>
 
                 </ol>

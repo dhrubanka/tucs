@@ -25,6 +25,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\DislikeController;
 
+use App\Http\Controllers\MessageController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -123,6 +125,12 @@ Route::middleware('auth')->group(function () {
         //blog creation
         Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
         Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
+
+        //message
+        Route::get('/message/{id}', [MessageController::class, 'index'])->name('message');
+        Route::get('/message/{id}/view', [MessageController::class, 'view'])->name('message.view');
+        Route::get('/message/{id}/create', [MessageController::class, 'create'])->name('message.create');
+        Route::post('/message/{id}/store', [MessageController::class, 'store'])->name('message.store');
 
     });
 

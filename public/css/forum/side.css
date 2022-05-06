@@ -51,34 +51,41 @@ a {
     display: flex;
     width: 100%;
     align-items: stretch;
+    position: relative;
+    height: 100%;
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 300px;
+    max-width: 300px;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -300px;
 }
 
 #sidebar .sidebar-header {
-    padding: 20px;
+    padding: 40px;
     background: #6d7fcc;
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    padding: 20px;
     border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul p {
     color: #fff;
-    padding: 10px;
+    padding: 20px;
 }
+
+#sidebar ul a {
+    padding: 20px;
+}
+
 
 #sidebar ul li a {
     padding: 10px;
@@ -95,6 +102,7 @@ a {
 a[aria-expanded="true"] {
     color: #fff;
     background: #6d7fcc;
+
 }
 
 a[data-toggle="collapse"] {
@@ -162,14 +170,54 @@ a:focus {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
+@media (max-width: 1150px) {
+
+    #sidebar {
+        min-width: 200px;
+        max-width: 200px;
+    }
+
+    #sidebar.active {
+        margin-left: -200px;
+    }    
+    
+}
+
+@media (max-width: 1000px) {
+
+    #sidebar {
+        min-width: 150px;
+        max-width: 150px;
+    }
+
+    #sidebar.active {
+        margin-left: -150px;
+    }    
+    
+}
+
+@media (max-width: 830px) {
+
+    #sidebar {
+        min-width: 110px;
+        max-width: 110px;
+        font-size: 75%;
+    }
+
+    #sidebar.active {
+        margin-left: -110px;
+    }    
+    
+}
+
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        min-width: 300px;
+        max-width: 300px;
+        font-size: 100%;
     }
+
     #sidebar.active {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
+        margin-left: -300px;
+    }    
 }

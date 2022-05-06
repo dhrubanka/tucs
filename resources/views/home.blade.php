@@ -53,14 +53,17 @@
                                                 <div class="col-md-8">
                                                     <div class="card-body">
                                                         <h5 class="card-title">
-                
                                                             <div style="color:cornflowerblue ;border-style: solid; border-radius: 10px;
                                                          padding: 5px 15px 5px 15px;  border-width: 2px; display: inline;">
                                                                 <small> </small>{{ $post->community->name}}
                                                             </div>
                                                         </h5>
                                                         <p class="card-text">{!! Str::limit( strip_tags( $post->content), 200 ) !!}</p>
-                                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                        <p class="card-text">
+                                                            <small class="text-muted">
+                                                                created {{Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                                                            </small>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>

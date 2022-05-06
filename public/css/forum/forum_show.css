@@ -1,21 +1,43 @@
+.mid-col{
+    padding-left: 10em;
+    padding-right: 10em;
+}
+
+
+
 .card{
     padding-left: 10px;
     padding-right: 10px;
-}
-
-.card{
     border-radius: 10px;
 }
+
+.post-card{
+    margin-top: 2em;
+}
+
+.post-card .card-body{
+    padding: 1em;
+}
+
 #top-growing{
     margin: 1em; margin-top: 0; height: 80px; background-color: cornflowerblue;
     border-top-right-radius:  10px ; 
     border-top-left-radius: 10px;
 }
+
 #top-growing-list{
-    border-style: solid; border-color: cornflowerblue; margin: 1em; margin-top: -1em;
-    border-width: 2px;
-     
+    border-style: solid;
+    border-color: cornflowerblue;
+    margin: 1em;
+    margin-top: -1em;
+    border-width: 2px;     
 }
+
+#top-growing-list li .row{
+    padding: 1em;
+    margin: 1em 0;
+}
+
 #request-comm{
     background-color: cornflowerblue;
     color: rgb(255, 255, 255);
@@ -25,3 +47,88 @@
     border-radius: 10px;
     margin: 0em 2em 0em 2em;
 }
+
+#sidebarCollapse{
+    background-color: white;
+}
+
+@media (max-width: 1330px) {
+
+    .mid-col{
+        padding-left: 5em;
+        padding-right: 5em;
+    }    
+    
+}
+
+@media (max-width: 1150px) {
+
+    .mid-col{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+    
+    #top-growing div div  {
+        font-size: 90%;
+    }
+
+    #top-growing-list div{
+        font-size: 90%;
+    }
+    
+}
+
+@media (max-width: 1000px) {
+
+    .mid-col{
+        max-width: 70%;
+        padding-right: 0;
+    }
+
+    #top-growing div div  {
+        font-size: 80%;
+    }
+
+    #top-growing-list div{
+        font-size: 85%;
+    }
+
+    #top-growing-list li .row{
+        padding: 0;
+        margin: 1em 0;
+    }
+    
+    
+}
+
+@media (max-width: 880px) {
+
+    #top-growing div div  {
+        font-size: 75%;
+    }
+
+    #top-growing-list div{
+        font-size: 80%;
+    }
+
+}
+
+@media (max-width: 830px) {
+
+    #top-growing div div  {
+        font-size: 70%;
+    }
+
+    #top-growing-list div{
+        font-size: 75%;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .mid-col{
+        max-width: 100%;
+        padding-right: 0;
+    }
+}
+

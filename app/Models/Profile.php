@@ -43,4 +43,8 @@ class Profile extends Model
         return $this->hasMany(Dislike::class);
     }
 
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
+
 }

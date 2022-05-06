@@ -104,7 +104,7 @@
 
                             <div class="card col-12 col-md-12">
                                 <div class="card-header row" style="padding-top: 25px;">
-                                    <h5 class="card-title col-12 col-md-8">COMMENT AS (YOUR NAME)</h5>
+                                <h5 class="card-title col-12 col-md-8">COMMENT AS {{Auth::user()->name}}</h5>
                                 </div>
                                 <div class="card-body">
                                     <form method="post" action="{{ route('comments.store') }}">

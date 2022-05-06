@@ -32,7 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $communities = Community::take(3)->get();
+        $communities = Community::orderby('created_at','desc')->take(3)->get();
 
         $blog = Blog::take(2)->get();
         
@@ -55,6 +55,7 @@ class HomeController extends Controller
                 $join->on('posts.community_id', '=', 'subscriptions.community_id')
                 ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
             })
+            ->orderby('posts.created_at','desc')
             ->take(2)
             ->get();
         }
