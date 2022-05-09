@@ -52,7 +52,7 @@
                 <p>Home</p>
                 <p>Popular</p>
                 @endif
-                <p>All</p>
+                <a href="/forum"><p>All</p> </a>
                 @if(Auth::check())
                 <li class="active">
                     <a href="#homeSubmenu" data-bs-toggle="collapse" data-bs-target="#homeSubmenu" aria-expanded="false" class="collapsed">My Communities</a>
@@ -70,7 +70,7 @@
                         <li></li>
                 @endif
                 
-                    <a href="#">Contact</a>
+                    
                 </li>
             </ul>
 
@@ -79,7 +79,7 @@
                     <a href="/forum/explore" class="download">Explore Communities</a>
                 </li>
                 <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Explore Communities</a>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Request Communities</a>
                 </li>
             </ul>
         </nav>

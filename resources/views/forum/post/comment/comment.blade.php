@@ -15,6 +15,7 @@
     <div class="card-body"> <p>{{ $comment->body }}</p> </div>
         
         <a href="" id="reply"></a>
+        @auth
         <form method="post" action="{{ route('comments.store') }}">
             @csrf
             <div class="form-group">
@@ -22,11 +23,14 @@
                 <input type="hidden" name="post_id" value="{{ $post_id }}" />
                 <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
             </div>
+           
             <div class="form-group" style="padding: 1em;">
                 <input type="submit" class="btn btn-success" value="Reply" />
             </div>
             <hr />
+            
         </form>
+        @endauth
         @include('forum.post.comment.comment', ['comments' => $comment->replies])
     </div>
 @endforeach

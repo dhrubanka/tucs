@@ -127,6 +127,7 @@
                             ])
 
 
+                        @auth
 
                             <div class="card col-12 col-md-12">
                                 <div class="card-header row" style="padding-top: 25px;">
@@ -145,6 +146,7 @@
                                     </form>
                                 </div>
                             </div>
+                            @endauth
                         </div>
                     </div>
                 </div>
