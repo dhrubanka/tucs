@@ -44,7 +44,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Forum Map</h3>
+                <h3>Forum Maps</h3>
             </div>
 
             <ul class="list-unstyled components">

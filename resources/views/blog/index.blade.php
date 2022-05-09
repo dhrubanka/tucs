@@ -4,15 +4,17 @@
     color: black;
 }
 </style>
-    <div class="row">
-        <div class="col-12 offset-md-2 col-md-8" style="padding: 2% 3%;">
+    <div class="container">
+        <div class="row">
+        <div class="col-12  col-md-3" style="padding: 2% 3%;">
             <a class="btn btn-primary" href="{{url('/blog/create')}}" role="button" style="width: 100%;"><span class="badge" style="padding: 14px 0px; font-size: medium;"><i class="fas fa-pencil-alt"></i> CREATE BLOG POST</span></a>
         </div>
+    </div>
     </div>
     <div class="container">
         <div class="row">
             @foreach ($blogs as $blog)
-            <div class=" col-12 col-md-6" style="padding: 2% 3%;">
+            <div class=" col-12 col-md-8" style="padding: 2% 3%;">
                 <a href="/blog/show/{{$blog->id}}" style="text-decoration: none;">
                     <div class="card">
                         <div class="card-body">

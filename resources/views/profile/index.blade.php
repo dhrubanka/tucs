@@ -1,5 +1,5 @@
 <x-layouts.app>
-    <div class="container">
+    {{-- <div class="container">
 
 
         <div class="row" style="margin:1em; ">
@@ -164,7 +164,7 @@
                                         <div class="row">
                                             @foreach ($profile->userSkills as $userSkill)
                                             <div class="col-12 col-md-4">
-                                                {{-- {{$userSkill->skillsets->name}} --}}
+                                              
                                                 {{$userSkill->skill->name}}
                                             </div>
                                             @endforeach
@@ -275,7 +275,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
+    
     <div class="container">
         <div class="row">
 

@@ -18,7 +18,7 @@
                         <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i> 
                     </button></div>
-                    <div class="offset-1 col-10">
+                    <div class=" col-10">
                     <!--create post demo-->
                         <div class="card">
                             <div class="card-body" style="padding:5px">
