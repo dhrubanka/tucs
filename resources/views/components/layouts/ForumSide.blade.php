@@ -44,7 +44,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Forum Maps</h3>
+                <h3>Forum Map</h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -79,7 +79,7 @@
                     <a href="/forum/explore" class="download">Explore Communities</a>
                 </li>
                 <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Request Communities</a>
+                    <a href="" class="article">Request Communities</a>
                 </li>
             </ul>
         </nav>

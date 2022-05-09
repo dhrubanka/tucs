@@ -2,11 +2,11 @@
 @foreach($comments as $comment)
     <div class="card" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
     <div class="card-title1 row" >
-        <div class="col-4"><strong><img src="https://avatars.dicebear.com/api/{!! ($comment->user->user->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" style="height:20px; width: 20px; border-radius: 50%;"><b> {{ $comment->user->user->name }} </b> <i>says :</i> 
-        </strong></div>
-        <div class="col-2"></div>
-        <div class="col-4">{{$comment->created_at}}</div>
-        <div class="col-2"> 
+        <div class="col-md-6  col-sm-4"><strong><img src="https://avatars.dicebear.com/api/{!! ($comment->user->user->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" 
+            style="height:20px; width: 20px; border-radius: 50%;"><b> {{ $comment->user->user->name }} </b> <small><i>says : </small> </i> 
+        </strong></div> 
+        <div class="col-md-4 col-sm-4 d-flex justify-content-end"> <small> Replied {{Carbon\Carbon::parse($comment->created_at)->diffForHumans() }} </small></div>
+        <div class="col-md-2  col-sm-12 d-flex justify-content-end"> 
         <?php $role=$comment->user->user->getRoleNames();
                                 $role= $role[0]; ?>
                               <x-badge :role="$role" />
