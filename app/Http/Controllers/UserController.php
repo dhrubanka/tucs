@@ -72,7 +72,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
             'email' => 'required|string|unique:users,email|email|max:255',
             'password' => 'required|string|min:6|max:255',
             'role' =>  'required',
@@ -82,10 +82,9 @@ class UserController extends Controller
 
         if ($request->is('api/*')) {
             $user =  \App\Models\User::factory()->create([
-                'name' => $request->name,
+                'username' => $request->name,
                 'email' => $request->email,
                 'password' =>  Hash::make($request->password),
-
             ]);
 
             $user->assignRole($request->role);
@@ -99,7 +98,7 @@ class UserController extends Controller
         } else {
 
             $user =  \App\Models\User::factory()->create([
-                'name' => $request->name,
+                'username' => $request->name,
                 'email' => $request->email,
                 'password' =>  Hash::make($request->password),
 

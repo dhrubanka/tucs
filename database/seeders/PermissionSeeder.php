@@ -29,35 +29,35 @@ class PermissionSeeder extends Seeder
 
            // create demo users
         $user = \App\Models\User::factory()->create([
-            'name' => 'admin',
+            'username' => 'admin',
             'email' => 'admin@gmail.com',
             'password' =>  Hash::make('admin'),
         ]);
         $user->assignRole($role1);
 
         $user = \App\Models\User::factory()->create([
-            'name' => 'mod1',
+            'username' => 'mod1',
             'email' => 'mod1@gmail.com',
             'password' =>  Hash::make('mod1'),
         ]);
         $user->assignRole($role2);
 
         $user = \App\Models\User::factory()->create([
-            'name' => 'alumni',
+            'username' => 'alumni',
             'email' => 'alumni1@gmail.com',
             'password' =>  Hash::make('alumni'),
         ]);
         $user->assignRole($role3);
 
         $user = \App\Models\User::factory()->create([
-            'name' => 'student1',
+            'username' => 'student1',
             'email' => 'student1@gmail.com',
             'password' =>  Hash::make('student'),
         ]);
         $user->assignRole($role5);
 
         $user = \App\Models\User::factory()->create([
-            'name' => 'professor',
+            'username' => 'professor',
             'email' => 'professor1@gmail.com',
             'password' =>  Hash::make('professor'),
         ]);
