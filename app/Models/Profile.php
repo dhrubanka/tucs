@@ -19,14 +19,21 @@ class Profile extends Model
         return $this->hasMany(Subscription::class);
     }
 
+    public function works(){
+        return $this->hasMany(Work::class);
+    }
+
+    public function educations(){
+        return $this->hasMany(Education::class);
+    }
+
     public function userSkills(){
         return $this->hasMany(UserSkill::class);
     }
 
     public function posts(){
-        return $this->hasMany(Post::class); 
+        return $this->hasMany(Post::class);
     }
-
 
     public function projects(){
         return $this->hasMany(UserSkill::class);
@@ -39,6 +46,7 @@ class Profile extends Model
     public function likes(){
         return $this->hasMany(Like::class);
     }
+
     public function dislikes(){
         return $this->hasMany(Dislike::class);
     }

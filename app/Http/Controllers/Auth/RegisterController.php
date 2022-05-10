@@ -50,17 +50,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
+        // dd($data);
+
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'gender' => ['required'],
             'phone' => ['required'],
-            'programme' => ['required'],
+            'firstName' => ['required'],
+            'lastName' => ['required'],
             'dob' => ['required'],
-            'startDate' => ['required'],
-            'endDate' => ['required'],
-            'role' => ['required']
+            'role' => ['required'],
+            'city' => ['required'],
+            'state' => ['required'],
+            'zip' => ['required'],
+            'currentAddress' => ['required'],
+            'permanentAddress' => ['required']
+
 
         ]);
     }
@@ -73,8 +81,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
         $user = User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -83,12 +93,16 @@ class RegisterController extends Controller
 
         Profile::create([
             'user_id' => $user->id,
+            'firstName' =>  $data['firstName'],
+            'lastName' =>  $data['lastName'],
+            'city' =>  $data['city'],
+            'state' =>  $data['state'],
+            'zip' =>  $data['zip'],
+            'currentAddress' =>  $data['currentAddress'],
+            'permanentAddress' =>  $data['permanentAddress'],
             'gender' =>  $data['gender'],
             'phone' =>  $data['phone'],
-            'programme' =>  $data['programme'],
             'dob' =>  $data['dob'],
-            'academic_start_date' =>  $data['startDate'],
-            'academic_end_date' =>  $data['endDate'],
 
         ]);
 
