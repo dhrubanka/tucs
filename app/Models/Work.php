@@ -13,6 +13,7 @@ class Work extends Model
         'designation',
         'startDate',
         'endDate',
+        'profile_id',
     ];
 
     public function profile(){
