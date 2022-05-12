@@ -109,9 +109,9 @@
             <div class="col-md-6">
                 <label class="form-label" for="role">Choose Your Role</label>
                 <select class="form-select" id="role"name="role" class="form-select @error('role') is-invalid @enderror" required autofocus>
-                    <option value="1">Student</option>
-                    <option value="2">Alumni</option>
-                    <option value="3">Professor</option>
+                    <option value="student">Student</option>
+                    <option value="alumni">Alumni</option>
+                    <option value="professor">Professor</option>
                 </select>
                 @error('role')
                     <span class="invalid-feedback" role="alert">

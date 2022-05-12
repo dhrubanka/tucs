@@ -89,8 +89,6 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        dd($data['role']);
-
         $user->assignRole($data['role']);
 
         Profile::create([

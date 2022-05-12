@@ -164,7 +164,7 @@
                                         <div class="row">
                                             @foreach ($profile->userSkills as $userSkill)
                                             <div class="col-12 col-md-4">
-                                              
+
                                                 {{$userSkill->skill->name}}
                                             </div>
                                             @endforeach
@@ -276,7 +276,7 @@
             </div>
         </div>
     </div> --}}
-    
+
     <div class="container">
         <div class="row">
 
@@ -284,8 +284,8 @@
                 <div class="card shadow">
                     <div class="card-body d-flex justify-content-between">
                         <div>
-                            <h3>{{$profile->user->name}}</h3>
-                            <div>Fear the man who kicks 1 kick 10000 times</div><p> <span>
+                            <h3>{{$profile->firstName}} {{$profile->lastName}}</h3>
+                            <p> <span>
 
                             <?php $role=$profile->user->getRoleNames();
                             $role= $role[0];
@@ -301,44 +301,148 @@
             <div class="col-sm-12 col-md-4">
                 <div class="card shadow">
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Skills</h4> <button class="btn btn-secondary">Add</button>
+                        <h4>Skills</h4>
+                        <div class="ms-auto">
+                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newSkill">Add</button>
+                        </div>
+
+                        <div class="modal fade" id="newSkill" tabindex="-1" aria-labelledby="newSkillLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="newSkillLabel">Add Skill</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form method="POST" action="/profile/storeSkill">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <select name="skillId" class="form-select" required autofocus>
+                                                    <option selected>Select Skill</option>
+                                                    @foreach ($skillsets as $skillset)
+                                                        <option value="{{$skillset->id}}">{{$skillset->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer form-group">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <div class="badge-green">
-                            Kotlin
-                        </div>
-                        <div class="badge-red">
-                            Kotlin
-                        </div>
-                        <div class="badge-blue">
-                            Kotlin
-                        </div>
+                        @foreach ($profile->userSkills as $userSkill)
+                            <div class="badge-green">
+                                {{$userSkill->skill->name}}
+                            </div> &nbsp;
+                        @endforeach
                     </div>
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Education</h4>  <button class="btn btn-secondary">Add </button>
+                        <h4>Education</h4>
+                        <div class="ms-auto">
+                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newEducation">Add</button>
+                        </div>
+
+                        <div class="modal fade" id="newEducation" tabindex="-1" aria-labelledby="newEducationLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="newEducationLabel">Add Education</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form method="POST" action="/profile/storeEducation">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" name="schoolName" id="schoolName" class="form-control" placeholder="School Name" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" name="courseName" id="courseName" class="form-control" placeholder="Course Name" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="date" name="startDate" id="startDate" class="form-control" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="date" name="endDate" id="endDate" class="form-control" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="description" id="description" placeholder="Description" rows="3"></textarea>
+                                                <input type="hidden" name="profile_id" value="{{Auth::user()->profile->id}}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer form-group">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
-                        <div class="card-body">
-                            <h4>Tezpur University</h4><h5>Mtech</h5> <h6>2009-2012</h6>
-                            <hr>
-                        </div>
-                        <div class="card-body">
-                            <h4>Cotton University</h4><h5>Phd</h5> <h6>2009-2012</h6>
-                            <hr>
-                        </div>
+                        @foreach ($educations as $education)
+                                <h4>{{$education->schoolName}}</h4>
+                                <h5>{{$education->courseName}}</h5>
+                                <h6>{{$education->startDate}} - {{$education->endDate}}</h6>
+                                <h6>{{$education->description}}</h6>
+                                <hr>
+                        @endforeach
                     </div>
                     <div class="card-header d-flex justify-content-between">
-                        <h4>Work</h4> <button class="btn btn-secondary">Add </button>
+                        <h4>Work</h4>
+                        <div class="ms-auto">
+                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newWork">Add</button>
+                        </div>
+
+                        <div class="modal fade" id="newWork" tabindex="-1" aria-labelledby="newWorkLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="newWorkLabel">Add Work</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form method="POST" action="/profile/storeWork">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" name="companyName" id="companyName" class="form-control" placeholder="Company Name" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" name="designation" id="designation" class="form-control" placeholder="Designation" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="date" name="startDate" id="startDate" class="form-control" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="form-control" type="date" name="endDate" id="endDate" class="form-control" required autofocus>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" name="description" id="description" placeholder="Description" rows="3"></textarea>
+                                                <input type="hidden" name="profile_id" value="{{Auth::user()->profile->id}}">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer form-group">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="card-body">
-                        <div class="card-body">
-                            <h4>Tezpur University</h4><h5>Mtech</h5> <h6>2009-2012</h6>
-                            <hr>
-                        </div>
-                        <div class="card-body">
-                            <h4>Cotton University</h4><h5>Phd</h5> <h6>2009-2012</h6>
-                            <hr>
-                        </div>
+                        @foreach ($works as $work)
+                                <h4>{{$work->companyName}}</h4>
+                                <h5>{{$work->designation}}</h5>
+                                <h6>{{$work->startDate}} - {{$education->endDate}}</h6>
+                                <h6>{{$work->description}}</h6>
+                                <hr>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -351,14 +455,16 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                @foreach ($projects as $project)
+                                    <h5 class="card-title">{{$project->title}}</h5>
+                                    <p class="card-text">{{$project->description}}</p>
+                                    <a href="{{$project->url}}" class="btn btn-primary">Check it out</a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-center">
-                        <a href=""> See All Projects </a>
+                        <a href="/project/myprojects"> See All Projects </a>
                     </div>
                 </div>
                 <div class="card shadow" style="margin-top: 1em;">
@@ -368,28 +474,16 @@
                     <div class="card-body">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                @foreach ($posts as $post)
+                                    <h5 class="card-title">{{$post->title}}</h5>
+                                    <p class="card-text">{{$post->description}}</p>
+                                    <a href="{{$post->url}}" class="btn btn-primary">Check it out</a>
+                                @endforeach
                             </div>
 
                         </div>
                         <div class="card-footer d-flex justify-content-center">
-                            <a href=""> See All Projects </a>
-                        </div>
-                    </div>
-                    <div class="card shadow" style="margin-top: 1em;">
-                        <div class="card-header">
-                            <h2>Projects</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Special title treatment</h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
+                            <a href="/forum"> See All Posts </a>
                         </div>
                     </div>
                 </div>

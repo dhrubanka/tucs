@@ -14,6 +14,8 @@ use App\Http\Controllers\SubcriptionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SkillsetController;
 use App\Http\Controllers\UserSkillController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\WorkController;
 use App\Http\Controllers\AuthProjectController;
 
 use App\Http\Controllers\CommentController;
@@ -95,7 +97,9 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['role:student|alumni|professor']], function () {
         //profile management
         Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
-        Route::post('/profile/store', [UserSkillController::class, 'store'])->name('userskill');
+        Route::post('/profile/storeSkill', [UserSkillController::class, 'store'])->name('userskill');
+        Route::post('/profile/storeEducation', [EducationController::class, 'store'])->name('usereducation');
+        Route::post('/profile/storeWork', [WorkController::class, 'store'])->name('userwork');
 
         //community subscription
         Route::post('/community/subscribe', [SubcriptionController::class,'subscribe']);

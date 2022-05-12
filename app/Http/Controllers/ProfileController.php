@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Skillset;
 use App\Models\UserSkill;
+use App\Models\Education;
+use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,10 +33,12 @@ class ProfileController extends Controller
         })->get();
         $projects = Project::where('profile_id','=', $user->profile->id)->get();
         $posts = Post::where('profile_id','=', $user->profile->id)->get();
+        $educations = Education::where('profile_id','=', $user->profile->id)->get();
+        $works = Work::where('profile_id','=', $user->profile->id)->get();
       //  ddd($posts);
       // dd($profile->userSkills[0]);
-        
-        return view("profile.index", ['profile' => $profile, 'skillsets' => $skillset, 'projects' => $projects, 'posts' => $posts]);
+
+        return view("profile.index", ['profile' => $profile, 'skillsets' => $skillset, 'projects' => $projects, 'posts' => $posts, 'works' => $works, 'educations' => $educations]);
     }
 
     /**
@@ -44,7 +48,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-      
+
     }
 
     /**
@@ -55,7 +59,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**

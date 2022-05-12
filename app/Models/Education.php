@@ -13,6 +13,7 @@ class Education extends Model
         'courseName',
         'startDate',
         'endDate',
+        'profile_id',
     ];
 
     public function profile(){

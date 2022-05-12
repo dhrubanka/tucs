@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             @foreach ($blogs as $blog)
-            <div class=" col-12 col-md-8" style="padding: 2% 3%;">
+            <div class=" col-12 col-md-6" style="padding: 2% 3%;">
                 <a href="/blog/show/{{$blog->id}}" style="text-decoration: none;">
                     <div class="card">
                         <div class="card-body">
