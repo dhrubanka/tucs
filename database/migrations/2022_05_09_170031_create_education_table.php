@@ -19,7 +19,7 @@ class CreateEducationTable extends Migration
             $table->string('courseName');
             $table->date('startDate');
             $table->date('endDate');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('profile_id');
             $table->timestamps();
 
