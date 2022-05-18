@@ -67,6 +67,10 @@ a {
     margin-left: -300px;
 }
 
+#sidebar.hide {
+    margin-left: 0px;
+}
+
 #sidebar .sidebar-header {
     padding: 40px;
     background: #6d7fcc;
@@ -218,6 +222,6 @@ a:focus {
     }
 
     #sidebar.active {
-        margin-left: -300px;
+        margin-left: -110px;
     }    
 }
