@@ -285,7 +285,7 @@
                     <div class="card-body d-flex justify-content-between">
                         <div>
                             <h3>{{$profile->firstName}} {{$profile->lastName}}</h3>
-                            <p> <span>
+                            <p> This is a nice bio <span>
 
                             <?php $role=$profile->user->getRoleNames();
                             $role= $role[0];
@@ -293,8 +293,9 @@
                             ?>
                             <x-badge :role="$role" /></span></p>
                         </div>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-9egJf45MP1S6DtxeEnSf7UMTSlzMM5xRsw&usqp=CAU" class="card-img-top"
-                             alt="..." style="width: 10em;">
+                        {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-9egJf45MP1S6DtxeEnSf7UMTSlzMM5xRsw&usqp=CAU" class="card-img-top"
+                             alt="..." style="width: 10em;"> --}}
+                             <img src="https://avatars.dicebear.com/api/{!! ($profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" style=" width: 10em; border-radius: 50%;">
                     </div>
                 </div>
             </div>
@@ -449,7 +450,7 @@
             <div class="col-sm-12 col-md-8" style="margin-top: 1em;">
                 <div class="card shadow">
                     <div class="card-header d-flex justify-content-between">
-                        <h2>Projects</h2> <button class="btn btn-secondary">Add </button>
+                        <h2>Projects</h2> <a href="/project/create" class="btn btn-secondary">Add </a>
                     </div>
                     <div class="card-body">
 

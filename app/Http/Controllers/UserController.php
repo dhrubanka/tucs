@@ -218,10 +218,10 @@ class UserController extends Controller
         $user = User::find($id);
 
         $request->validate([
-            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
             'email' => 'present|email|max:255|unique:users,email,' . $user->id . '|nullable',
             // 'email' => 'required|string|unique:users,email|email|max:255',
-            'phone' => 'required|digits_between:10,12',
+            //'phone' => 'required|digits_between:10,12',
             //'password' => 'nullable|confirmed|min:6|max:255',
         ]);
 
@@ -243,7 +243,7 @@ class UserController extends Controller
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'phone' =>  $request->phone,
+               // 'phone' =>  $request->phone,
             ]);
 
             //$user->assignRole($request->role);

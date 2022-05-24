@@ -58,7 +58,7 @@ a {
 #sidebar {
     min-width: 300px;
     max-width: 300px;
-    background: #7386D5;
+    background: royalblue;
     color: #fff;
     transition: all 0.3s;
 }
@@ -67,14 +67,18 @@ a {
     margin-left: -300px;
 }
 
+#sidebar.hide {
+    margin-left: 0px;
+}
+
 #sidebar .sidebar-header {
     padding: 40px;
-    background: #6d7fcc;
+    background: royalblue;
 }
 
 #sidebar ul.components {
     padding: 20px;
-    border-bottom: 1px solid #47748b;
+    border-bottom: 1px solid rgb(70, 100, 190);
 }
 
 #sidebar ul p {
@@ -94,14 +98,14 @@ a {
 }
 
 #sidebar ul li a:hover {
-    color: #7386D5;
+    color: #849bf8;
     background: #fff;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background: rgb(70, 100, 190);
 
 }
 
@@ -142,7 +146,7 @@ a.download {
 
 a.article,
 a.article:hover {
-    background: #6d7fcc !important;
+    background: royalblue !important;
     color: #fff !important;
 }
 
@@ -218,6 +222,6 @@ a:focus {
     }
 
     #sidebar.active {
-        margin-left: -300px;
+        margin-left: -110px;
     }    
 }

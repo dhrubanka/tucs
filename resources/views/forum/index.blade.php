@@ -12,17 +12,17 @@
         @endif
         <div class="row" id="content">
             <!--post cards-->
-            <div class="col-md-8 mid-col">
+            <div class="col-md-8">
                 <div class="row">
-                    <div class="col-1 text-center">
+                    <div class="col-1">
                         <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-align-left"></i> 
                     </button></div>
-                    <div class=" col-10">
+                    <div class=" col-10" style="margin-left: 1em;">
                     <!--create post demo-->
                         <div class="card">
                             <div class="card-body" style="padding:5px">
-                                        <a class="btn" href="/post/create"  style="border:solid; border-color: silver; border-width:1px; width:100%; border-radius: 20px;"> Create a post</a>
+                                    <a class="btn" href="/post/create"  style="border:solid; border-color: silver; border-width:1px; width:100%; border-radius: 20px;"> Create a post</a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                                 <small> </small>{{ $post->community->name}}
                                             </div>
                                         </h5>
-                                        <p class="card-text">{!! Str::limit( strip_tags( $post->content), 200 ) !!}</p>
+                                        <p class="card-text">c</p>
                                         <p class="card-text"><small class="text-muted">
                                             created {{Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
                                         </small></p>

@@ -1,7 +1,8 @@
 <x-layouts.app>
     <style>
         .nav-project {
-            background-color: rgb(153, 153, 255);
+            /* background-color: rgb(153, 153, 255); */
+            background: royalblue;
             margin-top: -1.5em;
             color: whitesmoke;
             padding: 1em;
@@ -11,37 +12,37 @@
         <div class="col-md-12 ">
             <div class="container ">
                 <div class="row">
-                    <div class="col-md-2 text-center">
-                        <h4>Projects</h4>
+                    <div class="col-sm-12 col-md-2  text-center">
+                        <a href="/project" style="text-decoration: none; color: white"><h4>Projects </h4> </a> 
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-12 col-md-3 ">
 
                     </div>
-                    <div class="col-md-3">
-                        <div id="search">
+                    <div class="col-sm-8 col-md-3 ">
+                        <div id="search"> 
                             <form id="search-form" action="/search/projects" method="get">
-
-                                <input type="search" id="searchBar" name="search" class="fas form-control text-center" placeholder="&#xf002; Search" style="border-radius: 50px;" onclick="event.preventDefault();
-                        document.getElementById('search-form').addEventListener(" keyup", function(event)).submit();">
+                            <input type="search" id="searchBar" name="search" class="fas form-control text-center" placeholder="&#xf002; Search" style="border-radius: 50px;" onclick="event.preventDefault();
+                                    document.getElementById('search-form').addEventListener(" keyup", function(event)).submit();">
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-sm-4 col-md-1 ">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Filter
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li><a class="dropdown-item" href="#">Newfest</a></li>
-                                <li><a class="dropdown-item" href="#">Oldest</a></li>
-                                <li><a class="dropdown-item" href="#">Popular- Weekly</a></li>
-                                <li><a class="dropdown-item" href="#">Popular- All time</a></li>
+                                <li><a class="dropdown-item" href="/project/filter/category/AI">Artificial Intelligence</a></li>
+                                <li><a class="dropdown-item" href="/project/filter/category/WEB">Web Development</a></li>
+                                <li><a class="dropdown-item" href="/project/filter/category/COMPUTER_NETWORKS">Computer Networks</a></li>
+                                <li><a class="dropdown-item" href="/project/filter/category/MOBILE">Mobile Development</a></li>
+                                <li><a class="dropdown-item" href="/project/filter/category/OTHERS">Others</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-3 text-center">
-                    <a href="/project/myprojects" class="btn btn-primary" style="color: whitesmoke;">My Projects</a>
-                        <a href="/project/create" class="btn btn-primary" style="color: whitesmoke;">Submit Project</a>
+                    <a href="/project/myprojects" class="btn btn-light">My Projects</a>
+                        <a href="/project/create" class="btn btn-light">Submit Project</a>
                     </div>
                 </div>
             </div>
@@ -50,8 +51,41 @@
     <div class="container" style="margin-top: 1em;">
         <div class="row">
             <div class="col-12">
-                <div class="accordion" id="accordionExample">
-                    @foreach( $projects as $project)
+
+                @foreach( $projects as $project)
+                <!-- new ui -->
+                <div class="card" style="background-color: rgb(171, 189, 241); margin: 1em">
+                    <div class=" card-body">
+                        <div class="d-flex justify-content-between card-text">
+                            <h4 >
+                                {{$project->title}}
+                             </h4>
+                            <!-- <h4 style="background-color: teal; color: aliceblue; padding: 4px; border-radius: 10%;">hey</h4> -->
+                            <h4>
+                                <span class="badge rounded-pill bg-secondary">{{$project->domain}}</span>
+                            </h4>
+                            </div>
+                        
+                        <hr>
+                        <p class="card-text">
+                            {!! Str::limit( strip_tags( $project->description), 200 ) !!}
+                        </p>
+
+                    </div>
+                    <div class="card-footer d-flex justify-content-between card-text">
+                        <a class="btn btn-dark" href="/project/show/{{$project->id}}">  View Project</a>
+                        <strong>
+                            <img src="https://avatars.dicebear.com/api/male/:seed.svg" style="height:20px; width: 20px; border-radius: 50%;">
+                            <b> {{$project->profile->firstName}} </b> <i>submitted this {{Carbon\Carbon::parse($project->created_at)->diffForHumans()}}</i>
+                        </strong>
+                    </div>
+                </div>
+                <!-- old ui --->
+
+
+{{-- 
+
+                    <div class="accordion" id="{{$project->id}}">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -60,7 +94,7 @@
                               <!-- <i class="fas fa-heart"></i>456 &nbsp; -->
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#{{$project->id}}">
                             <div class="accordion-body">
                                 <div class="row">
                                     <div class="col-md-7"> {{$project->description}}
@@ -84,51 +118,17 @@
                             </div>
                         </div>
                     </div>
+                </div> --}}
                 @endforeach
                      
-                </div>
+                
+            </div>
+            <div class="clearfix">
+
+                {{ $projects->links() }}
             </div>
         </div>
     </div>
-    <!-- <div class="row">
-        <div class=" col-12 offset-md-2 col-md-8" style="padding: 2% 3%;">
-            <a href="{{url('/project/show')}}" style="text-decoration: none;">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title col-12 col-md-8">PROJECT TITLE</h5>
-                        <div class="row">
-                            <h6 class="col-12 col-md-4">PROJECT AUTHOR</h5>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p>project description ...Read more</p>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-success" href="#">VIEW CODE</a>
-                    </div>
-                </div>    
-            </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class=" col-12 offset-md-2 col-md-8" style="padding: 2% 3%;">
-            <a href="{{url('/project/show')}}" style="text-decoration: none;">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title col-12 col-md-8">PROJECT TITLE</h5>
-                        <div class="row">
-                            <h6 class="col-12 col-md-4">PROJECT AUTHOR</h5>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p>project description ...Read more</p>
-                    </div>
-                    <div class="card-footer">
-                        <a class="btn btn-success" href="#">VIEW CODE</a>
-                    </div>
-                </div>    
-            </a>
-        </div>
-    </div> -->
+
 
 </x-layouts.app>

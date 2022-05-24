@@ -67,7 +67,7 @@ class CommunityController extends Controller
     public function show($id)
     {
         // $community = Community::where('slug', '=', $id)->first();
-
+         
         $community = Community::query()
         ->leftJoin('subscriptions', function ($join) {
             $join->on('communities.id', '=', 'subscriptions.community_id')

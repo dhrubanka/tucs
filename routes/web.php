@@ -109,8 +109,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/post/create',[PostController::class, 'create']);
         Route::post('/post/store',[PostController::class, 'store']);
-        Route::post('/ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
-
+        
         //post upvote
         Route::post('/post/like',[LikeController::class, 'like']);
         Route::post('/post/unlike',[LikeController::class, 'unlike']);
@@ -125,6 +124,7 @@ Route::middleware('auth')->group(function () {
         //project management
         Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
         Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
+        Route::get('/project/delete/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
         Route::get('/project/myprojects', [ProjectController::class, 'myprojects'])->name('project.myprojects');
         //blog creation
         Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
@@ -141,7 +141,7 @@ Route::middleware('auth')->group(function () {
     //place routes below for auth enabled features
 
 });
-
+Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
@@ -160,7 +160,10 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');
 //project
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
-Route::get('/project/show', [ProjectController::class, 'show'])->name('project.show');
+Route::get('/project/show/{id}', [ProjectController::class, 'show'])->name('project.show');
+Route::get('/project/download/{name}', [ProjectController::class, 'download'])->name('project.download');
+Route::get('/project/filter/category/{name}', [ProjectController::class, 'filterCategory'])->name('project.filterCategory');
+
 //event
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/event/show/{id}',  [EventController::class, 'show'])->name('event.show');
