@@ -18,10 +18,12 @@ class CreateProjectsTable extends Migration
             $table->unsignedBigInteger('profile_id');
             $table->string('title');
             $table->text('description');
-            $table->string('url');
             $table->string('domain');
+            $table->string('url')->nullable();
+            $table->string('project_file')->nullable();
             $table->string('approval')->default('N');
             $table->text('remark')->nullable();
+            $table->string('permission');
             $table->timestamps();
 
             $table->foreign('profile_id')

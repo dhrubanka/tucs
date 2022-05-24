@@ -174,8 +174,8 @@
                     @method('PUT')
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputName4">Name</label>
-                            <input type="text" name="name" value="{{ $user->name }}" class="form-control" id="inputName4"
+                            <label for="inputName4">Username</label>
+                            <input type="text" name="username" value="{{ $user->username }}" class="form-control" id="inputName4"
                                 placeholder="Name">
                         </div>
                         <div class="form-group col-md-6">

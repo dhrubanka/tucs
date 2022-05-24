@@ -18,7 +18,6 @@
                                         </h2>        
                                     </div>
                                 </div>
-
                                 <img style="max-height: 20em;" src="https://picsum.photos/400/400?random={!!  rand(10,100); !!}" class="col-6 img-fluid rounded-start" alt="...">
                                 <div class="col-6">
                                     <div class="row" style="margin-top: 5em;">

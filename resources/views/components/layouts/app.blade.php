@@ -107,6 +107,7 @@
                     <a class="nav-link" href="/profile/{{Auth::user()->id}}">
                     <img src="https://avatars.dicebear.com/api/{!! (Auth::user()->profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" style="height:40px; width: 40px; border-radius: 50%;">
                         <!-- <img id="user_img" src="/storage/logo.png" style="height:40px; width: 40px; border-radius: 50%;"> -->
+                        {{Auth::user()->profile->firstName}}
                     </a>
                 </li>
                 <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
