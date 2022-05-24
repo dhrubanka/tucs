@@ -36,11 +36,11 @@
              </div>
          </div>
 
- <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 <script type="text/javascript">
-CKEDITOR.replace('content', {
-    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-    filebrowserUploadMethod: 'form'
-});
+        CKEDITOR.replace('content', {
+            filebrowserUploadUrl: "{{route('ckeditor.image-upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
 </script>
 </x-layouts.app>

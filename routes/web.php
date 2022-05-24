@@ -46,19 +46,14 @@ Route::get('/', function () {
     return redirect("/home");
 });
 
-
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-
 Route::middleware('auth')->group(function () {
-
     Route::group(['middleware' => ['role:admin|moderator']], function () {
 
-
         Route::get('/dashboard', [HomeController::class, 'admin'])->name('dashboard');
-
         //user management
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/create',  [UserController::class, 'create'])->name('users-create');
@@ -118,7 +113,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/post/dislike',[DislikeController::class, 'dislike']);
         Route::post('/post/undislike',[DislikeController::class, 'undislike']);
 
-        //cOMMENT
+        //comment
         Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
 
         //project management
@@ -141,20 +136,19 @@ Route::middleware('auth')->group(function () {
     //place routes below for auth enabled features
 
 });
-Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
+
+//public routes
+
+Route::post('/ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');
 Route::get('/forum/explore', [ForumController::class, 'explore'])->name('forum.explore');
-
 //search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
-
 Route::get('/post/{slug}', [PostController::class, 'show']);
-
 //community
 Route::get('/community/{slug}',[CommunityController::class, 'show']);
-
 //blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');
@@ -163,8 +157,6 @@ Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::get('/project/show/{id}', [ProjectController::class, 'show'])->name('project.show');
 Route::get('/project/download/{name}', [ProjectController::class, 'download'])->name('project.download');
 Route::get('/project/filter/category/{name}', [ProjectController::class, 'filterCategory'])->name('project.filterCategory');
-
 //event
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/event/show/{id}',  [EventController::class, 'show'])->name('event.show');
-
