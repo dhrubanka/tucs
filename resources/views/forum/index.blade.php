@@ -50,7 +50,7 @@
                                                 <small> </small>{{ $post->community->name}}
                                             </div>
                                         </h5>
-                                        <p class="card-text">c</p>
+                                        <p class="card-text">{!! Str::limit( strip_tags( $post->content), 200 ) !!}</p>
                                         <p class="card-text"><small class="text-muted">
                                             created {{Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
                                         </small></p>
