@@ -299,12 +299,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-4" style="margin-top: 1em">
                 <div class="card shadow">
-                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
+                    <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);color:white">
                         <h4>Skills</h4>
                         <div class="ms-auto">
-                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill">Add</button>
+                            @if(auth()->user()->id == $profile->user->id) <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill">Add</button> @endif
                         </div>
 
                         <div class="modal fade" id="newSkill" tabindex="-1" aria-labelledby="newSkillLabel" aria-hidden="true">
@@ -328,7 +328,7 @@
                                         </div>
                                         <div class="modal-footer form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Add</button>
+                                           @Auth <button type="submit" class="btn btn-primary">Add</button> @endAuth
                                         </div>
                                     </form>
                                 </div>
@@ -342,10 +342,10 @@
                             </div> &nbsp;
                         @endforeach
                     </div>
-                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
+                    <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);;color:white">
                         <h4>Education</h4>
                         <div class="ms-auto">
-                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newEducation">Add</button>
+                            @if(auth()->user()->id == $profile->user->id)<button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newEducation">Add</button>@endif
                         </div>
 
                         <div class="modal fade" id="newEducation" tabindex="-1" aria-labelledby="newEducationLabel" aria-hidden="true">
@@ -377,7 +377,7 @@
                                         </div>
                                         <div class="modal-footer form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Add</button>
+                                            @Auth<button type="submit" class="btn btn-primary">Add</button>@endAuth
                                         </div>
                                     </form>
                                 </div>
@@ -393,10 +393,10 @@
                                 <hr>
                         @endforeach
                     </div>
-                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
+                    <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);color:white">
                         <h4>Work</h4>
                         <div class="ms-auto">
-                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newWork">Add</button>
+                            @if(auth()->user()->id == $profile->user->id) <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newWork">Add</button> @endIf
                         </div>
 
                         <div class="modal fade" id="newWork" tabindex="-1" aria-labelledby="newWorkLabel" aria-hidden="true">
@@ -428,7 +428,7 @@
                                         </div>
                                         <div class="modal-footer form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Add</button>
+                                           @Auth <button type="submit" class="btn btn-primary">Add</button>@endAuth
                                         </div>
                                     </form>
                                 </div>
@@ -450,7 +450,7 @@
             <div class="col-sm-12 col-md-8" style="margin-top: 1em;">
                 <div class="card shadow" >
                     <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
-                        <h2>Projects</h2> <a href="/project/create" class="btn btn-light">Add </a>
+                       <h2>Projects</h2> @if(auth()->user()->id == $profile->user->id)<a href="/project/create" class="btn btn-light">Add </a> @endif
                     </div>
                     <div class="card-body">
 
@@ -495,7 +495,7 @@
                                             </div>
                                             <div class="card-footer">
                                             <a class="btn btn-dark" href="/project/show/{{$project->id}}">  View Project</a>&nbsp;  
-                                            <a class="btn btn-danger text-white" href="/project/delete/ {{$project->id}}">  Delete Project</a>
+                                            @if(auth()->user()->id == $profile->user->id) <a class="btn btn-danger text-white" href="/project/delete/ {{$project->id}}">  Delete Project</a> @endIf
                                             {{-- <i class="fas fa-heart"> </i>456 &nbsp;   <i class="fas fa-bookmark"></i>   --}}
                                         </div>
                                         </div>
@@ -509,8 +509,8 @@
                     </div>
                 </div>
                 <div class="card shadow" style="margin-top: 1em;">
-                    <div class="card-header d-flex justify-content-between">
-                        <h2>Forum</h2> <button class="btn btn-secondary">Add </button>
+                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
+                        <h2>Forum Activity</h2>@if(auth()->user()->id == $profile->user->id) <button class="btn btn-light">Add </button> @endif
                     </div>
                     <div class="card-body">
                         <div class="card">
