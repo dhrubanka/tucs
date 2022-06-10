@@ -3,8 +3,8 @@
         .nav-project {
             /* background-color: rgb(153, 153, 255); */
             background: royalblue;
-            margin-top: -1.5em;
             color: whitesmoke;
+            margin-top: -1.5em;
             padding: 1em;
         }
     </style>
@@ -13,7 +13,7 @@
             <div class="container ">
                 <div class="row">
                     <div class="col-sm-12 col-md-2  text-center">
-                        <a href="/project" style="text-decoration: none; color: white"><h4>Projects </h4> </a> 
+                        <a href="/project" style="text-decoration: none; color: white"><h4>All Projects </h4> </a> 
                     </div>
                     <div class="col-sm-12 col-md-3 ">
 
@@ -53,72 +53,46 @@
             <div class="col-12">
 
                 @foreach( $projects as $project)
-                <!-- new ui -->
-                <div class="card" style="background-color: rgb(171, 189, 241); margin: 1em">
-                    <div class=" card-body">
-                        <div class="d-flex justify-content-between card-text">
-                            <h4 >
-                                {{$project->title}}
-                             </h4>
-                            <!-- <h4 style="background-color: teal; color: aliceblue; padding: 4px; border-radius: 10%;">hey</h4> -->
-                            <h4>
-                                <span class="badge rounded-pill bg-secondary">{{$project->domain}}</span>
-                            </h4>
+                
+                <!-- brand new ui --->
+                <div class="card" style="margin:20px">
+                    <div class="card-header" style="background: rgb(184, 203, 233)">
+                        &nbsp; {{$project->title}} &nbsp; &nbsp;<span class="badge rounded-pill bg-secondary">{{$project->domain}}</span> &nbsp;&nbsp; <span class="badge rounded-pill bg-primary">{{$project->permission}}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row" style="margin: 1em">
+                            <div class="col-md-9"> 
+                                {!! Str::limit( strip_tags( $project->description), 200 ) !!}
                             </div>
-                        
-                        <hr>
-                        <p class="card-text">
-                            {!! Str::limit( strip_tags( $project->description), 200 ) !!}
-                        </p>
+                            
 
-                    </div>
-                    <div class="card-footer d-flex justify-content-between card-text">
-                        <a class="btn btn-dark" href="/project/show/{{$project->id}}">  View Project</a>
-                        <strong>
-                            <img src="https://avatars.dicebear.com/api/male/:seed.svg" style="height:20px; width: 20px; border-radius: 50%;">
-                            <b> {{$project->profile->firstName}} </b> <i>submitted this {{Carbon\Carbon::parse($project->created_at)->diffForHumans()}}</i>
-                        </strong>
-                    </div>
-                </div>
-                <!-- old ui --->
+                            <div class="col-md-3">
+                                {{-- <b>Status: </b>
+                                @if($project->approval == "Y")
+                                <i style="color: green;"> Approved</i>
+                                @elseif($project->approval == "N")
+                                <i style="color:blue"> Waiting for Approval </i><!--  -->
+                                @elseif($project->approval == "R")
+                                <i style="color: red;">Rejected</i>
+                                @endif
+                                <br>
+                                @if($project->remark)
+                                <b> Remarks: </b>{{$project->remark}}
+                                @endif --}}
+                                <i class="fas fa-heart"> </i>456 &nbsp;   <i class="fas fa-bookmark"></i>  
+                            </div>
 
-
-{{-- 
-
-                    <div class="accordion" id="{{$project->id}}">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                
-                              #{{$project->id}} &nbsp; {{$project->title}} &nbsp; &nbsp;<span class="badge rounded-pill bg-secondary">{{$project->domain}}</span> &nbsp;&nbsp; 
-                              <!-- <i class="fas fa-heart"></i>456 &nbsp; -->
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#{{$project->id}}">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-7"> {{$project->description}}
-
-                                    </div>
-                                    <div class="col-md-2"> <span class="badge rounded-pill bg-secondary">{{$project->domain}}</span></div>
-
-                                    <!-- <div class="col-md-2"> <span class="badge bg-primary">Java</span>
-
-                                        <span class="badge bg-primary">Android</span>
-                                        <span class="badge bg-primary">Kotlin</span> <span class="badge bg-primary">JetPacker</span>
-                                    </div> -->
-                                    <div class="col-md-3">
-                                        <strong><img src="https://avatars.dicebear.com/api/male/:seed.svg" style="height:20px; width: 20px; border-radius: 50%;"><b> {{$project->profile->user->name}} </b> <i>wrote this</i>
-                                        </strong>
-                                    </div>
-
-                                </div>
-                                <a class="btn btn-dark" href="https://github.com/ibrajix/JetPacker"><i class="fab fa-github"></i> View Code</a> &nbsp; 
-                                <!-- <i class="fas fa-heart"> </i>456 &nbsp;   <i class="fas fa-bookmark"></i> -->
+                        </div>
+                        <div class=" card-footer d-flex justify-content-between card-text" style="background: white">
+                            <a class="btn btn-dark" href="/project/show/{{$project->id}}">  View Project</a>
+                            <div>
+                                <img src="https://avatars.dicebear.com/api/male/:seed.svg" style="height:20px; width: 20px; border-radius: 50%;">
+                                 {{$project->profile->firstName}}   <i>submitted this {{Carbon\Carbon::parse($project->created_at)->diffForHumans()}}</i>
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
+ 
                 @endforeach
                      
                 

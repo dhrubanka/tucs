@@ -17,11 +17,15 @@
         @endif
 
         @if ($message = Session::get('success'))
-           <div class="alert alert-success alert-block">
-               <button type="button" class="close" data-dismiss="alert">×</button>
-               <strong>{{$message}}</strong>
-           </div>
-       @endif
+                 <x-successbadge/>
+
+                <div class="alert alert-success d-flex align-items-center container" role="alert" style="margin: 10px;">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                  <div>
+                    {{$message}}
+                  </div>
+                </div>
+            @endif
         </div>
         <div class=" col-12 offset-md-2 col-md-8" style="padding: 2% 3%;">
              

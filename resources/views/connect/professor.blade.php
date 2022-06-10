@@ -25,10 +25,10 @@
        </div>
         
        <div class="row" id="professor">
-        <div class="col-md-3 col-sm-12"  style="padding:10px">
+        <div class="col-md-2 col-sm-12"  style="padding:10px">
             <div class="card" style="padding: 2em" id="filter">
                 Filter
-                <form action="" style="border-style: solid; border-radius: 5px; border-width: 1px; margin:8px; padding:10px">
+                <form action="" style="  margin:8px; padding:10px">
                 <div class="form-check">
                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                  <label class="form-check-label" for="flexCheckDefault">
@@ -46,9 +46,10 @@
             </div>
              
         </div>
-        <div class="col-md-9 col-sm-12" style="padding-right:40px;padding-left:30px; ">
+        <div class="col-md-10 col-sm-12" style="padding-right:40px;padding-left:30px; ">
           <div class="card" style="margin:10px">
-            <div class="card-body">
+            <div class="card-body" style="background: royalblue;
+            color: whitesmoke;">
                 <h1>Professors</h1>
             </div>
         </div>

@@ -1,12 +1,18 @@
 <x-layouts.app>
      <!------------------------------------------ posts ---------------------------------------->
          <div class="row">
-            @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-block">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ $message }}</strong>
+            <div class="col-md-8 offset-md-2">
+                @if ($message = Session::get('success'))
+                 <x-successbadge/>
+
+                <div class="alert alert-success d-flex align-items-center" role="alert" style="margin:10px">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                  <div>
+                    {{$message}}
+                  </div>
+                </div>
+            @endif
             </div>
-        @endif
              <div class="card col-12 offset-md-2 col-md-8">
                  <div class="card-header row" style="padding-top: 25px;">
                      <h5 class="card-title col-12 col-md-8">CREATE A POST</h5>

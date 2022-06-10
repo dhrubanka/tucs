@@ -28,16 +28,16 @@
         </div>
 
         <div class="row" id="professor">
-            <div class="col-md-3 col-sm-12" style="padding:10px">
+            <div class="col-md-2 col-sm-12" style="padding:10px">
                 <div class="card" style="padding: 2em" id="filter">
                     Filter
                     <form action="/connect/offersfilter" method="post"
-                        style="border-style: solid; border-radius: 5px; border-width: 1px; margin:8px; padding:10px">
+                        style="  padding:10px">
                         @csrf
 
-                        <div class="form-check">
+                        <div class=" ">
                             <select class="form-select" name="order" aria-label="Default select example">
-                                <option selected>By Creation</option>
+                                <option selected>By Time</option>
                                 <option value="DESC">Recent</option>
                                 <option value="ASC">Old</option>
                             </select>
@@ -49,9 +49,10 @@
                 </div>
 
             </div>
-            <div class="col-md-9 col-sm-12" style="padding-right:40px;padding-left:30px; ">
+            <div class="col-md-10 col-sm-12" style="padding-right:40px;padding-left:30px; ">
                 <div class="card" style="margin:10px">
-                    <div class="card-body">
+                    <div class="card-body" style="background: royalblue;
+                    color: whitesmoke;">
                         <h1>Offers</h1>
                     </div>
                 </div>
@@ -151,9 +152,9 @@
                                 <div class="">
                                   <p>{!! $offer->description !!} </p>
                                 </div>
-                                <div class="d-flex justify-content-between ">
+                                <div class="card-footer d-flex justify-content-between " style="background: white">
                                     <div class="d-flex flex-row ">
-                                    <a href="/connect/job/{{$offer->id}}" class="btn btn-success text-white">See Details</a>
+                                    <a href="/connect/job/{{$offer->id}}" class="btn  text-white" style="background: rgb(75, 75, 181)">See Details</a>
                                     @hasanyrole('student')
                                       {{-- <button class="btn btn-danger text-white" onclick="event.preventDefault(); document.getElementById('apply').submit();">
                                           Apply {{$offer->id}}
@@ -161,7 +162,7 @@
                                       <form id="apply" action="/connect/job/apply" method="POST" class="">
                                           @csrf
                                           <input type="hidden" name="offer_id" value="{{$offer->id}}">
-                                          <button type="submit" class="btn btn-danger text-white" style="margin-left:1em;">
+                                          <button type="submit" class="btn text-white" style="margin-left:1em;background: rgb(23, 33, 36)">
                                           Apply
                                         </button>
                                       </form>

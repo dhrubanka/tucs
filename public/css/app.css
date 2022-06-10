@@ -10886,6 +10886,7 @@ textarea.form-control-lg {
 
 #search{
     width: 200px;
+    margin-top: -5px;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -10947,7 +10948,7 @@ textarea.form-control-lg {
   }
 
   #search{
-    width: 20% !important;
+    /* width: 20% !important; */
   }
 
 
@@ -10955,11 +10956,18 @@ textarea.form-control-lg {
 @media only screen and (max-width: 424px) {
 
   #search{
-    width: 100px !important;
+    width: 200px !important;
+    
   }
 
   #user{
-    width: 150px !important;
+    width: 50px !important;
+  }
+  #profile-nav{
+    margin: 10px;
+  }
+  #profile-nav-pic{
+    width: 100px !important;
   }
 }
 
@@ -10970,7 +10978,7 @@ textarea.form-control-lg {
   }
 
   #search{
-    width: 70px !important;
+    /* width: 70px !important; */
   }
 
   #logo img{
@@ -11003,7 +11011,7 @@ textarea.form-control-lg {
   }
 
   #search{
-    width: 60px !important;
+    /* width: 60px !important; */
   }
 }
 

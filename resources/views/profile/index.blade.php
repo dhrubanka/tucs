@@ -301,10 +301,10 @@
             </div>
             <div class="col-sm-12 col-md-4">
                 <div class="card shadow">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
                         <h4>Skills</h4>
                         <div class="ms-auto">
-                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newSkill">Add</button>
+                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill">Add</button>
                         </div>
 
                         <div class="modal fade" id="newSkill" tabindex="-1" aria-labelledby="newSkillLabel" aria-hidden="true">
@@ -342,10 +342,10 @@
                             </div> &nbsp;
                         @endforeach
                     </div>
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
                         <h4>Education</h4>
                         <div class="ms-auto">
-                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newEducation">Add</button>
+                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newEducation">Add</button>
                         </div>
 
                         <div class="modal fade" id="newEducation" tabindex="-1" aria-labelledby="newEducationLabel" aria-hidden="true">
@@ -393,10 +393,10 @@
                                 <hr>
                         @endforeach
                     </div>
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
                         <h4>Work</h4>
                         <div class="ms-auto">
-                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#newWork">Add</button>
+                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newWork">Add</button>
                         </div>
 
                         <div class="modal fade" id="newWork" tabindex="-1" aria-labelledby="newWorkLabel" aria-hidden="true">
@@ -448,19 +448,59 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-8" style="margin-top: 1em;">
-                <div class="card shadow">
-                    <div class="card-header d-flex justify-content-between">
-                        <h2>Projects</h2> <a href="/project/create" class="btn btn-secondary">Add </a>
+                <div class="card shadow" >
+                    <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
+                        <h2>Projects</h2> <a href="/project/create" class="btn btn-light">Add </a>
                     </div>
                     <div class="card-body">
 
-                        <div class="card">
-                            <div class="card-body">
-                                @foreach ($projects as $project)
-                                    <h5 class="card-title">{{$project->title}}</h5>
-                                    <p class="card-text">{{$project->description}}</p>
-                                    <a href="{{$project->url}}" class="btn btn-primary">Check it out</a>
-                                @endforeach
+                        <div class=" ">
+                            <div class=" ">
+                                {{-- @foreach ($projects as $project)
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{$project->title}}</h5>
+                                        <p class="card-text">{!!$project->description!!}</p>
+                                        <a href="{{$project->url}}" class="btn btn-primary">Check it out</a>
+                                    </div>
+                                </div>
+                                @endforeach --}}
+                                @foreach( $projects as $project)
+                                    <div class="card" style="margin:20px">
+                                        <div class="card-header" style="background: rgb(184, 203, 233)">
+                                            &nbsp; {{$project->title}} &nbsp; &nbsp;<span class="badge rounded-pill bg-secondary">{{$project->domain}}</span> &nbsp;&nbsp; <span class="badge rounded-pill bg-primary">{{$project->permission}}</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-9"> 
+                                                    {!! Str::limit( strip_tags( $project->description), 200 ) !!}
+                                                </div>
+                                                
+
+                                                <div class="col-md-3">
+                                                    <b>Status: </b>
+                                                    @if($project->approval == "Y")
+                                                    <i style="color: green;"> Approved</i>
+                                                    @elseif($project->approval == "N")
+                                                    <i style="color:blue"> Waiting for Approval </i><!--  -->
+                                                    @elseif($project->approval == "R")
+                                                    <i style="color: red;">Rejected</i>
+                                                    @endif
+                                                    <br>
+                                                    @if($project->remark)
+                                                    <b> Remarks: </b>{{$project->remark}}
+                                                    @endif
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer">
+                                            <a class="btn btn-dark" href="/project/show/{{$project->id}}">  View Project</a>&nbsp;  
+                                            <a class="btn btn-danger text-white" href="/project/delete/ {{$project->id}}">  Delete Project</a>
+                                            {{-- <i class="fas fa-heart"> </i>456 &nbsp;   <i class="fas fa-bookmark"></i>   --}}
+                                        </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
                             </div>
                         </div>
                     </div>

@@ -25,11 +25,11 @@
        </div>
          
        <div class="row" id="professor">
-        <div class="col-md-3 col-sm-12"  style="padding:10px">
+        <div class="col-md-2 col-sm-12"  >
             <div class="card" style="padding: 2em" id="filter">
                 Filter
-                <form action="" style="border-style: solid; border-radius: 5px; border-width: 1px; margin:8px; padding:10px">
-                <div class="form-check">
+                <form action="" style="  padding:10px">
+                <div class=" ">
                     Year of Passing
                   <select class="form-select" aria-label="Default select example">
                     <option selected>Select Year</option>
@@ -38,7 +38,7 @@
                     <option value="3">2033</option>
                   </select>
                </div>
-                <div class="form-check">
+                <div class=" ">
                     Course
                 <select class="form-select" aria-label="Default select example">
                     <option selected>Select Course</option>
@@ -53,9 +53,10 @@
             </div>
              
         </div>
-        <div class="col-md-9 col-sm-12" style="padding-right:40px;padding-left:30px; ">
+        <div class="col-md-10 col-sm-12" style="padding-right:40px;padding-left:30px; ">
             <div class="card" style="margin:10px">
-                <div class="card-body">
+                <div class="card-body" style="background: royalblue;
+                color: whitesmoke;">
                     <h1>Alumnis</h1>
                 </div>
             </div>

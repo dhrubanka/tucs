@@ -41,7 +41,15 @@
                     <img src="https://upload.wikimedia.org/wikipedia/en/4/48/The_approved_logo_of_Tezpur_University%2C_TU_Logo-Approved.png%2C_official_logo_of_Tezpur_University.png%2C_approved_insignia_of_Tezpur_University.png" style=" height:80px; width: 80px"></a>
             <!-- </div> -->
 
-
+            <div id="search" >
+                <form  id="search-form" action="/search" method="get">
+                    
+                    <input type="search" id="searchBar" name="search" class="fas form-control text-center" 
+                    placeholder="  Search" style="border-radius: 50px;"
+                    onclick="event.preventDefault();
+                    document.getElementById('search-form').addEventListener("keyup", function(event)).submit();">
+                </form>
+            </div>
             <!-- MENU -->
             <!-- <div class="col-2 col-md-3" style="padding-top: 1%;"> -->
                 <div class="collapse navbar-collapse" id="dropMenu" style="width: 30% !important;">
@@ -65,22 +73,36 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/event">EVENT</a>
                         </li>
-                        
-
+                        @Auth
+                        <li class="nav-item d-flex flex-row" style="  background: rgb(185, 193, 215); border-radius: 25px;" id="profile-nav" >
+                            <a class="nav-link" href="/profile/{{Auth::user()->id}}" id="profile-nav-pic">
+                                <img src="https://avatars.dicebear.com/api/{!! (Auth::user()->profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" 
+                                style="height:40px; width: 40px; border-radius: 50%;">
+                            </a>
+                                <!-- <img id="user_img" src="/storage/logo.png" style="height:40px; width: 40px; border-radius: 50%;"> -->
+                            <div class="" >
+                                <a class="nav-link text-center" style="padding-right:2em;padding-top:1em; color:whitesmoke"  href="/profile/{{Auth::user()->id}}">
+                                     {{Auth::user()->profile->firstName}} 
+                                </a>
+                            </div> 
+                            
+                        </li>
+                        <li class="nav-item" style="  background: rgb(105, 123, 174); border-radius: 25px; margin-left: 5px ;margin-right: 5px; padding-left: 5px;padding-right:5px">
+                            <a class="nav-link" style="padding: 1em;color:whitesmoke" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Log out
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                        @endAuth
                     </ul>
                 </div>
             <!-- </div> -->
 
             <!-- SEARCH BAR -->
             <!-- <div class="col-2 col-md-3" style="padding-top: 1%;"> -->
-                <div id="search" >
-                    <form  id="search-form" action="/search" method="get">
-                        
-                        <input type="search" id="searchBar" name="search" class="fas form-control text-center" placeholder="&#xf002; Search" style="border-radius: 50px;"
-                        onclick="event.preventDefault();
-                        document.getElementById('search-form').addEventListener("keyup", function(event)).submit();">
-                    </form>
-                </div>
+                
             <!-- </div> -->
 
             <!-- PROFILE -->
@@ -101,27 +123,14 @@
                     @endif
                 @else
 
-                <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
+                {{-- <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
                     <a class="nav-link" href="/message/{{Auth::user()->profile->id}}"><i class="fas fa-comments"></i></a>
                 </li>
                 <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
                     <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-                </li>
-                <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
-                    <a class="nav-link" href="/profile/{{Auth::user()->id}}">
-                    <img src="https://avatars.dicebear.com/api/{!! (Auth::user()->profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" style="height:40px; width: 40px; border-radius: 50%;">
-                        <!-- <img id="user_img" src="/storage/logo.png" style="height:40px; width: 40px; border-radius: 50%;"> -->
-                        {{Auth::user()->profile->firstName}}
-                    </a>
-                </li>
-                <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fas fa-power-off"></i>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </li>
+                </li> --}}
+                
+                
                 @endguest
                 </ul>
             <!-- </div> -->

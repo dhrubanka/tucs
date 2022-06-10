@@ -10,16 +10,11 @@
     <div class="row nav-project">
         <div class="col-md-12 ">
             <div class="container ">
-                @if($message = Session::get('success'))
-                    <div class="alert alert-success alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
+                
 
                 <div class="row">
                     <div class="col-md-2 text-center">
-                        <a href="/project" style="text-decoration: none; color: white"><h4>Projects </h4> </a> 
+                        <a href="/project" style="text-decoration: none; color: white"><h4>My Projects </h4> </a> 
                     </div>
                     <div class="col-md-3">
 
@@ -52,48 +47,54 @@
         </div>
     </div>
     <div class="container" style="margin-top: 1em;">
+        @if ($message = Session::get('success'))
+                 <x-successbadge/>
+
+                <div class="alert alert-success d-flex align-items-center" role="alert" style="margin: 10px">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                  <div>
+                    {{$message}}
+                  </div>
+                </div>
+            @endif
         <div class="row">
             <div class="col-12">
-                <div class="accordion" id="accordionExample">
-                    @foreach( $projects as $project)
-                    <div class="accordion-item" style="margin: 1em">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-
-                                &nbsp; {{$project->title}} &nbsp; &nbsp;<span class="badge rounded-pill bg-secondary">{{$project->domain}}</span> &nbsp;&nbsp; <span class="badge rounded-pill bg-primary">{{$project->permission}}</span>
-                                <!-- <i class="fas fa-heart"></i>456 &nbsp; -->
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-9"> 
-                                        {!! Str::limit( strip_tags( $project->description), 200 ) !!}
-                                    </div>
-                                    
-
-                                    <div class="col-md-3">
-                                        <b>Status: </b>
-                                        @if($project->approval == "Y")
-                                        <i style="color: green;"> Approved</i>
-                                        @elseif($project->approval == "N")
-                                        <i style="color:blue"> Waiting for Approval </i><!--  -->
-                                        @elseif($project->approval == "R")
-                                        <i style="color: red;">Rejected</i>
-                                        @endif
-                                        <br>
-                                        @if($project->remark)
-                                        <b> Remarks: </b>{{$project->remark}}
-                                        @endif
-                                    </div>
-
-                                </div>
-                                <a class="btn btn-dark" href="/project/show/{{$project->id}}">  View Project</a>&nbsp;  <a class="btn btn-danger" href="/project/delete/ {{$project->id}}">  Delete Project</a>
-                                <!-- <i class="fas fa-heart"> </i>456 &nbsp;   <i class="fas fa-bookmark"></i> -->
-                            </div>
-                        </div>
+                @foreach( $projects as $project)
+                <div class="card" style="margin:20px">
+                    <div class="card-header" style="background: rgb(184, 203, 233)">
+                        &nbsp; {{$project->title}} &nbsp; &nbsp;<span class="badge rounded-pill bg-secondary">{{$project->domain}}</span> &nbsp;&nbsp; <span class="badge rounded-pill bg-primary">{{$project->permission}}</span>
                     </div>
-                    @endforeach
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-9"> 
+                                {!! Str::limit( strip_tags( $project->description), 200 ) !!}
+                            </div>
+                            
+
+                            <div class="col-md-3">
+                                <b>Status: </b>
+                                @if($project->approval == "Y")
+                                <i style="color: green;"> Approved</i>
+                                @elseif($project->approval == "N")
+                                <i style="color:blue"> Waiting for Approval </i><!--  -->
+                                @elseif($project->approval == "R")
+                                <i style="color: red;">Rejected</i>
+                                @endif
+                                <br>
+                                @if($project->remark)
+                                <b> Remarks: </b>{{$project->remark}}
+                                @endif
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                        <a class="btn btn-dark" href="/project/show/{{$project->id}}">  View Project</a>&nbsp;  
+                        <a class="btn btn-danger text-white" href="/project/delete/ {{$project->id}}">  Delete Project</a>
+                         {{-- <i class="fas fa-heart"> </i>456 &nbsp;   <i class="fas fa-bookmark"></i>   --}}
+                    </div>
+                    </div>
+                </div>
+                @endforeach
 
                 </div>
             </div>
