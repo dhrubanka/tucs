@@ -8,7 +8,7 @@
        <div class="row text-center">
          <div class="col-sm-12 col-md-3">
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-           a <div class="card-header">Total Communities</div>
+            <div class="card-header">Total Communities</div>
             <div class="card-body">
               <h1 class="card-title">12</h1>
               <p class="card-text">Total number of Parent Communities</p>

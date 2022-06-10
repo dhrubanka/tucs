@@ -17,13 +17,13 @@ use App\Http\Controllers\UserSkillController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\AuthProjectController;
-
+use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CKEditorController;
-
+use App\Http\Controllers\ConnectController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
-
+use App\Http\Controllers\ConnectFilterController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\DislikeController;
 
@@ -135,6 +135,22 @@ Route::middleware('auth')->group(function () {
 
     //place routes below for auth enabled features
 
+    Route::group(['middleware' => ['role:alumni']], function () {
+        Route::get('/connect/job/create', [ConnectController::class, 'jobCreate'])->name('connect.jobcreate');
+        Route::post('/connect/job/store', [ConnectController::class, 'jobStore'])->name('connect.jobstore');
+        Route::get('/connect/job/myoffers', [ConnectController::class, 'myoffers'])->name('connect.myoffers');
+        Route::get('/connect/job/mark-inactive/{id}', [ConnectController::class, 'markInactive'])->name('connect.mark-inactive');
+        Route::get('/connect/job/applicants/{id}', [ApplicantController::class, 'viewApplicants'])->name('connect.job.index');
+        //filters
+        Route::post('/connect/myofferfilter', [ConnectFilterController::class, 'myofferfilter'])->name('connect.myofferfilter');
+        Route::post('/connect/applicantfilter', [ConnectFilterController::class, 'applicantfilter'])->name('connect.applicantfilter');
+    });
+
+    Route::group(['middleware' => ['role:student']], function () {
+        Route::get('/connect/job/myapplications', [ApplicantController::class, 'myApp'])->name('connect.job.myapp');
+        Route::post('/connect/job/apply', [ApplicantController::class, 'store'])->name('connect.job.apply');
+        Route::get('/connect/job/revoke/{id}', [ApplicantController::class, 'destroy'])->name('connect.job.apply.destroy'); 
+    });
 });
 
 //public routes
@@ -160,3 +176,13 @@ Route::get('/project/filter/category/{name}', [ProjectController::class, 'filter
 //event
 Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::get('/event/show/{id}',  [EventController::class, 'show'])->name('event.show');
+
+//Connect
+Route::get('/connect', [ConnectController::class, 'index'])->name('connect');
+Route::get('/connect/job/{id}', [ConnectController::class, 'jobDetails'])->name('connect.job');
+Route::get('/connect/student', [ConnectController::class, 'student'])->name('connect.student');
+Route::get('/connect/alumni', [ConnectController::class, 'alumni'])->name('connect.alumni');
+Route::get('/connect/professor', [ConnectController::class, 'professor'])->name('connect.professor');
+
+//Connect public filter
+Route::post('/connect/offersfilter', [ConnectFilterController::class, 'offersfilter'])->name('connect.offersfilter');

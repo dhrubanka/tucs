@@ -27,21 +27,17 @@ class MessageController extends Controller
         ->join('profiles as sp', function ($join) {
             $join->on('messages.sender_id', '=', 'sp.id');
         })
-        ->join('users as su', function ($join2) {
-            $join2->on('sp.user_id', '=', 'su.id');
-        })
+        // ->join('users as su', function ($join2) {
+        //     $join2->on('sp.user_id', '=', 'su.id');
+        // })
         ->join('profiles as rp', function ($join3) {
             $join3->on('messages.receiver_id', '=', 'rp.id');
         })
-        ->join('users as ru', function ($join4) {
-            $join4->on('rp.user_id', '=', 'ru.id');
-        })
-        // ->join('profiles as sp', 'messages.sender_id', '=', 'sp.id')
-        // ->join('users as su', 'sp.user_id', '=', 'su.id')
-        // ->join('profiles as rp', 'messages.sender_id', '=', 'rp.id')
-        // ->join('users as ru', 'rp.user_id', '=', 'ru.id')
-        ->select('su.name as sender', 'ru.name as receiver','sp.id as senderId', 'rp.id as receiverId', 'messages.content')
-        ->where('messages.receiver_id','=', $id, )
+        // ->join('users as ru', function ($join4) {
+        //     $join4->on('rp.user_id', '=', 'ru.id');
+        // })
+        ->select('sp.firstName as sender', 'rp.firstName as receiver','sp.id as senderId', 'rp.id as receiverId', 'messages.content')
+        ->where('messages.receiver_id','=', $id)
         ->orWhere('messages.sender_id','=', $id)
         // ->where('messages.sender_id','!=', 'messages.receiver_id')
         ->get();

@@ -17,7 +17,7 @@
                         <div class="form-group" style="padding: 10px;">
                             <select name="receiver_id" class="form-select" autofocus required>
                                 @foreach ($users as $user)
-                                    <option value="{{$user->id}}">{{$user->user->name}}</option>
+                                    <option value="{{$user->id}}">{{$user->firstName}}</option>
                                 @endforeach
                             </select>
                         </div>

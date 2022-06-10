@@ -18,7 +18,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cabin&family=Open+Sans:wght@600&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -53,11 +53,15 @@
                             <a class="nav-link" href="/forum">COMMUNITIES</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/blog">BLOG</a>
+                            <a class="nav-link" href="/connect">CONNECT</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/project">PROJECT</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">BLOG</a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="/event">EVENT</a>
                         </li>
