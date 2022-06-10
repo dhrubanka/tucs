@@ -28,7 +28,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\DislikeController;
 
 use App\Http\Controllers\MessageController;
-
+use App\Http\Controllers\ConversationController;    
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -86,7 +86,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/event/list/{id}',  [EventController::class, 'listView'])->name('event-listView');
         Route::get('/event/create',  [EventController::class, 'create'])->name('event-create');
         Route::post('/event/store',  [EventController::class, 'store'])->name('event-store');
-
     });
 
     Route::group(['middleware' => ['role:student|alumni|professor']], function () {
@@ -97,21 +96,21 @@ Route::middleware('auth')->group(function () {
         Route::post('/profile/storeWork', [WorkController::class, 'store'])->name('userwork');
 
         //community subscription
-        Route::post('/community/subscribe', [SubcriptionController::class,'subscribe']);
-        Route::post('/community/unsubscribe', [SubcriptionController::class,'unsubscribe']);
-        Route::post('/community/subscribeS', [SubcriptionController::class,'subscribeS']);
-        Route::post('/community/unsubscribeS', [SubcriptionController::class,'unsubscribeS']);
+        Route::post('/community/subscribe', [SubcriptionController::class, 'subscribe']);
+        Route::post('/community/unsubscribe', [SubcriptionController::class, 'unsubscribe']);
+        Route::post('/community/subscribeS', [SubcriptionController::class, 'subscribeS']);
+        Route::post('/community/unsubscribeS', [SubcriptionController::class, 'unsubscribeS']);
 
-        Route::get('/post/create',[PostController::class, 'create']);
-        Route::post('/post/store',[PostController::class, 'store']);
-        
-        //post upvote
-        Route::post('/post/like',[LikeController::class, 'like']);
-        Route::post('/post/unlike',[LikeController::class, 'unlike']);
+        Route::get('/post/create', [PostController::class, 'create']);
+        Route::post('/post/store', [PostController::class, 'store']);
 
         //post upvote
-        Route::post('/post/dislike',[DislikeController::class, 'dislike']);
-        Route::post('/post/undislike',[DislikeController::class, 'undislike']);
+        Route::post('/post/like', [LikeController::class, 'like']);
+        Route::post('/post/unlike', [LikeController::class, 'unlike']);
+
+        //post upvote
+        Route::post('/post/dislike', [DislikeController::class, 'dislike']);
+        Route::post('/post/undislike', [DislikeController::class, 'undislike']);
 
         //comment
         Route::post('comments', [CommentController::class, 'store'])->name('comments.store');
@@ -126,11 +125,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
 
         //message
-        Route::get('/message/{id}', [MessageController::class, 'index'])->name('message');
-        Route::get('/message/{id}/view', [MessageController::class, 'view'])->name('message.view');
+        Route::get('/message', [ConversationController::class, 'index'])->name('conversation');
+        Route::get('/message/{id}/view', [ConversationController::class, 'view'])->name('conversation.view');
         Route::get('/message/{id}/create', [MessageController::class, 'create'])->name('message.create');
         Route::post('/message/{id}/store', [MessageController::class, 'store'])->name('message.store');
-
     });
 
     //place routes below for auth enabled features
@@ -149,7 +147,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => ['role:student']], function () {
         Route::get('/connect/job/myapplications', [ApplicantController::class, 'myApp'])->name('connect.job.myapp');
         Route::post('/connect/job/apply', [ApplicantController::class, 'store'])->name('connect.job.apply');
-        Route::get('/connect/job/revoke/{id}', [ApplicantController::class, 'destroy'])->name('connect.job.apply.destroy'); 
+        Route::get('/connect/job/revoke/{id}', [ApplicantController::class, 'destroy'])->name('connect.job.apply.destroy');
     });
 });
 
@@ -164,7 +162,7 @@ Route::get('/forum/explore', [ForumController::class, 'explore'])->name('forum.e
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/post/{slug}', [PostController::class, 'show']);
 //community
-Route::get('/community/{slug}',[CommunityController::class, 'show']);
+Route::get('/community/{slug}', [CommunityController::class, 'show']);
 //blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');

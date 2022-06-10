@@ -68,7 +68,7 @@ a {
 }
 
 #sidebar.hide {
-    margin-left: 0px;
+    margin-left: -300px;
 }
 
 #sidebar .sidebar-header {
@@ -90,7 +90,6 @@ a {
     padding: 20px;
 }
 
-
 #sidebar ul li a {
     padding: 10px;
     font-size: 1.1em;
@@ -102,11 +101,10 @@ a {
     background: #fff;
 }
 
-#sidebar ul li.active>a,
+#sidebar ul li.active > a,
 a[aria-expanded="true"] {
     color: #fff;
     background: rgb(70, 100, 190);
-
 }
 
 a[data-toggle="collapse"] {
@@ -141,7 +139,7 @@ ul.CTAs a {
 
 a.download {
     background: #fff;
-    color: #7386D5;
+    color: #7386d5;
 }
 
 a.article,
@@ -149,7 +147,6 @@ a.article:hover {
     background: royalblue !important;
     color: #fff !important;
 }
-
 
 a,
 a:hover,
@@ -175,7 +172,6 @@ a:focus {
 ----------------------------------------------------- */
 
 @media (max-width: 1150px) {
-
     #sidebar {
         min-width: 200px;
         max-width: 200px;
@@ -183,12 +179,10 @@ a:focus {
 
     #sidebar.active {
         margin-left: -200px;
-    }    
-    
+    }
 }
 
 @media (max-width: 1000px) {
-
     #sidebar {
         min-width: 150px;
         max-width: 150px;
@@ -196,12 +190,10 @@ a:focus {
 
     #sidebar.active {
         margin-left: -150px;
-    }    
-    
+    }
 }
 
 @media (max-width: 830px) {
-
     #sidebar {
         min-width: 110px;
         max-width: 110px;
@@ -210,18 +202,46 @@ a:focus {
 
     #sidebar.active {
         margin-left: -110px;
-    }    
-    
+    }
+
+    #sidebar ul li a {
+        font-size: 70%;
+    }
+
+    #homeSubmenu ul li a {
+        font-size: 80%;
+    }
+
+    #botList li a {
+        font-size: 80% !important;
+    }
 }
 
 @media (max-width: 768px) {
     #sidebar {
-        min-width: 300px;
-        max-width: 300px;
+        min-width: 110px;
+        max-width: 110px;
         font-size: 100%;
     }
 
     #sidebar.active {
         margin-left: -110px;
-    }    
+    }
+
+    #sidebar ul li a {
+        font-size: 70%;
+    }
+
+    #homeSubmenu ul li a {
+        font-size: 70%;
+    }
+
+    #botList li a {
+        font-size: 70% !important;
+    }
+
+    #sidebar div h3,
+    #sidebar ul p {
+        font-size: 90%;
+    }
 }
