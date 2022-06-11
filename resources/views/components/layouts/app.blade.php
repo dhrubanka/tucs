@@ -123,12 +123,12 @@
                     @endif
                 @else
 
-                {{-- <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
-                    <a class="nav-link" href="/message/{{Auth::user()->profile->id}}"><i class="fas fa-comments"></i></a>
+                <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
+                    <a class="nav-link" href="/message/"><i class="fas fa-comments"></i></a>
                 </li>
                 <li class="nav-item" style="padding-top: 4%; padding-right: 5px;">
                     <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
-                </li> --}}
+                </li>
                 
                 
                 @endguest

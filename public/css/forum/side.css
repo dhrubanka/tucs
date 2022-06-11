@@ -171,7 +171,7 @@ a:focus {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 1150px) {
+/* @media (max-width: 1150px) {
     #sidebar {
         min-width: 200px;
         max-width: 200px;
@@ -191,9 +191,9 @@ a:focus {
     #sidebar.active {
         margin-left: -150px;
     }
-}
+} */
 
-@media (max-width: 830px) {
+/* @media (max-width: 830px) {
     #sidebar {
         min-width: 110px;
         max-width: 110px;
@@ -215,20 +215,20 @@ a:focus {
     #botList li a {
         font-size: 80% !important;
     }
-}
+} */
 
 @media (max-width: 768px) {
     #sidebar {
-        min-width: 110px;
-        max-width: 110px;
+        min-width: 260px;
+        max-width: 410px;
         font-size: 100%;
     }
 
-    #sidebar.active {
-        margin-left: -110px;
+    #sidebar.active > #post-button {
+        display: none;
     }
 
-    #sidebar ul li a {
+    /* #sidebar ul li a {
         font-size: 70%;
     }
 
@@ -243,5 +243,5 @@ a:focus {
     #sidebar div h3,
     #sidebar ul p {
         font-size: 90%;
-    }
+    } */
 }

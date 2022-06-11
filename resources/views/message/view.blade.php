@@ -9,6 +9,7 @@
                         <h4 style="padding: 1em;"><a class="btn btn-info" href="/message">Back to inbox</a></h3>
                     </div>
                     <div class="card-body" style="padding: 2% 3%;">
+                        {{$messages->links()}}
                         @foreach ($messages as $message)
                         @if($message->msgSender == Auth::user()->profile->id)
                         <div class="row" style="margin-bottom: 1em;">

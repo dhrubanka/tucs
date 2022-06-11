@@ -75,7 +75,7 @@ class ConversationController extends Controller
             // })
             ->orderBy('messages.created_at')
             // ->where('messages.sender_id','!=', 'messages.receiver_id')
-            ->get();
+            ->paginate(4);
 
         // dd($message);
 
