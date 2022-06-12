@@ -17,6 +17,7 @@ class CreateConversationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user1');
             $table->unsignedBigInteger('user2');
+            $table->integer('seen')->default(1);
             $table->timestamps();
 
             $table->foreign('user1')

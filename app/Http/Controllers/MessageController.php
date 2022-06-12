@@ -127,6 +127,11 @@ class MessageController extends Controller
             $conversation = Conversation::create([
                 'user2' => request('receiver_id'),
                 'user1' => $id,
+                'seen' => 1,
+            ]);
+        }else{
+            $conversation->update([
+                'seen' => 1
             ]);
         }
 

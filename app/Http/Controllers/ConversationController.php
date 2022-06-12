@@ -7,13 +7,14 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Message;
 use App\Models\Conversation;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ConversationController extends Controller
 {
 
-    function index()
+    function index(Request $request)
     {
         $id = Auth::user()->profile->id;
 
@@ -35,7 +36,9 @@ class ConversationController extends Controller
             //         // ->orderByDesc('messages.updated_at')
             //         ->limit(1);
             // })
-            ->select('conversations.id as convoID', 'sp.firstName as sender', 'rp.firstName as receiver', 'sp.id as senderId', 'rp.id as receiverId', 'su.id as suID', 'ru.id as ruID')
+            ->select('conversations.id as convoID', 'sp.firstName as sender', 'rp.firstName as receiver', 
+            'sp.id as senderId', 'rp.id as receiverId', 
+            'su.id as suID', 'ru.id as ruID')
             ->where('conversations.user1', '=', $id)
             ->orWhere('conversations.user2', '=', $id)
             // ->where('messages.sender_id','!=', 'messages.receiver_id')
@@ -43,11 +46,10 @@ class ConversationController extends Controller
 
         // dd($message);
         // dd($message);
-
-        return view('message.index', ['messages' => $message]);
+        return view('message.index',['messages'=>$message]);
     }
 
-    function view($id)
+    function view(Request $request,$id)
     {
 
         $message = DB::table('conversations')
@@ -73,11 +75,29 @@ class ConversationController extends Controller
             //     $query->where('messages.sender_id', '=', $id)
             //         ->where('messages.receiver_id', '=', Auth::user()->profile->id);
             // })
-            ->orderBy('messages.created_at')
+            ->orderBy('messages.created_at', 'desc')
             // ->where('messages.sender_id','!=', 'messages.receiver_id')
-            ->paginate(4);
+            ->paginate(6);
+        
+            // if($request->has('page')) {
+            //     Paginator::currentPageResolver(fn() => $message->lastPage());
+                
+            // }
+  
+         //dd($message);
+        $latestMsg = DB::table('messages')
+        ->where('messages.conversation_id', $id)
+        ->orderBy('updated_at', 'desc')
+        ->first();
 
-        // dd($message);
+        //dd($latestMsg);
+
+        if($latestMsg->sender_id != Auth::user()->profile->id){
+            $conv = Conversation::find($id);
+            $conv->update([
+                'seen' => 0
+            ]);    
+        }
 
         return view('message.view', ['messages' => $message]);
     }

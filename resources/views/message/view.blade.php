@@ -5,12 +5,19 @@
                 {{-- <a href="/message/{{Auth::user()->profile->id}}/show/{{$message->sender_id}}" style="text-decoration: none;"> --}}
                 <div class="card" style="font-family: 'Open Sans', sans-serif;">
                     <div class="card-header d-flex flex-row justify-content-between">
-                        <h3 class="card-title" style="padding: 1em;">{{$messages[0]->receiver}}</h3>
-                        <h4 style="padding: 1em;"><a class="btn btn-info" href="/message">Back to inbox</a></h3>
+                        <h3 class="card-title" style="padding: 1em;"> 
+                            @if($messages[0]->suID == Auth::user()->id)
+                             {{$messages[0]->receiver}} 
+                            @else
+                             {{$messages[0]->sender}}
+                            @endif
+                            <a href="/message/1/view"><i class="fa-solid fa-arrows-rotate"></i></a>
+                        </h3>
+                        <h4 style="padding: 1em;"><a class="btn btn-info text-white" href="/message">Back to inbox</a></h3>
                     </div>
                     <div class="card-body" style="padding: 2% 3%;">
-                        {{$messages->links()}}
-                        @foreach ($messages as $message)
+                       <div class="d-flex justify-content-center" style="margin: 1em">  {{$messages->links()}}</div>
+                        @foreach ($messages->reverse() as $message)
                         @if($message->msgSender == Auth::user()->profile->id)
                         <div class="row" style="margin-bottom: 1em;">
                             <div class=" offset-8 col-4" style="background-color: rgb(248, 205, 191); padding-top: 1em;">
@@ -41,10 +48,11 @@
                                     <input type="hidden" name="receiver_id" value="{{$messages[0]->receiverID}}">
                                     @endif
                                     <div class="form-group" style="padding: 10px;">
-                                        <textarea class="form-control" name="content" id="content" placeholder="CONTENT" rows="3" required></textarea>
+                                        <textarea class="form-control" name="content" id="content" placeholder="Write Your Text Here" rows="3" required></textarea>
                                     </div>
-                                    <div class="form-group" style="padding: 10px;">
-                                        <button type="submit" class="btn btn-primary">SEND</button>
+                                    <div class="form-group d-flex flex-row-reverse" style="padding: 10px;">
+                                        <button type="submit" class="btn btn-dark">SEND</button> &nbsp;
+                                        <h3><a href="/message/1/view"><i class="fa-solid fa-arrows-rotate"></i></a></h3>
                                     </div>
                                 </form>
                                 {{-- <a class="btn btn-primary" href="/message/{{Auth::user()->profile->id}}/create" role="button" style="width: 100%;"><span class="badge" style="padding: 14px 0px; font-size: medium;"><i class="fas fa-pencil-alt"></i> SEND MESSAGE</span></a> --}}

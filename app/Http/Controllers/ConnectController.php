@@ -78,6 +78,7 @@ class ConnectController extends Controller
     {
          
         $students = User::with('roles')->role('student')->with('profile')->paginate(12);
+        //dd($students);
         // $projectsCount = count($students[3]->profile->projects);
         // dd($projectsCount);
         return view('connect.student', [  'students' => $students]);
