@@ -153,7 +153,7 @@ Route::middleware('auth')->group(function () {
 
 //public routes
 
-Route::post('/ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
+Route::post('/ckeditor/upload',  [CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //forum
 Route::get('/forum', [ForumController::class, 'index'])->name('forum');

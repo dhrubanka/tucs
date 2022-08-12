@@ -66,8 +66,8 @@ class CommunityController extends Controller
      */
     public function show($id)
     {
-        // $community = Community::where('slug', '=', $id)->first();
-         
+        
+         if(Auth::check()){
         $community = Community::query()
         ->leftJoin('subscriptions', function ($join) {
             $join->on('communities.id', '=', 'subscriptions.community_id')
@@ -87,6 +87,14 @@ class CommunityController extends Controller
         
 //        dd($posts);
         return view('forum.show', ['communites' => $community, 'posts' => $posts]);
+    }else{
+        $community = Community::where('slug', '=', $id)->first();
+        $posts = Post::where('community_id','=',$community->id)
+               // ->where('user_id','=', Auth::user()->id)
+                ->get();
+        return view('forum.show', ['communites' => $community, 'posts' => $posts]);
+    }
+
     }
 
     /**
