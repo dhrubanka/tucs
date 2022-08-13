@@ -74,7 +74,7 @@ class CommunityController extends Controller
             ->where('subscriptions.profile_id', '=', Auth::user()->profile->id);
         })->where('slug', '=', $id)->first();
 
-        $posts = Post::where('community_id','=',$community->id)
+        $posts = Post::where('community_id','=',$community->id)->orderby('created_at','desc')
                // ->where('user_id','=', Auth::user()->id)
                 ->get();
 
@@ -89,7 +89,7 @@ class CommunityController extends Controller
         return view('forum.show', ['communites' => $community, 'posts' => $posts]);
     }else{
         $community = Community::where('slug', '=', $id)->first();
-        $posts = Post::where('community_id','=',$community->id)
+        $posts = Post::where('community_id','=',$community->id)->orderby('created_at','desc')
                // ->where('user_id','=', Auth::user()->id)
                 ->get();
         return view('forum.show', ['communites' => $community, 'posts' => $posts]);
