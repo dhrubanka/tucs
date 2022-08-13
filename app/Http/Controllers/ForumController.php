@@ -61,7 +61,7 @@ class ForumController extends Controller
         return view('forum.index', ['posts' => $posts, 'communities' => $communities]);
     }else{
 
-        $posts= Post::paginate(5);;
+        $posts= Post::orderby('created_at','desc')->paginate(5);;
         return view('forum.index', ['posts' => $posts]);
     }
     }
