@@ -26,6 +26,7 @@ class CreateProfilesTable extends Migration
             $table->string('currentAddress', 100);
             $table->string('permanentAddress', 100);
             $table->date('dob');
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

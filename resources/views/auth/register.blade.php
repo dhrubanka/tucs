@@ -1,7 +1,8 @@
 <x-layouts.app>
     <div class="container">
     <div class="row card shadow" style="margin: 2em; ">
-        <h2 class="card-header"> Register</h2>
+        <h2 class="card-header" style="background: royalblue;
+        color: whitesmoke;"> Register</h2>
         <form class="row g-3 card-body" method="POST" action="{{ route('register') }}">
         @csrf
             <div class="col-md-6">
@@ -172,16 +173,10 @@
                     @enderror
 
             </div>
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
-                </div>
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Sign in</button>
+             
+            <div class="col-12 text-center mt-5">
+                <button type="submit" class="btn "   style="background: royalblue;
+                color: whitesmoke;">Sign in</button>
             </div>
         </form>
     </div>

@@ -49,7 +49,7 @@ class CommunityController extends Controller
         Community::create([
             'parent_community_id' => request('parentId'),
             'name' => strtoupper(Str::of(request('communityTitle'))->trim()),
-            'slug' => request('slug'),
+            'slug' =>  str_replace(' ', '-', strtolower(request('slug'))),
             'description' => request('communityDesc'),
             'image' => request('communityPhoto')
         ]);

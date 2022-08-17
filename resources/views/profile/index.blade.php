@@ -292,10 +292,18 @@
                             //var_dump();
                             ?>
                             <x-badge :role="$role" /></span></p>
+                            <a class="btn" style="background: royalblue;
+                            color: whitesmoke;" href="/profile/edit">Edit Profile</a>
                         </div>
                         {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-9egJf45MP1S6DtxeEnSf7UMTSlzMM5xRsw&usqp=CAU" class="card-img-top"
                              alt="..." style="width: 10em;"> --}}
+                             @if ($profile->image == NULL)
                              <img src="https://avatars.dicebear.com/api/{!! ($profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" style=" width: 10em; border-radius: 50%;">
+                             @else
+                             <img class="card-img" src="/storage{{ $profile->image }}" alt="Profile image" style=" width: 10em; border-radius: 50%;">
+                             @endif
+                             
+                           
                     </div>
                 </div>
             </div>
@@ -512,19 +520,22 @@
                     <div class="card-header d-flex justify-content-between" style="background: royalblue;color:white">
                         <h2>Forum Activity</h2>@if(auth()->user()->id == $profile->user->id) <button class="btn btn-light">Add </button> @endif
                     </div>
-                    <div class="card-body">
-                        <div class="card">
+              
+                    <div class="card-body" style="background: rgb(236, 232, 232)">
+                        @foreach ($posts as $post)
+                        <div class="card m-2">
                             <div class="card-body">
-                                @foreach ($posts as $post)
+                            
                                     <h5 class="card-title">{{$post->title}}</h5>
                                     <p class="card-text">{{$post->description}}</p>
-                                    <a href="{{$post->url}}" class="btn btn-primary">Check it out</a>
-                                @endforeach
+                                    <a href="{{$post->url}}" class="btn btn-primary text-white">Check it out</a>
+                            
                             </div>
 
                         </div>
+                        @endforeach
                         <div class="card-footer d-flex justify-content-center">
-                            <a href="/forum"> See All Posts </a>
+                            <a href="/forum"><h5> See All Posts </h5></a>
                         </div>
                     </div>
                 </div>

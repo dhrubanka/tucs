@@ -90,7 +90,9 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['middleware' => ['role:student|alumni|professor']], function () {
         //profile management
-        Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
+        Route::get('/profile/show/{id}', [ProfileController::class, 'index']);
+        Route::get('/profile/edit', [ProfileController::class, 'edit']);
+        Route::put('/profile/update', [ProfileController::class, 'update'])->name('profileupdate');
         Route::post('/profile/storeSkill', [UserSkillController::class, 'store'])->name('userskill');
         Route::post('/profile/storeEducation', [EducationController::class, 'store'])->name('usereducation');
         Route::post('/profile/storeWork', [WorkController::class, 'store'])->name('userwork');

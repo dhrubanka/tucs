@@ -77,7 +77,8 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center">
+                    <div class="card-header text-center" style="background: royalblue;
+                    color: whitesmoke;">
                         <h1>Login</h1>
                     </div>
                     <div class="card-body">
@@ -118,7 +119,8 @@
 
                             {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn" style="background: royalblue;
+                                color: whitesmoke;">
                                     {{ __('Login') }}
                                 </button>
 

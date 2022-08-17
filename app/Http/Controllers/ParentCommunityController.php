@@ -43,7 +43,7 @@ class ParentCommunityController extends Controller
         ]);
         ParentCommunity::create([
             'name' => strtoupper(Str::of(request('communityTitle'))->trim()),
-            'slug' => request('slug'),
+            'slug' => str_replace(' ', '-', strtolower(request('slug'))),
             'description' => request('communityDesc'),
             'image' => request('communityPhoto')
         ]);

@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            <!--card Starts-->
                             <!-- <div class="card-footer bg-white">
                                 <div class="row">
                                         <div class="col-2">
@@ -112,6 +112,8 @@
     
                                 </div>
                             </div>  -->
+
+                            <!--footer ends-->
                         </div>
                     </a>
                 </div>

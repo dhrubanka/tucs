@@ -81,7 +81,7 @@
                             </a>
                                 <!-- <img id="user_img" src="/storage/logo.png" style="height:40px; width: 40px; border-radius: 50%;"> -->
                             <div class="" >
-                                <a class="nav-link text-center" style="padding-right:2em;padding-top:1em; color:whitesmoke"  href="/profile/{{Auth::user()->id}}">
+                                <a class="nav-link text-center" style="padding-right:2em;padding-top:1em; color:whitesmoke"  href="/profile/show/{{Auth::user()->id}}">
                                      {{Auth::user()->profile->firstName}} 
                                 </a>
                             </div> 
@@ -218,6 +218,45 @@
     </div>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-
+    <div class="container">
+        <footer class="row row-cols-5 py-5 my-5 border-top">
+       
+      
+          
+         
+          <div class="col">
+            <h5>Browse</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="/home" class="nav-link p-0 text-muted">Home</a></li>
+              <li class="nav-item mb-2"><a href="/forum" class="nav-link p-0 text-muted">Communities</a></li>
+              <li class="nav-item mb-2"><a href="/forum/explore" class="nav-link p-0 text-muted">Explore Communities</a></li>
+              <li class="nav-item mb-2"><a href="/connect" class="nav-link p-0 text-muted">Connect</a></li>
+              <li class="nav-item mb-2"><a href="/blogs" class="nav-link p-0 text-muted">Blogs</a></li>
+            </ul>
+          </div>
+          <div class="col">
+      
+        </div>
+          <div class="col">
+            <h5>More Information</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Developers</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Report a Bug</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col">
+      
+        </div>
+          <div class="col">
+            <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <p class="text-muted">Tezpur University Computer Society © 2022</p>
+          </div>
+        </footer>
+      </div>
 </body>
 </html>

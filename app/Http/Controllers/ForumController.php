@@ -35,7 +35,7 @@ class ForumController extends Controller
         //     ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
         // })
         ->paginate(5);
-
+                
 
         
         // ddd($posts);
