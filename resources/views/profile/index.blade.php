@@ -292,8 +292,10 @@
                             //var_dump();
                             ?>
                             <x-badge :role="$role" /></span></p>
+                            @if(auth()->user()->id == $profile->user->id)   
                             <a class="btn" style="background: royalblue;
                             color: whitesmoke;" href="/profile/edit">Edit Profile</a>
+                            @endIf
                         </div>
                         {{-- <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-9egJf45MP1S6DtxeEnSf7UMTSlzMM5xRsw&usqp=CAU" class="card-img-top"
                              alt="..." style="width: 10em;"> --}}
