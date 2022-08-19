@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/skillset', [SkillsetController::class, 'index'])->name('skillset');
         Route::get('/skillset/create', [SkillsetController::class, 'create'])->name('skillset-create');
         Route::post('/skillset/store', [SkillsetController::class, 'store'])->name('skillset-store');
+        Route::post('/skillset/delete/{id}', [SkillsetController::class, 'delete'])->name('skillset-delete');
 
         //projects
         Route::get('/auth/projects', [AuthProjectController::class, 'index']);
@@ -96,6 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile/edit', [ProfileController::class, 'edit']);
         Route::put('/profile/update', [ProfileController::class, 'update'])->name('profileupdate');
         Route::post('/profile/storeSkill', [UserSkillController::class, 'store'])->name('userskill');
+        Route::post('/profile/deleteSkill/{id}', [UserSkillController::class, 'delete'])->name('userdeleteskill');
         Route::post('/profile/storeEducation', [EducationController::class, 'store'])->name('usereducation');
         Route::post('/profile/storeWork', [WorkController::class, 'store'])->name('userwork');
 

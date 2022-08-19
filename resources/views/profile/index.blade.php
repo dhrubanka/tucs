@@ -324,7 +324,7 @@
                                     <h5 class="modal-title" id="newSkillLabel">Add Skill</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form method="POST" action="/profile/storeSkill">
+                                    <form method="POST" action="" class="form2">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
@@ -338,18 +338,33 @@
                                         </div>
                                         <div class="modal-footer form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                           @Auth <button type="submit" class="btn btn-primary">Add</button> @endAuth
+                                           @Auth 
+                                           <a class="btn bg-primary" href="javascript:void(0)" onclick="submitUserSkillAddForm();">Add</a>
+                                           {{-- <button type="submit" class="btn btn-primary">Add</button> --}}
+                                            @endAuth
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="userSkillCard">
                         @foreach ($profile->userSkills as $userSkill)
+                        <form method="POST" action="" class="form">
+                            @csrf
                             <div class="badge-green">
-                                {{$userSkill->skill->name}}
-                            </div> &nbsp;
+                                {{-- <span class="col-8"> --}}
+                                    {{$userSkill->skill->name}}
+                                {{-- </span> --}}
+                                {{-- <span class="badge bg-warning"> --}}
+                                    {{-- <span class="bg-primary"> --}}
+                                        <a class="btn btn-sm bg-danger text-white" href="javascript:void(0)" onclick="submitForm({{$userSkill->id}});">X</a>
+                                    {{-- </span> --}}
+                                {{-- </span> --}}
+                            </div>&nbsp;
+                        </form>
+
+                            {{-- </div></form>&nbsp; --}}
                         @endforeach
                     </div>
                     <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);;color:white">
@@ -544,4 +559,32 @@
 
             </div>
     </div>
+    <script>
+        function submitUserSkillAddForm(){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/storeSkill',
+        data: $('.form2').serialize(),
+        success: function(response){            
+            $("#newSkill").modal('hide');
+            $("#newSkill").load(location.href+" #newSkill>*","");
+            $("#userSkillCard").load(location.href+" #userSkillCard>*","");
+        }
+    });
+    }
+        
+        function submitForm(id){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/deleteSkill/'+id,
+        data: $('.form').serialize(),
+        success: function(response){
+            $("#userSkillCard").load(location.href+" #userSkillCard>*","");
+            $("#newSkill").load(location.href+" #newSkill>*","");
+        }
+    });
+}
+
+
+    </script>
 </x-layouts.app>
