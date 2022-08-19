@@ -20,6 +20,7 @@ use App\Http\Controllers\AuthProjectController;
 use App\Http\Controllers\ApplicantController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\CommunityRequestController;
 use App\Http\Controllers\ConnectController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
@@ -28,7 +29,8 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\DislikeController;
 
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\ConversationController;    
+use App\Http\Controllers\ConversationController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -165,6 +167,8 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/post/{slug}', [PostController::class, 'show']);
 //community
 Route::get('/community/{slug}', [CommunityController::class, 'show']);
+//Request Community
+Route::get('/community-request', [CommunityRequestController::class, 'create']);
 //blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');
@@ -186,3 +190,5 @@ Route::get('/connect/professor', [ConnectController::class, 'professor'])->name(
 
 //Connect public filter
 Route::post('/connect/offersfilter', [ConnectFilterController::class, 'offersfilter'])->name('connect.offersfilter');
+
+

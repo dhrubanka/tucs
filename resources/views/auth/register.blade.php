@@ -1,9 +1,10 @@
 <x-layouts.app>
-    <div class="container">
-    <div class="row card shadow" style="margin: 2em; ">
+
+    <div class="container" style="max-width: 70%">
+    <div class="row card shadow" >
         <h2 class="card-header" style="background: royalblue;
         color: whitesmoke;"> Register</h2>
-        <form class="row g-3 card-body" method="POST" action="{{ route('register') }}">
+        <form class="row g-3 card-body" method="POST" action="{{ route('register') }}" >
         @csrf
             <div class="col-md-6">
                 <label for="firstName" class="form-label">First Name</label>
@@ -181,4 +182,5 @@
         </form>
     </div>
     </div>
+
 </x-layouts.app>
