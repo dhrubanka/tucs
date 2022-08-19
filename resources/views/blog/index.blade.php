@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-6 post">
                                     <h4>{{$blog->title}}</h4>
-                                    <h6>Author~  <a href="/profile/show/{{$blog->profile->id}}">{{$blog->profile->user->name}}</a></h6>
+                                    <h6>Author~  <a href="/profile/show/{{$blog->profile->id}}">{{$blog->profile->firstName}}</a></h6>
                                     <hr>
                                     <p>{!! Str::limit( strip_tags( $blog->content), 200 ) !!} </p> 
                                 </div>
