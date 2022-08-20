@@ -314,7 +314,9 @@
                     <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);color:white">
                         <h4>Skills</h4>
                         <div class="ms-auto">
-                            @if(auth()->user()->id == $profile->user->id) <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill">Add</button> @endif
+                            @if(auth()->user()->id == $profile->user->id) 
+                            <button  class="btn btn-primary rounded text-white" id="activateSkillsDelete"> Edit </button>
+                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill" id="addSkill">Add</button> @endif
                         </div>
 
                         <div class="modal fade" id="newSkill" tabindex="-1" aria-labelledby="newSkillLabel" aria-hidden="true">
@@ -350,18 +352,16 @@
                     </div>
                     <div class="card-body" id="userSkillCard">
                         @foreach ($profile->userSkills as $userSkill)
-                        <form method="POST" action="" class="form">
+                        <form method="POST" action="" class="form" style="float: left; white-space: nowrap;">
                             @csrf
-                            <div class="badge-green">
-                                {{-- <span class="col-8"> --}}
+                            <span class="badge rounded-pill bg-secondary" >
+                               
                                     {{$userSkill->skill->name}}
-                                {{-- </span> --}}
-                                {{-- <span class="badge bg-warning"> --}}
-                                    {{-- <span class="bg-primary"> --}}
-                                        <a class="btn btn-sm bg-danger text-white" href="javascript:void(0)" onclick="submitForm({{$userSkill->id}});">X</a>
-                                    {{-- </span> --}}
-                                {{-- </span> --}}
-                            </div>&nbsp;
+                               
+                                        <span style="display:inline-block; ">
+                                        <a class="SkillsDelete btn btn-sm bg-danger text-white m-1 " style="display: none;" href="javascript:void(0)"  onclick="submitForm({{$userSkill->id}});">X</a>
+                                        </span>
+                            </span>&nbsp;
                         </form>
 
                             {{-- </div></form>&nbsp; --}}
@@ -560,6 +560,28 @@
             </div>
     </div>
     <script>
+        const btn = document.getElementById('activateSkillsDelete');
+
+        btn.addEventListener('click', () => {
+        const btns = document.getElementsByClassName('SkillsDelete');
+        for (const bn of btns) {
+            if (bn.style.display === 'none') {
+                // 👇️ this SHOWS the form
+                bn.style.display = 'block';
+                btn.style.background = "green";
+                btn.innerHTML = "Done";
+                document.getElementById('addSkill').disabled = true; 
+            } else {
+                // 👇️ this HIDES the form
+                bn.style.display = 'none';
+                btn.style.background = "#0d6efd";
+                btn.innerHTML = "Edit";
+                document.getElementById('addSkill').disabled = false; 
+            }
+        }
+        });
+
+
         function submitUserSkillAddForm(){
     $.ajax({
         type: 'POST',
@@ -581,6 +603,9 @@
         success: function(response){
             $("#userSkillCard").load(location.href+" #userSkillCard>*","");
             $("#newSkill").load(location.href+" #newSkill>*","");
+            btn.style.background = "#0d6efd";
+            btn.innerHTML = "Edit";
+            document.getElementById('addSkill').disabled = false; 
         }
     });
 }
