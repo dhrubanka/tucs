@@ -26,13 +26,19 @@ class SkillsetController extends Controller
        $validatedData = $request->validate([
            'skillName' => 'required|string|max:255',
        ]);
-       Skillset::create([
+       $skill = Skillset::create([
            'name' => strtoupper(Str::of(request('skillName'))->trim()),
        ]);
 
-       return back()->with('success', 'Successfully inserted a new skill!');
+       return back()->with('success', 'Successfully inserted a new skill '.$skill->name);
 
+   }
 
+   public function delete(Request $request, $id)
+   {
+        $skill = Skillset::find($id);
+        $skill->delete();
+       return back()->with('success', 'Successfully deleted skill '.$skill->name);
    }
 
 

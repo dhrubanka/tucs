@@ -46,13 +46,18 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
+                <th scope="col"><span style="float:right">Action</span></th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($SkillSets as $SkillSet)
+                @foreach ($SkillSets as $key=>$SkillSet)
                 <tr>
-                    <th scope="row">{{$SkillSet->id}}</th>
+                    <th scope="row">{{$key+1}}</th>
                     <td>{{$SkillSet->name}}</td>
+                    <form action="/skillset/delete/{{$SkillSet->id}}" method="POST">
+                      @csrf
+                      <td><button type="submit" class="btn btn-sm btn-danger text-white" style="float:right">X</button></td>
+                    </form>
                   </tr>
                 @endforeach
             </tbody>

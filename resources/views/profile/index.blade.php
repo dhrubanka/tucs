@@ -314,7 +314,9 @@
                     <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);color:white">
                         <h4>Skills</h4>
                         <div class="ms-auto">
-                            @if(auth()->user()->id == $profile->user->id) <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill">Add</button> @endif
+                            @if(auth()->user()->id == $profile->user->id) 
+                            <button  class="btn btn-primary rounded text-white" id="activateSkillsDelete"> Edit </button>
+                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill" id="addSkill">Add</button> @endif
                         </div>
 
                         <div class="modal fade" id="newSkill" tabindex="-1" aria-labelledby="newSkillLabel" aria-hidden="true">
@@ -324,7 +326,7 @@
                                     <h5 class="modal-title" id="newSkillLabel">Add Skill</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form method="POST" action="/profile/storeSkill">
+                                    <form method="POST" action="" class="form2">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
@@ -338,18 +340,31 @@
                                         </div>
                                         <div class="modal-footer form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                           @Auth <button type="submit" class="btn btn-primary">Add</button> @endAuth
+                                           @Auth 
+                                           <a class="btn bg-primary" href="javascript:void(0)" onclick="submitUserSkillAddForm();">Add</a>
+                                           {{-- <button type="submit" class="btn btn-primary">Add</button> --}}
+                                            @endAuth
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="userSkillCard">
                         @foreach ($profile->userSkills as $userSkill)
-                            <div class="badge-green">
-                                {{$userSkill->skill->name}}
-                            </div> &nbsp;
+                        <form method="POST" action="" class="form" style="float: left; white-space: nowrap;">
+                            @csrf
+                            <span class="badge rounded-pill bg-secondary" >
+                               
+                                    {{$userSkill->skill->name}}
+                               
+                                        <span style="display:inline-block; ">
+                                        <a class="SkillsDelete btn btn-sm bg-danger text-white m-1 " style="display: none;" href="javascript:void(0)"  onclick="submitForm({{$userSkill->id}});">X</a>
+                                        </span>
+                            </span>&nbsp;
+                        </form>
+
+                            {{-- </div></form>&nbsp; --}}
                         @endforeach
                     </div>
                     <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);;color:white">
@@ -544,4 +559,57 @@
 
             </div>
     </div>
+    <script>
+        const btn = document.getElementById('activateSkillsDelete');
+
+        btn.addEventListener('click', () => {
+        const btns = document.getElementsByClassName('SkillsDelete');
+        for (const bn of btns) {
+            if (bn.style.display === 'none') {
+                // 👇️ this SHOWS the form
+                bn.style.display = 'block';
+                btn.style.background = "green";
+                btn.innerHTML = "Done";
+                document.getElementById('addSkill').disabled = true; 
+            } else {
+                // 👇️ this HIDES the form
+                bn.style.display = 'none';
+                btn.style.background = "#0d6efd";
+                btn.innerHTML = "Edit";
+                document.getElementById('addSkill').disabled = false; 
+            }
+        }
+        });
+
+
+        function submitUserSkillAddForm(){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/storeSkill',
+        data: $('.form2').serialize(),
+        success: function(response){            
+            $("#newSkill").modal('hide');
+            $("#newSkill").load(location.href+" #newSkill>*","");
+            $("#userSkillCard").load(location.href+" #userSkillCard>*","");
+        }
+    });
+    }
+        
+        function submitForm(id){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/deleteSkill/'+id,
+        data: $('.form').serialize(),
+        success: function(response){
+            $("#userSkillCard").load(location.href+" #userSkillCard>*","");
+            $("#newSkill").load(location.href+" #newSkill>*","");
+            btn.style.background = "#0d6efd";
+            btn.innerHTML = "Edit";
+            document.getElementById('addSkill').disabled = false; 
+        }
+    });
+}
+
+
+    </script>
 </x-layouts.app>
