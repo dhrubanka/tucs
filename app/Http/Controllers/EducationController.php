@@ -27,6 +27,13 @@ class EducationController extends Controller
             'profile_id' => Auth::user()->profile->id,
         ]);
 
-       return back();
+        return back();
     }
+
+    public function delete(Request $request, $id)
+    {
+        $education = Education::find($id)->delete();
+        return back();
+    }
+ 
 }

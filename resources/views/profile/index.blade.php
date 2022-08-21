@@ -342,7 +342,6 @@
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                            @Auth 
                                            <a class="btn bg-primary" href="javascript:void(0)" onclick="submitUserSkillAddForm();">Add</a>
-                                           {{-- <button type="submit" class="btn btn-primary">Add</button> --}}
                                             @endAuth
                                         </div>
                                     </form>
@@ -355,22 +354,20 @@
                         <form method="POST" action="" class="form" style="float: left; white-space: nowrap;">
                             @csrf
                             <span class="badge rounded-pill bg-secondary" >
-                               
-                                    {{$userSkill->skill->name}}
-                               
-                                        <span style="display:inline-block; ">
+                                {{$userSkill->skill->name}}
+                                    <span style="display:inline-block; ">
                                         <a class="SkillsDelete btn btn-sm bg-danger text-white m-1 " style="display: none;" href="javascript:void(0)"  onclick="submitForm({{$userSkill->id}});">X</a>
-                                        </span>
+                                    </span>
                             </span>&nbsp;
                         </form>
-
-                            {{-- </div></form>&nbsp; --}}
                         @endforeach
                     </div>
                     <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);;color:white">
                         <h4>Education</h4>
                         <div class="ms-auto">
-                            @if(auth()->user()->id == $profile->user->id)<button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newEducation">Add</button>@endif
+                            @if(auth()->user()->id == $profile->user->id) 
+                            <button  class="btn btn-primary rounded text-white" id="activateEducationDelete"> Edit </button>
+                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newEducation" id="addEducation">Add</button>@endif
                         </div>
 
                         <div class="modal fade" id="newEducation" tabindex="-1" aria-labelledby="newEducationLabel" aria-hidden="true">
@@ -380,7 +377,7 @@
                                     <h5 class="modal-title" id="newEducationLabel">Add Education</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form method="POST" action="/profile/storeEducation">
+                                    <form method="POST" action="" class="form2">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
@@ -402,26 +399,38 @@
                                         </div>
                                         <div class="modal-footer form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            @Auth<button type="submit" class="btn btn-primary">Add</button>@endAuth
-                                        </div>
+                                            @Auth 
+                                            <a class="btn bg-primary" href="javascript:void(0)" onclick="submitEducationAddForm();">Add</a>
+                                             @endAuth
+                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="educationCard">
                         @foreach ($educations as $education)
-                                <h4>{{$education->schoolName}}</h4>
-                                <h5>{{$education->courseName}}</h5>
-                                <h6>{{$education->startDate}} - {{$education->endDate}}</h6>
-                                <h6>{{$education->description}}</h6>
-                                <hr>
+                        <form method="POST" action="" class="form">
+                            {{-- <form method="POST" action="" class="form" style="float: left; white-space: nowrap;"> --}}
+                                @csrf
+                            <h4>{{$education->schoolName}}
+                                <span style="display:inline-block; float:right;">
+                                    <a class="EducationDelete btn btn-sm bg-danger text-white m-1 " style="display: none;" href="javascript:void(0)"  onclick="submitForm2({{$education->id}});">X</a>
+                                </span>
+                            </h4>
+                            <h5>{{$education->courseName}}</h5>
+                            <h6>{{$education->startDate}} - {{$education->endDate}}</h6>
+                            <h6>{{$education->description}}</h6>
+                            <hr>
+                        </form>
                         @endforeach
                     </div>
                     <div class="card-header d-flex justify-content-between" style="background: rgb(149, 159, 191);color:white">
                         <h4>Work</h4>
                         <div class="ms-auto">
-                            @if(auth()->user()->id == $profile->user->id) <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newWork">Add</button> @endIf
+                            @if(auth()->user()->id == $profile->user->id)
+                            <button  class="btn btn-primary rounded text-white" id="activateWorkDelete"> Edit </button>
+                            <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newWork" id="addWork">Add</button> @endIf
                         </div>
 
                         <div class="modal fade" id="newWork" tabindex="-1" aria-labelledby="newWorkLabel" aria-hidden="true">
@@ -431,7 +440,7 @@
                                     <h5 class="modal-title" id="newWorkLabel">Add Work</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form method="POST" action="/profile/storeWork">
+                                    <form method="POST" action="" class="form2">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="form-group">
@@ -444,7 +453,11 @@
                                                 <input class="form-control" type="date" name="startDate" id="startDate" class="form-control" required autofocus>
                                             </div>
                                             <div class="form-group">
-                                                <input class="form-control" type="date" name="endDate" id="endDate" class="form-control" required autofocus>
+                                                <label for="current" class="text-md-right text-dark"">&nbsp Still Working</label>
+                                                <input id="current" type="checkbox" class="form-check-input" name="current" onclick="workEndDateToggle()" checked autofocus>
+                                            </div>
+                                            <div class="form-group" id="workEndDate" style="display:none">
+                                                <input class="form-control" type="date" name="endDate" id="endDate" class="form-control" autofocus>
                                             </div>
                                             <div class="form-group">
                                                 <textarea class="form-control" name="description" id="description" placeholder="Description" rows="3"></textarea>
@@ -453,7 +466,9 @@
                                         </div>
                                         <div class="modal-footer form-group">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                           @Auth <button type="submit" class="btn btn-primary">Add</button>@endAuth
+                                            @Auth 
+                                            <a class="btn bg-primary" href="javascript:void(0)" onclick="submitWorkAddForm();">Add</a>
+                                             @endAuth
                                         </div>
                                     </form>
                                 </div>
@@ -461,11 +476,15 @@
                         </div>
 
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="workCard">
                         @foreach ($works as $work)
-                                <h4>{{$work->companyName}}</h4>
+                                <h4>{{$work->companyName}}
+                                    <span style="display:inline-block; float:right;">
+                                        <a class="WorkDelete btn btn-sm bg-danger text-white m-1 " style="display: none;" href="javascript:void(0)"  onclick="submitForm3({{$work->id}});">X</a>
+                                    </span>    
+                                </h4>
                                 <h5>{{$work->designation}}</h5>
-                                <h6>{{$work->startDate}} - {{$education->endDate}}</h6>
+                                <h6>{{$work->startDate}} - {{$work->endDate}}</h6>
                                 <h6>{{$work->description}}</h6>
                                 <hr>
                         @endforeach
@@ -561,6 +580,22 @@
     </div>
     <script>
         const btn = document.getElementById('activateSkillsDelete');
+        const btn2 = document.getElementById('activateEducationDelete');
+        const btn3 = document.getElementById('activateWorkDelete');
+
+        const current = document.getElementById('current');
+        const workEndDate = document.getElementById('workEndDate');
+    
+        function workEndDateToggle() {
+            if (current.checked == true){
+                workEndDate.style.display = "none";
+                // current.value=off;
+                console.log(current.value);
+            } else {
+                workEndDate.style.display = "block";
+                console.log(current.value);
+            }
+        }
 
         btn.addEventListener('click', () => {
         const btns = document.getElementsByClassName('SkillsDelete');
@@ -580,6 +615,45 @@
             }
         }
         });
+
+        btn2.addEventListener('click', () => {
+        const btns = document.getElementsByClassName('EducationDelete');
+        for (const bn of btns) {
+            if (bn.style.display === 'none') {
+                // 👇️ this SHOWS the form
+                bn.style.display = 'block';
+                btn2.style.background = "green";
+                btn2.innerHTML = "Done";
+                document.getElementById('addEducation').disabled = true; 
+            } else {
+                // 👇️ this HIDES the form
+                bn.style.display = 'none';
+                btn2.style.background = "#0d6efd";
+                btn2.innerHTML = "Edit";
+                document.getElementById('addEducation').disabled = false; 
+            }
+        }
+        });
+
+        btn3.addEventListener('click', () => {
+        const btns = document.getElementsByClassName('WorkDelete');
+        for (const bn of btns) {
+            if (bn.style.display === 'none') {
+                // 👇️ this SHOWS the form
+                bn.style.display = 'block';
+                btn3.style.background = "green";
+                btn3.innerHTML = "Done";
+                document.getElementById('addWork').disabled = true; 
+            } else {
+                // 👇️ this HIDES the form
+                bn.style.display = 'none';
+                btn3.style.background = "#0d6efd";
+                btn3.innerHTML = "Edit";
+                document.getElementById('addWork').disabled = false; 
+            }
+        }
+        });
+
 
 
         function submitUserSkillAddForm(){
@@ -606,6 +680,62 @@
             btn.style.background = "#0d6efd";
             btn.innerHTML = "Edit";
             document.getElementById('addSkill').disabled = false; 
+        }
+    });
+}
+
+        function submitEducationAddForm(){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/storeEducation',
+        data: $('.form2').serialize(),
+        success: function(response){            
+            $("#newEducation").modal('hide');
+            $("#newEducation").load(location.href+" #newEducation>*","");
+            $("#educationCard").load(location.href+" #educationCard>*","");
+        }
+    });
+    }
+        
+        function submitForm2(id){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/deleteEducation/'+id,
+        data: $('.form').serialize(),
+        success: function(response){
+            $("#educationCard").load(location.href+" #educationCard>*","");
+            $("#newEducation").load(location.href+" #newEducation>*","");
+            btn2.style.background = "#0d6efd";
+            btn2.innerHTML = "Edit";
+            document.getElementById('addEducation').disabled = false; 
+        }
+    });
+}
+
+function submitWorkAddForm(){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/storeWork',
+        data: $('.form2').serialize(),
+        success: function(response){            
+            $("#newWork").modal('hide');
+            $("#newWork").load(location.href+" #newWork>*","");
+            $("#workCard").load(location.href+" #workCard>*","");
+        }
+    });
+    }
+        
+        function submitForm3(id){
+    $.ajax({
+        type: 'POST',
+        url: '/profile/deleteWork/'+id,
+        data: $('.form').serialize(),
+        success: function(response){
+            $("#workCard").load(location.href+" #workCard>*","");
+            $("#newWork").load(location.href+" #newWork>*","");
+            btn3.style.background = "#0d6efd";
+            btn3.innerHTML = "Edit";
+            document.getElementById('addWork').disabled = false; 
         }
     });
 }

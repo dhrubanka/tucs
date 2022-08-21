@@ -30,5 +30,10 @@ class WorkController extends Controller
        return back();
     }
 
-    //
+    public function delete(Request $request, $id)
+    {
+        $work = Work::find($id)->delete();
+        return back();
+    }
+
 }

@@ -18,7 +18,8 @@ class CreateWorksTable extends Migration
             $table->string('companyName');
             $table->string('designation');
             $table->date('startDate');
-            $table->date('endDate');
+            $table->boolean('current');
+            $table->date('endDate')->nullable();
             $table->string('description')->nullable();
             $table->unsignedBigInteger('profile_id');
             $table->timestamps();
