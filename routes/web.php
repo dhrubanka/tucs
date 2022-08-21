@@ -18,6 +18,7 @@ use App\Http\Controllers\EducationController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\AuthProjectController;
 use App\Http\Controllers\ApplicantController;
+use App\Http\Controllers\BugReportController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\CommunityRequestController;
@@ -53,6 +54,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
+    
     Route::group(['middleware' => ['role:admin|moderator']], function () {
 
         Route::get('/dashboard', [HomeController::class, 'admin'])->name('dashboard');
@@ -106,6 +108,14 @@ Route::middleware('auth')->group(function () {
         Route::post('/community/unsubscribe', [SubcriptionController::class, 'unsubscribe']);
         Route::post('/community/subscribeS', [SubcriptionController::class, 'subscribeS']);
         Route::post('/community/unsubscribeS', [SubcriptionController::class, 'unsubscribeS']);
+
+        //Request Community
+        Route::get('/community-request', [CommunityRequestController::class, 'create']);
+        Route::post('/community-request/store', [CommunityRequestController::class, 'store']);
+
+        //Report a Bug
+        Route::get('/report-bug', [BugReportController::class, 'create']);
+        Route::post('/report-bug/store', [BugReportController::class, 'store']);
 
         Route::get('/post/create', [PostController::class, 'create']);
         Route::post('/post/store', [PostController::class, 'store']);
@@ -169,8 +179,7 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/post/{slug}', [PostController::class, 'show']);
 //community
 Route::get('/community/{slug}', [CommunityController::class, 'show']);
-//Request Community
-Route::get('/community-request', [CommunityRequestController::class, 'create']);
+
 //blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/show/{id}', [BlogController::class, 'show'])->name('blog.show');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CommunityRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommunityRequestController extends Controller
 {
@@ -35,7 +36,20 @@ class CommunityRequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required|string',
+             
+        ]);
+        CommunityRequest::create([
+            'name' => request('name'),
+             
+           
+            'desc' => request('description'),
+            'profile_id' =>  Auth::user()->profile->id
+        ]);
+
+        return back()->with('success', 'Request Complete');
     }
 
     /**

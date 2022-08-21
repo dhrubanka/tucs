@@ -1,13 +1,13 @@
 <x-layouts.app>
-    <div class="container card" style="padding: 1em">
+    <div class="container card" style="padding: 1em; width: 70%">
 
         <div class="row">
-            <div class="col-sm-12">
-                <h2>Request a<b>Community</b></h2>
+            <div class="text-center">
+                <h2>Request a <b>Community</b></h2>
             </div>
 
         </div>
-
+<hr>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -24,27 +24,27 @@
             <strong>{{ $message }}</strong>
         </div>
     @endif
-    <form method="POST" action="">
+    <form method="POST" action="/community-request/store">
         @csrf
 
         <div class="form-row">
-            <div class="form-group col-md-12">
-                <label for="inputName4">Category Name</label>
+            <div class="mb-3">
+                <label for="inputName4">Community Name</label>
                 <input type="text" name="name" class="form-control"  value="{{ old('name') }}" id="inputName4" placeholder="Name">
 
             </div>
         </div>
-            <div class="form-group row">
-                <label for="description" class="col-md-2 col-form-label">Category Description</label>
-                <div class="col-md-10">
+              <div class="mb-3">
+                <label for="description" class="col-form-label">Community Description</label>
+                 
                 <textarea name="description" class="form-control " id="description" rows="5">
                 </textarea>
-                </div>
+               
             </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <button type="submit" class="btn btn-primary">Create</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary text-white">Request</button>
             </div>
         </div>
 

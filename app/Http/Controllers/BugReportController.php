@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BugReport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BugReportController extends Controller
 {
@@ -25,6 +26,8 @@ class BugReportController extends Controller
     public function create()
     {
         //
+
+        return view('bugreporting');
     }
 
     /**
@@ -35,7 +38,20 @@ class BugReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'module_name' => 'required',
+            'description' => 'required|string',
+             
+        ]);
+        BugReport::create([
+            'module_name' => request('module_name'),
+             
+           
+            'desc' => request('description'),
+            'profile_id' =>  Auth::user()->profile->id
+        ]);
+
+        return back()->with('success', 'Successfully Reported Bug');
     }
 
     /**

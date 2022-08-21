@@ -75,7 +75,7 @@
                         </li>
                         @Auth
                         <li class="nav-item d-flex flex-row" style="  background: rgb(185, 193, 215); border-radius: 25px;" id="profile-nav" >
-                            <a class="nav-link" href="/profile/{{Auth::user()->id}}" id="profile-nav-pic">
+                            <a class="nav-link" href="/profile/show/{{Auth::user()->id}}" id="profile-nav-pic">
                                 <img src="https://avatars.dicebear.com/api/{!! (Auth::user()->profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" 
                                 style="height:40px; width: 40px; border-radius: 50%;">
                             </a>
@@ -242,8 +242,8 @@
             <ul class="nav flex-column">
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Developers</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Report a Bug</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+              <li class="nav-item mb-2"><a href="/report-bug" class="nav-link p-0 text-muted">Report a Bug</a></li>
+              <li class="nav-item mb-2"><a href="/community-request" class="nav-link p-0 text-muted">Request a Community</a></li>
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact</a></li>
             </ul>
           </div>

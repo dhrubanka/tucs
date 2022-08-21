@@ -15,7 +15,17 @@ class CreateBugReportsTable extends Migration
     {
         Schema::create('bug_reports', function (Blueprint $table) {
             $table->id();
+           
+
+            $table->unsignedBigInteger('profile_id');
+            $table->string('module_name');
+            $table->string('desc');
             $table->timestamps();
+
+            $table->foreign('profile_id')
+            ->references('id')
+            ->on('profiles')
+            ->onDelete('cascade');
         });
     }
 

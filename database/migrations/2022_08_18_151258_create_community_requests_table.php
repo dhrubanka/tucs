@@ -15,7 +15,15 @@ class CreateCommunityRequestsTable extends Migration
     {
         Schema::create('community_requests', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('profile_id');
+            $table->string('name');
+            $table->string('desc');
             $table->timestamps();
+
+            $table->foreign('profile_id')
+            ->references('id')
+            ->on('profiles')
+            ->onDelete('cascade');
         });
     }
 
