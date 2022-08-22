@@ -1,9 +1,17 @@
 <x-layouts.app>
-
-    <div class="container" style="max-width: 70%">
-    <div class="row card shadow" >
-        <h2 class="card-header" style="background: royalblue;
-        color: whitesmoke;"> Register</h2>
+    <div class="p-5 bg-image" style="
+    background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+    height: 300px;
+    "></div>
+    <div class="container text-center" style="max-width: 70%; margin-top: -100px;
+            background: hsla(0, 0%, 100%, 0.8);
+            backdrop-filter: blur(30px);">
+            
+    <div class="row card text-center shadow " >
+        <h2 class="fw-bold mb-3 mt-3">Sign up now</h2>
+        <div class="d-flex justify-content-center">
+            <hr style="width: 90%">
+        </div>
         <form class="row g-3 card-body" method="POST" action="{{ route('register') }}" >
         @csrf
             <div class="col-md-6">
@@ -177,7 +185,7 @@
              
             <div class="col-12 text-center mt-5">
                 <button type="submit" class="btn "   style="background: royalblue;
-                color: whitesmoke;">Sign in</button>
+                color: whitesmoke;">Register</button>
             </div>
         </form>
     </div>

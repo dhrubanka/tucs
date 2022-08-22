@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="{{ asset('css/forum/forum_show.css') }}">
 
 
-    <div class="wrapper" style="margin-top: -1.7em">
+    <div class="wrapper">
         <!-- side nav community-->
         @if(Auth::check())
         <x-layouts.ForumSide :communities="$communities" />

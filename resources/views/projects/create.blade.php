@@ -1,10 +1,10 @@
 <x-layouts.app>
-<div class="text-center" style="background-color: royalblue; margin-top:-2em; ">
+<div class="text-center" style="background-color: royalblue;  ">
  <div style="padding: 5em; color: white;">
     <div style="border:solid; border-radius: 10px; display: inline; padding:5px;"> Submit your Project &nbsp > &nbsp Wait for Approval &nbsp > &nbsp Moderator reviews Submission &nbsp > &nbsp Acceptance</div>
  </div>
 </div>
-    <div class="row">
+    <div class="row" style="  background: rgb(144, 227, 255);">
         <div class="container">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -27,13 +27,14 @@
                 </div>
             @endif
         </div>
-        <div class=" col-12 offset-md-2 col-md-8" style="padding: 2% 3%;">
+         
+        <div class=" col-12 offset-md-2 col-md-8" style="padding: 2% 3%;  "">
              
                 <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title col-12 col-md-8">Submit a Project</h5> 
+                    {{-- <div class="card-header"   style="background-color: royalblue; color: white ">
+                        <h5 class="card-title col-12 col-md-8 p-1">Submit a Project</h5> 
                         
-                    </div>
+                    </div> --}}
                     <div class="card-body">
                       <form action="/project/store" method="post" enctype="multipart/form-data">
                       @csrf 

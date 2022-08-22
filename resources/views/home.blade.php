@@ -1,6 +1,55 @@
 <x-layouts.app>
+    {{-- https://www.tezu.ernet.in/dcompsc/images/csed.jpg" --}}
 
-    <link rel="stylesheet" href="{{ asset('css/forum/forum_show.css') }}">
+ <!-- Jumbotron -->
+<style>
+    .mask {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-attachment: fixed;
+    }
+
+    .parallax {
+  /* The image used */
+  background-image: url("img_parallax.jpg");
+
+  /* Set a specific height */
+  min-height: 500px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+</style>
+  <!-- Background image -->
+  <div class="parallax text-center bg-image" style="
+      background-image: url('https://www.tezu.ernet.in/dcompsc/images/csed.jpg');
+      height: 500px;
+    ">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h2 class="mb-3">Tezpur University Computer Society</h2>
+          <h4 class="mb-3">Welcome Visitors</h4>
+          <a class="btn btn-outline-light btn-lg" href="#!" role="button">Know More </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background image -->
+<!-- Jumbotron -->
+    
+     
+    {{-- <link rel="stylesheet" href="{{ asset('css/forum/forum_show.css') }}"> --}}
 
 
     <div class="forum-home mt-5">

@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
         <div class="col-12  col-md-3" style="padding: 2% 3%;">
-            <a class="btn btn-primary" href="{{url('/blog/create')}}" role="button" style="width: 100%;"><span class="badge" style="padding: 14px 0px; font-size: medium;"><i class="fas fa-pencil-alt"></i> CREATE BLOG POST</span></a>
+            <a class="btn" href="{{url('/blog/create')}}" role="button" style="width: 80%; color:white;background-color: royalblue"><span class="badge" style="padding: 14px 0px; font-size: medium;"><i class="fas fa-pencil-alt"></i> CREATE BLOG POST</span></a>
         </div>
     </div>
     </div>
