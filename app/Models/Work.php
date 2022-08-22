@@ -12,6 +12,7 @@ class Work extends Model
         'companyName',
         'designation',
         'startDate',
+        'current',
         'endDate',
         'profile_id',
     ];

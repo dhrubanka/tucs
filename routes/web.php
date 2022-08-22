@@ -101,7 +101,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/profile/storeSkill', [UserSkillController::class, 'store'])->name('userskill');
         Route::post('/profile/deleteSkill/{id}', [UserSkillController::class, 'delete'])->name('userdeleteskill');
         Route::post('/profile/storeEducation', [EducationController::class, 'store'])->name('usereducation');
+        Route::post('/profile/deleteEducation/{id}', [EducationController::class, 'delete'])->name('userdeleteeducation');
         Route::post('/profile/storeWork', [WorkController::class, 'store'])->name('userwork');
+        Route::post('/profile/deleteWork/{id}', [WorkController::class, 'delete'])->name('userdeletework');
 
         //community subscription
         Route::post('/community/subscribe', [SubcriptionController::class, 'subscribe']);
