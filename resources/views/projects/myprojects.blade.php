@@ -2,7 +2,7 @@
     <style>
         .nav-project {
             background-color: royalblue;
-            margin-top: -1.5em;
+             
             color: whitesmoke;
             padding: 1em;
         }
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-md-3 text-center">
                         <a href="/project" class="btn btn-light" >All Projects</a>
-                        <a href="/project/create" class="btn btn-light" >Submit a Project</a>''
+                        <a href="/project/create" class="btn btn-light" >Submit a Project</a>
                     </div>
                 </div>
             </div>

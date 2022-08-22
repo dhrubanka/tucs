@@ -1,6 +1,6 @@
 <x-layouts.app>
      
-    <div class="container">
+    <div class="container p-2">
         <div class="row"  style="">
             <div class="card">
                 <div class="card-header d-flex flex-row justify-content-between" style="background: royalblue;margin-left:-12px;margin-right:-12px">

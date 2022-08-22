@@ -1,6 +1,6 @@
 <x-layouts.app>
 <link rel="stylesheet" href="{{ asset('css/forum/forum_show.css') }}">
-<div class=" " style="margin-top: -2em;">
+<div class=" " >
                    <div
                     class="bg-image d-flex justify-content-left align-items-center"
                     style="

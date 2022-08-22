@@ -1,66 +1,61 @@
 <x-layouts.app>
-    <div class="container">
-         
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header text-center" style="background: royalblue;
-                    color: whitesmoke;">
-                        <h1>Login</h1>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
-                                    id="exampleInputEmail1" value="{{ old('email') }}" aria-describedby="emailHelp"
-                                    required autocomplete="email" autofocus>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone
-                                    else.
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputPassword1"  name="password"
-                                required autocomplete="current-password">
-                            </div>
-                            {{-- <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-                            </div> --}}
+  <div class="container-fluid h-custom p-4">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-9 col-lg-6 col-xl-5">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="img-fluid" alt="Sample image">
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-5">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="email" id="form3Example3"  value="{{ old('email') }}" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email"
+                    placeholder="Enter a valid email address" />
+                    <label class="form-label" for="form3Example3">Email address</label>
 
-                            <div class="mb-3 form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                    {{ old('remember') ? 'checked' : '' }}>
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+    
+              <!-- Password input -->
+              <div class="form-outline mb-3">
+                <input type="password" id="form3Example4" class="form-control form-control-lg @error('password') is-invalid @enderror"
+                  placeholder="Enter password" name="password" />
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
+    
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- Checkbox -->
+                <div class="form-check mb-0">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                    {{ old('remember') ? 'checked' : '' }}>
 
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-
-                            {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
-                            <div class="mb-3">
-                                <button type="submit" class="btn" style="background: royalblue;
-                                color: whitesmoke;">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </form>
-                    </div>
+                <label class="form-check-label" for="remember">
+                    {{ __('Remember Me') }}
+                </label>
                 </div>
-            </div>
+                @if (Route::has('password.request'))
+                <a class="btn btn-link" href="{{ route('password.request') }}">
+                    {{ __('Forgot Your Password?') }}
+                </a>
+            @endif
+              </div>
+    
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button type="submit" class="btn" style="background: royalblue;
+                color: whitesmoke;">
+                    {{ __('Login') }}
+                </button>
+                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                    class="link-danger">Register</a></p>
+              </div>
+    
+            </form>
+          </div>
         </div>
-    </div>
+     
 </x-layouts.app>
