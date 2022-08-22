@@ -46,13 +46,17 @@ class CommunityController extends Controller
             'communityTitle' => 'required|string|max:255',
             'slug' => 'required|unique:communities,slug'
         ]);
-        Community::create([
+
+        $image = request('communityPhoto')->store('communityCover');
+
+        $community = Community::create([
             'parent_community_id' => request('parentId'),
             'name' => strtoupper(Str::of(request('communityTitle'))->trim()),
             'slug' =>  str_replace(' ', '-', strtolower(request('slug'))),
             'description' => request('communityDesc'),
-            'image' => request('communityPhoto')
+            'image' => $image
         ]);
+
 
         return back()->with('success', 'Successfully inserted a new community!');
 

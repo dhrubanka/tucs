@@ -42,22 +42,28 @@
                     <h4>Explore</h4>
                     @foreach ($allcommunitites as $community)
                         <div class="col-md-6 col-sm-12 p-1">
-                            <div class="card text-center" style=" background: #7474BF;  /* fallback for old browsers */
+                            <div class="card bg-image text-center" style="background-image: url('{{$community->image}}');">
+                                {{-- <div class="card-image" style="background: url('{{$community->image}}'); height: 100px;">
+                                </div> --}}
+                                {{-- <img class="card-image" src='{{$community->image}}'> --}}
+                                {{-- <div class="card-img-overlay"> --}}
+                            {{-- <div class="card text-center" style=" background: #7474BF;  /* fallback for old browsers */
                             background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
                             background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
                             
-                            ">
-                                <a href="/community/{{ $community->slug }}">
-                                    <div class="card-body text-center">
-                                        <h4
-                                            style="color: white; text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000; height:3em">
-                                            {{ $community->name }}
-                                        </h4>
-                                        {{-- <div class="card-footer">
-                                            <div class="btn btn-light">View </div>
-                                        </div> --}}
-                                    </div>
-                                </a>
+                            "> --}}
+                                    <a href="/community/{{ $community->slug }}">
+                                        <div class="card-body text-center">
+                                            <h4
+                                                style="color: white; text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000; height:3em">
+                                                {{ $community->name }}
+                                            </h4>
+                                            {{-- <div class="card-footer">
+                                                <div class="btn btn-light">View </div>
+                                            </div> --}}
+                                        </div>
+                                    </a>
+                                {{-- </div> --}}
                             </div>
                         </div>
                     @endforeach
