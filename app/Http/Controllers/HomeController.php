@@ -8,8 +8,10 @@ use App\Models\Forum;
 use App\Models\Post;
 use App\Models\Blog;
 use App\Models\Event;
+use App\Models\User;
 use App\Models\Like;
 use App\Models\Dislike;
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -32,10 +34,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $communities = Community::orderby('created_at','desc')->take(3)->get();
+        $communities = Community::orderby('created_at','desc')->take(4)->get();
 
-        $blog = Blog::take(2)->get();
-        
+        $blog = Blog::take(3)->get();
+        //counts
+        $blog_count = Blog::all()->count();
+        $user_count = User::all()->count();
+        $community_count = Community::all()->count();
+        $project_count = Project::all()->count();
+
         $event = Event::query()
         ->orderBy('start_date_time')
         ->take(2)
@@ -62,7 +69,8 @@ class HomeController extends Controller
         else{
             $posts= Post::take(2)->get();
         }
-        return view('home', ['posts' => $posts, 'communities' => $communities, 'blogs' => $blog, 'events' => $event, 'upcomingEventCount' => $upcomingEventCount, 'pastEventCount' => $pastEventCount]);
+        return view('home', ['posts' => $posts, 'communities' => $communities, 'blogs' => $blog, 'events' => $event, 'upcomingEventCount' => $upcomingEventCount, 'pastEventCount' => $pastEventCount, 
+        'blog_count' => $blog_count, 'user_count' => $user_count, 'community_count' => $community_count, 'project_count' => $project_count, ]);
    }
    public function admin()
     {

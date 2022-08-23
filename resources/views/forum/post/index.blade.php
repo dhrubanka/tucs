@@ -1,6 +1,6 @@
 <x-layouts.app>
 
-    <div class="row" style="margin-top: -2em;">
+    <div class="row" >
         <!--post cards-->
         <div class="bg-image d-flex justify-content-left align-items-center" style="
                         background-image: url('https://mdbootstrap.com/img/new/fluid/nature/015.jpg');
@@ -141,7 +141,7 @@
                                             <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary mt-2">COMMENT</button>
+                                            <button type="submit" class="btn text-white mt-2" style="background: rgb(82, 119, 229)">COMMENT</button>
                                         </div>
                                     </form>
                                 </div>
