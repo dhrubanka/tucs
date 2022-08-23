@@ -406,7 +406,7 @@
                             <div class="card3 card-1">
                                 <div class="card__icon"><i class="fas fa-hashtag"></i>
                                 {{-- <p class="card__exit"><i class="fas fa-times"></i>< --}}
-                                <h2 class="card__title"> {{$community->name}}</h2></div>
+                                <h3 class="card__title"> {{$community->name}}</h3></div>
                                 
                                 <p class="card__apply">
                                     
