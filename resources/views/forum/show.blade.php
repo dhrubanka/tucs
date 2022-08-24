@@ -1,7 +1,7 @@
 <x-layouts.app>
 <link rel="stylesheet" href="{{ asset('css/forum/forum_show.css') }}">
 {{-- post card --}}
-{-- post card --}}
+
 <style>
  
  
