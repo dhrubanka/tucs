@@ -191,7 +191,7 @@
                         <h6>Total Members: </h6>
                     </div>
 
-                    <div class="" id="request-comm"> Request Community</div>
+                    <div class="/community-request" id="request-comm"> Request Community</div>
         </div>
     </div>
 </div>                

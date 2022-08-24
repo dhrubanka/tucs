@@ -206,39 +206,38 @@
                     </div>
                 </div>
                 <ol class="side-list3" id="top-growing-list">
-                    <li>
-                        <div class="row">
-                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
-                            </div>
-                            <div class="offset-1 col-9"> <small> <i> </small>Web Development</i></div>
+                    <li> <div class="p-3 m-3">
+                         
+                            <i class="fas fa-hashtag" style="font-size: 14px">  Web Development </i>
+                        </div>
                     </li>
                     <li>
-                        <div class="row">
-                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
-                            </div>
-                            <div class="offset-1 col-9"> <small> <i> </small>AI</i></div>
+                        <div class="p-3 m-3">
+                         
+                            <i class="fas fa-hashtag" style="font-size: 14px">  Machine Learning </i>
+                        </div>
                     </li>
                     <li>
-                        <div class="row">
-                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
-                            </div>
-                            <div class="offset-1 col-9"> <small> <i> </small>Computer Vision</i></div>
+                        <div class="p-3 m-3">
+                         
+                            <i class="fas fa-hashtag" style="font-size: 14px">  Deep Learning </i>
+                        </div>
                     </li>
                     <li>
-                        <div class="row">
-                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
-                            </div>
-                            <div class="offset-1 col-9"> <small> <i> </small>Machine Learning</i></div>
+                        <div class="p-3 m-3">
+                         
+                            <i class="fas fa-hashtag" style="font-size: 14px">  React JS </i>
+                        </div>
                     </li>
                     <li>
-                        <div class="row">
-                            <div class="col-2"><img src="https://picsum.photos/200/200?random={!!  rand(10,100); !!}" class="rounded" style="max-height: 30px;" alt="...">
-                            </div>
-                            <div class="offset-1 col-9"> <small> <i> </small>OS</i></div>
+                        <div class="p-3 m-3">
+                         
+                            <i class="fas fa-hashtag" style="font-size: 14px"> Laravel </i>
+                        </div>
                     </li>
 
                 </ol>
-                <div class="" id="request-comm"> Request Community</div>
+                <a href="/community-request" id="request-comm"> Request Community</a>
             </div>
         </div>
     </div>

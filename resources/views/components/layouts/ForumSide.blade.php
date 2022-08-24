@@ -43,7 +43,7 @@
                     <a href="/forum/explore" class="download">Explore Communities</a>
                 </li>
                 <li>
-                    <a href="" class="article">Request Communities</a>
+                    <a href="/community-request" class="article">Request Communities</a>
                 </li>
             </ul>
         </nav>

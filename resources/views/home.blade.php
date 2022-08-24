@@ -60,7 +60,7 @@
             </p>
         </div>
         <div class="col-sm-12 col-md-4 p-4">
-            <img src="/images/dept2.jpg" style=" " alt="">
+            <img src="/images/dept2.jpg" style=" " alt="" style="  max-width: 100%;">
         </div>
     </div>
     </div>
@@ -338,11 +338,11 @@
 
  
 
-img {
+/* img {
   max-width: 100%;
   display: block;
   object-fit: cover;
-}
+} */
 
 .card4 {
   display: flex;
@@ -439,7 +439,9 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
                             <a  class="card4" href="/blog/show/{{$blog->id}}" style="text-decoration: none; color: black;">
                             <div>
                                 <div class="card4__header">
-                                  <img src="https://source.unsplash.com/collection/1097769?{!!  rand(10,100); !!}&w=600&h=400" alt="card4__image" class="card4__image" width="600" height="200">
+                                  <img src="https://source.unsplash.com/collection/1097769?{!!  rand(10,100); !!}&w=600&h=400" alt="card4__image" class="card4__image" width="600" height="200" style="  max-width: 100%;
+                                  display: block;
+                                  object-fit: cover;">
                                 </div>
                                 <div class="card4__body">
                                   <span class="tag tag-blue">Blog</span>
