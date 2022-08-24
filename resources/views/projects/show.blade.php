@@ -3,7 +3,7 @@
         .nav-project {
             /* background-color: rgb(153, 153, 255); */
             background: royalblue;
-            margin-top: -1.5em;
+            
             color: whitesmoke;
             padding: 1em;
         }

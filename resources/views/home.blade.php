@@ -209,104 +209,14 @@
 
 {{-- post card --}}
 <style>
- @media (max-width: 800px) {
-    .projcard {
-	position: relative;
-	width: 350px !important;
-	height: 100px;
-	margin-bottom: 40px;
-	border-radius: 10px;
-	background-color: #fff;
-	border: 2px solid #ddd;
-	font-size: 18px;
-	overflow: hidden;
-	cursor: pointer;
-	box-shadow: 0 4px 21px -12px rgba(0, 0, 0, .66);
-	transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
  
-/* .projcard:hover {
-	box-shadow: 0 34px 32px -33px rgba(0, 0, 0, .18);
-	transform: translate(0px, -3px);
-}
-.projcard::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-image: linear-gradient(-70deg, #424242, transparent 50%);
-	opacity: 0.07;
-}
-.projcard:nth-child(2n)::before {
-	background-image: linear-gradient(-250deg, #424242, transparent 50%);
-} */
-.projcard-innerbox {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-}
-.projcard-img {
-	position: relative;
-	height: 300px;
-	width: 150px !important;
-	top: 0;
-	left: 0;
-	transition: transform 0.2s ease;
-}
-/* .projcard:nth-child(2n) .projcard-img {
-	left: initial;
-	right: 0;
-}
-.projcard:hover .projcard-img {
-	transform: scale(1.05) rotate(1deg);
-}
-.projcard:hover .projcard-bar {
-	width: 70px;
-} */
+ 
 .projcard-textbox {
-	position: relative;
-	top: 7%;
+	 top: 7%;
 	bottom: 7%;
-	left: 130px;
-	width:30px;
-	font-size: 17px;
+	 font-size: 17px;
 }
-/* .projcard:nth-child(2n) .projcard-textbox {
-	left: initial;
-	right: 0px;
-}
-.projcard-textbox::before,
-.projcard-textbox::after {
-	content: "";
-	position: absolute;
-	display: block;
-	background: #ff0000bb;
-	background: #fff;
-	top: -20%;
-	left: -55px;
-	height: 140%;
-	width: 60px;
-	transform: rotate(8deg);
-}
-.projcard:nth-child(2n) .projcard-textbox::before {
-	display: none;
-}
-.projcard-textbox::after {
-	display: none;
-	left: initial;
-	right: -55px;
-}
-.projcard:nth-child(2n) .projcard-textbox::after {
-	display: block;
-} */
-/* .projcard-textbox * {
-	position: relative;
-} */
+ 
 .projcard-title {
 	font-family: 'Voces', 'Open Sans', arial, sans-serif;
 	font-size: 24px;
@@ -315,18 +225,7 @@
 	font-family: 'Voces', 'Open Sans', arial, sans-serif;
 	color: #888;
 }
-.projcard-bar {
-	left: -2px;
-	width: 50px;
-	height: 5px;
-	margin: 10px 0;
-	border-radius: 5px;
-	background-color: #424242;
-	transition: width 0.2s ease;
-}
-/* .projcard-blue .projcard-bar { background-color: #0088FF; }
-.projcard-blue::before { background-image: linear-gradient(-70deg, #0088FF, transparent 50%); }
-.projcard-blue:nth-child(2n)::before { background-image: linear-gradient(-250deg, #0088FF, transparent 50%); } */
+ 
 
 .projcard-description {
 	z-index: 10;
@@ -337,240 +236,42 @@
 	text-overflow: ellipsis;
 }
 .projcard-tagbox {
-	position: absolute;
-	bottom: 3%;
-	font-size: 14px;
-	cursor: default;
-	user-select: none;
-	pointer-events: none;
-}
-.projcard-tag {
-	display: inline-block;
-	background: #E0E0E0;
-	color: #777;
-	border-radius: 3px 0 0 3px;
-	line-height: 26px;
-	padding: 0 10px 0 23px;
-	position: relative;
-	margin-right: 20px;
-	cursor: default;
-	user-select: none;
-	transition: color 0.2s;
-}
-/* .projcard-tag::before {
-	content: '';
-	position: absolute;
-	background: #fff;
-	border-radius: 10px;
-	box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
-	height: 6px;
-	left: 10px;
-	width: 6px;
-	top: 10px;
-}
-.projcard-tag::after {
-	content: '';
-	position: absolute;
-	border-bottom: 13px solid transparent;
-	border-left: 10px solid #E0E0E0;
-	border-top: 13px solid transparent;
-	right: -10px;
-	top: 0; */
-/* } */
- }
-.projcard {
-	position: relative;
-	width: 100%;
-	height: 300px;
-	margin-bottom: 40px;
-	border-radius: 10px;
-	background-color: #fff;
-	border: 2px solid #ddd;
-	font-size: 18px;
-	overflow: hidden;
-	cursor: pointer;
-	box-shadow: 0 4px 21px -12px rgba(0, 0, 0, .66);
-	transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-/* .projcard:hover {
-	box-shadow: 0 34px 32px -33px rgba(0, 0, 0, .18);
-	transform: translate(0px, -3px);
-}
-.projcard::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-image: linear-gradient(-70deg, #424242, transparent 50%);
-	opacity: 0.07;
-}
-.projcard:nth-child(2n)::before {
-	background-image: linear-gradient(-250deg, #424242, transparent 50%);
-} */
-.projcard-innerbox {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-}
-.projcard-img {
-	position: absolute;
-	height: 300px;
-	width: 400px;
-	top: 0;
-	left: 0;
-	transition: transform 0.2s ease;
-}
-/* .projcard:nth-child(2n) .projcard-img {
-	left: initial;
-	right: 0;
-}
-.projcard:hover .projcard-img {
-	transform: scale(1.05) rotate(1deg);
-}
-.projcard:hover .projcard-bar {
-	width: 70px; */
-/* } */
-.projcard-textbox {
-	position: absolute;
-	top: 7%;
-	bottom: 7%;
-	left: 430px;
-	width: calc(100% - 470px);
-	font-size: 17px;
-}
-/* .projcard:nth-child(2n) .projcard-textbox {
-	left: initial;
-	right: 430px;
-}
-.projcard-textbox::before,
-.projcard-textbox::after {
-	content: "";
-	position: absolute;
-	display: block;
-	background: #ff0000bb;
-	background: #fff;
-	top: -20%;
-	left: -55px;
-	height: 140%;
-	width: 60px;
-	transform: rotate(8deg);
-}
-.projcard:nth-child(2n) .projcard-textbox::before {
-	display: none;
-}
-.projcard-textbox::after {
-	display: none;
-	left: initial;
-	right: -55px;
-}
-.projcard:nth-child(2n) .projcard-textbox::after {
-	display: block;
-} */
-/* .projcard-textbox * {
-	position: relative;
-} */
-.projcard-title {
-	font-family: 'Voces', 'Open Sans', arial, sans-serif;
-	font-size: 24px;
-}
-.projcard-subtitle {
-	font-family: 'Voces', 'Open Sans', arial, sans-serif;
-	color: #888;
-}
-.projcard-bar {
-	left: -2px;
-	width: 50px;
-	height: 5px;
-	margin: 10px 0;
-	border-radius: 5px;
-	background-color: #424242;
-	transition: width 0.2s ease;
-}
-/* .projcard-blue .projcard-bar { background-color: #0088FF; }
-.projcard-blue::before { background-image: linear-gradient(-70deg, #0088FF, transparent 50%); }
-.projcard-blue:nth-child(2n)::before { background-image: linear-gradient(-250deg, #0088FF, transparent 50%); } */
-
-.projcard-description {
-	z-index: 10;
-	font-size: 15px;
-	color: #424242;
-	height: 125px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.projcard-tagbox {
-	position: absolute;
-	bottom: 3%;
-	font-size: 14px;
-	cursor: default;
-	user-select: none;
-	pointer-events: none;
-}
-.projcard-tag {
-	display: inline-block;
-	background: #E0E0E0;
-	color: #777;
-	border-radius: 3px 0 0 3px;
-	line-height: 26px;
-	padding: 0 10px 0 23px;
-	position: relative;
-	margin-right: 20px;
-	cursor: default;
-	user-select: none;
-	transition: color 0.2s;
-}
-/* .projcard-tag::before {
-	content: '';
-	position: absolute;
-	background: #fff;
-	border-radius: 10px;
-	box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
-	height: 6px;
-	left: 10px;
-	width: 6px;
-	top: 10px;
-}
-.projcard-tag::after {
-	content: '';
-	position: absolute;
-	border-bottom: 13px solid transparent;
-	border-left: 10px solid #E0E0E0;
-	border-top: 13px solid transparent;
-	right: -10px;
-	top: 0;
-} */
+        position: absolute;
+        bottom: 3%;
+        font-size: 14px;
+        cursor: default;
+        user-select: none;
+        pointer-events: none;
+    }
+    .projcard-tag {
+         
+        background: #E0E0E0;
+        color: #777;
+        border-radius: 3px 0 0 3px;
+        line-height: 26px;
+        padding: 0 10px 0 23px;
+        position: relative;
+        margin-right: 20px;
+        cursor: default;
+        user-select: none;
+        transition: color 0.2s;
+    }
 </style>
 <div class="forum-home mt-5" style="background-color: #f1f1f1">
         <!-- communitites-->
-        <div class="row">
-            <div class="col-md-10 offset-1">
+        <div class="container p-3">
+            <div class="col-md-12">
                 <div class="row d-flex align-items-center" >
                     <!--post cards-->
-                    <div class="col-12">
-                        <h2 class="p-3 mt-3 ">Communities</h2>
+                    <div class="col-12 m-4">
+                        <h2 class=" mt-3 ">Communities</h2>
                         <div class=" d-flex justify-content-start">
                          <hr style="width: 90%"/ >
                         </div>
 
-                        <div class="row" style="padding: 1em;">
+                        <div class="row" >
                             <h4>TOP COMMUNITIES</h4>
-                            {{-- @foreach ($communities as $community)
-                            <div class="col-4 p-1">
-                                 <div class="card" style="min-height: 200px; background-image: url('https://picsum.photos/300/300?random={!!  rand(10,100); !!}')">
-                                     <a href="/community/{{$community->slug}}" style="text-decoration: none;">
-                                         <div class="card-body text-center">
-                                            <h4 style="color: white; text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000;">
-                                                {{$community->name}}
-                                             </h4>
-                                         </div>
-                                     </a>
-                                 </div>
-                            </div>
-                            @endforeach --}}
+                             
                             @foreach ($communities as $community)
                             <div class="card3 card-1">
                                 <div class="card__icon"><i class="fas fa-hashtag"></i>
@@ -589,31 +290,37 @@
                         </div>
 
                         <!--posts-->
-                        <div class="row" style="padding: 1em;">
+                        <div class="row" >
                             <h4>Recent Posts</h4>
                             @foreach($posts as $post)
                             <div class="col-12 col-md-6">
-                                <a href="/post/{{$post->id}}">
-                                <div class="projcard projcard-blue">
-                                    <div class="projcard-innerbox">
-                                        <img class="projcard-img" src="https://source.unsplash.com/collection/1097769?{!!  rand(10,100); !!}&w=600&h=400" />
-                                        <div class="projcard-textbox">
-                                            <div class="projcard-title">{{$post->title}}</div>
-                                            <div class="projcard-subtitle" > Posted on {{Carbon\Carbon::parse($post->created_at)->diffForHumans() }} by {{$post->profile->firstName}}</div>
-                                            <div class="projcard-bar"></div>
-                                           
-                                            <div class="projcard-tagbox">
-                                                <span class="projcard-tag">{{ $post->community->name}}</span>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>  
-                                 </a>
+                              <a href="/post/{{$post->id}}" style="text-decoration: none">
+                                <div class="card m-3 ">
+                                 <div class="row">
+                                   <div class="col-6"><img src="https://source.unsplash.com/collection/1097769?{!!  rand(10,100); !!}&w=600&h=400" class="img-fluid rounded-start" alt="... " 
+                                     style="height: 200px; width: 300px"></div>
+                                   <div class="col-6">
+   
+                                     <div class="card-body">
+                                       <div class="projcard-textbox">
+                                         <div class="projcard-title" style="color: black">{{$post->title}}</div>
+                                         <div class="projcard-subtitle" > Posted on {{Carbon\Carbon::parse($post->created_at)->diffForHumans() }} by {{$post->profile->firstName}}</div>
+                                         <div class="projcard-bar"></div>
+                                         <div class="projcard-tagbox">
+                                             <span class="projcard-tag">{{ $post->community->name}}</span>
+                                         </div>
+                                       </div>
+                                     </div>
+   
+                                   </div>
+                                 </div>
+                               </div>
+                              </a>
                             </div>
 
                            
                             @endforeach
+                            
                                                          
                         </div>
                         <div style="padding: 1em;">
@@ -714,8 +421,9 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
 }
 </style>
         <!--blogs -->
+        <div class="container p-3">
         <div class="row mt-5">
-            <div class="col-md-10 offset-1">
+            <div class="col-md-12">
                 <div class="row d-flex align-items-center"  >
                     <!--post cards-->
                     <div class="col-12">
@@ -727,25 +435,7 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
                         <!--posts-->
                         <div class="row" >
                             @foreach($blogs as $blog)
-                            {{-- <div class=" col-12 col-md-6">
-                                <div class="card">
-                                  
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <img src="https://picsum.photos/200/270?random={!!  rand(10,100); !!}" class="img-fluid">
-                                                </div>
-                                                <div class="col-6 post">
-                                                    <h4>{{$blog->title}}</h4>
-                                                    <h6>Author~ {{$blog->profile->user->name}}</h6>
-                                                    <hr>
-                                                    <p>{!! Str::limit( strip_tags( $blog->content), 200 ) !!} </p> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>    
-                            </div> --}}
+                           
                             <a  class="card4" href="/blog/show/{{$blog->id}}" style="text-decoration: none; color: black;">
                             <div>
                                 <div class="card4__header">
@@ -780,10 +470,12 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
                 </div>
             </div>
         </div>
-        
+      </div>
         <!--events -->
-        <div class="row mt-5" style="background-color: #f1f1f1">
-            <div class="col-md-10 offset-1">
+    <div  style="background-color: #f1f1f1">
+    <div class="container p-3">
+        <div class="row mt-5" >
+            <div class="col-md-12">
                 <div class="row d-flex align-items-center" >
                     <!--post cards-->
                     <div class="col-12">
@@ -897,6 +589,7 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
         </div>
 
     </div>
-
+  </div>
+</div>
  
 </x-layouts.app>

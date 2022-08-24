@@ -4,7 +4,8 @@
     <div style="border:solid; border-radius: 10px; display: inline; padding:5px;"> Submit your Project &nbsp > &nbsp Wait for Approval &nbsp > &nbsp Moderator reviews Submission &nbsp > &nbsp Acceptance</div>
  </div>
 </div>
-    <div class="row" style="  background: rgb(144, 227, 255);">
+    <div class="row" style="background: rgb(192,174,238);
+    background: linear-gradient(90deg, rgba(192,174,238,1) 26%, rgba(148,187,233,1) 100%);">
         <div class="container">
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -30,7 +31,7 @@
          
         <div class=" col-12 offset-md-2 col-md-8" style="padding: 2% 3%;  "">
              
-                <div class="card">
+                <div class="card" style=" background-color: rgba(255,255,255, 0.2) !important;" >
                     {{-- <div class="card-header"   style="background-color: royalblue; color: white ">
                         <h5 class="card-title col-12 col-md-8 p-1">Submit a Project</h5> 
                         
