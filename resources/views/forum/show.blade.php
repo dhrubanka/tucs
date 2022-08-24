@@ -30,7 +30,7 @@
 	text-overflow: ellipsis;
 }
 .projcard-tagbox {
-        position: absolute;
+        position: relative;
         bottom: 3%;
         font-size: 14px;
         cursor: default;
@@ -38,9 +38,8 @@
         pointer-events: none;
     }
     .projcard-tag {
-         
-        background: #E0E0E0;
-        color: #777;
+        background: #4417c0;
+        color: #fff;
         border-radius: 3px 0 0 3px;
         line-height: 26px;
         padding: 0 10px 0 23px;
