@@ -36,7 +36,7 @@ class HomeController extends Controller
     {
         $communities = Community::orderby('created_at','desc')->take(4)->get();
 
-        $blog = Blog::take(3)->get();
+        $blog = Blog::orderby(' created_at','desc')->take(3)->get();
         //counts
         $blog_count = Blog::all()->count();
         $user_count = User::all()->count();
