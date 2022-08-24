@@ -208,4 +208,4 @@ Route::post('/connect/offersfilter', [ConnectFilterController::class, 'offersfil
 //ssl
 Route::get('/.well-known/acme-challenge/{token}', function (string $token) {
     return \Illuminate\Support\Facades\Storage::get('public/.well-known/acme-challenge/' . $token);
-})
+});
