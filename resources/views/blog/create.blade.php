@@ -4,11 +4,11 @@
     <!------------------------------------------ posts ---------------------------------------->
         <div class="row">
            @if ($message = Session::get('success'))
-           <div class="alert alert-success alert-block">
+           <div class="alert alert-danger alert-block">
                <button type="button" class="close" data-dismiss="alert">×</button>
                <strong>{{ $message }}</strong>
            </div>
-       @endif
+           @endif
             <div class="card col-12 offset-md-2 col-md-8" style=" background-color: rgba(255,255,255, 0.2) !important;" >
                 <div class="card-header row" style="padding-top: 25px ;  color:white;background-color: royalblue">
                     <h5 class="card-title col-12 col-md-8">CREATE A POST</h5>

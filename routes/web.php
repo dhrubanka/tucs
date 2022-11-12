@@ -141,6 +141,9 @@ Route::middleware('auth')->group(function () {
         //blog creation
         Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
         Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
+        Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+        Route::post('/blog/{id}/delete', [BlogController::class, 'delete'])->name('blog.delete');
+        Route::post('/blog/{id}/update', [BlogController::class, 'update'])->name('blog.update');
 
         //message
         Route::get('/message', [ConversationController::class, 'index'])->name('conversation');
