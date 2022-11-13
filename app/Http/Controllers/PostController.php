@@ -10,6 +10,7 @@ use App\Models\Dislike;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -139,9 +140,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::where('id','=',$id)->first();
+        return view('forum.edit', ['post' => $post]);
     }
 
     /**
@@ -151,9 +153,19 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        DB::table('posts')
+              ->where('id', $id)
+              ->update(['title' => request('title') , 'content' => request('content')]);
+              return redirect()->route('forum');
+    }
+
+    public function delete($id)
+    {
+        Post::where('id', $id)->delete();
+
+        return redirect()->route('forum');
     }
 
     /**

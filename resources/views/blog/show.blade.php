@@ -20,7 +20,7 @@
                                         <a href="/blog/{{$blog->id}}/edit" class="btn bg-success btn-sm text-white">Edit</a>
                                     </div>
                                     <div class="col-12 col-md-3">
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">Delete</button>
+                                        <button type="button" class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#confirmDelete">Delete</button>
                                     </div>
                                 </div>
                                 <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-hidden="true">
@@ -34,7 +34,7 @@
                                             @csrf
                                             <button type="submit" class="btn btn-danger">Yes, Delete </button>
                                           </form>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                       </div>
                                     </div>
