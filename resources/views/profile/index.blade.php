@@ -39,7 +39,7 @@
                         <h4>Skills</h4>
                         <div class="ms-auto">
                             @if(auth()->user()->id == $profile->user->id) 
-                            <button  class="btn btn-primary rounded text-white" id="activateSkillsDelete"> Edit </button>
+                            <button  class="btn rounded text-white" id="activateSkillsDelete" style="background: royalblue;"> Edit </button>
                             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill" id="addSkill">Add</button> @endif
                         </div>
 
@@ -90,7 +90,7 @@
                         <h4>Education</h4>
                         <div class="ms-auto">
                             @if(auth()->user()->id == $profile->user->id) 
-                            <button  class="btn btn-primary rounded text-white" id="activateEducationDelete"> Edit </button>
+                            <button  class="btn rounded text-white" id="activateEducationDelete" style="background: royalblue;"> Edit </button>
                             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newEducation" id="addEducation">Add</button>@endif
                         </div>
 
@@ -101,7 +101,7 @@
                                     <h5 class="modal-title" id="newEducationLabel">Add Education</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form method="POST" action="" class="form2">
+                                    <form method="POST" action="" class="form3">
                                         @csrf
                                         <div class="modal-body">
                                             <div class="mb-3">
@@ -153,7 +153,7 @@
                         <h4>Work</h4>
                         <div class="ms-auto">
                             @if(auth()->user()->id == $profile->user->id)
-                            <button  class="btn btn-primary rounded text-white" id="activateWorkDelete"> Edit </button>
+                            <button  class="btn  rounded text-white" id="activateWorkDelete" style="background: royalblue;"> Edit </button>
                             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newWork" id="addWork">Add</button> @endIf
                         </div>
 
@@ -288,21 +288,21 @@
                         <h2>Forum Activity</h2>@if(auth()->user()->id == $profile->user->id) <button class="btn btn-light">Add </button> @endif
                     </div>
               
-                    <div class="card-body" style="background: rgb(236, 232, 232)">
+                    <div class="card-body" >
                         @foreach ($posts as $post)
                         <div class="card m-2">
                             <div class="card-body">
                             
                                     <h5 class="card-title">{{$post->title}}</h5>
                                     <p class="card-text">{{$post->description}}</p>
-                                    <a href="{{$post->url}}" class="btn btn-primary text-white">Check it out</a>
+                                    <a href="/post/{{$post->id}}" class="btn btn-primary text-white" style="background: royalblue;">Check it out</a>
                             
                             </div>
 
                         </div>
                         @endforeach
                         <div class="card-footer d-flex justify-content-center">
-                            <a href="/forum"><h5> See All Posts </h5></a>
+                            <a href="/forum">See All Posts </a>
                         </div>
                     </div>
                 </div>
@@ -401,7 +401,7 @@
             type: 'POST',
             url: '/profile/storeSkill',
             data: $('.form2').serialize(),
-            success: function(response){            
+            complete: function(response){
                 $("#newSkill").modal('hide');
                 $("#newSkill").load(location.href+" #newSkill>*","");
                 $("#userSkillCard").load(location.href+" #userSkillCard>*","");
@@ -414,7 +414,7 @@
             type: 'POST',
             url: '/profile/deleteSkill/'+id,
             data: $('.form').serialize(),
-            success: function(response){
+            complete: function(response){
                 $("#userSkillCard").load(location.href+" #userSkillCard>*","");
                 $("#newSkill").load(location.href+" #newSkill>*","");
                 btn.style.background = "#0d6efd";
@@ -425,11 +425,16 @@
     }
 
     function submitEducationAddForm(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $.ajax({
             type: 'POST',
             url: '/profile/storeEducation',
-            data: $('.form2').serialize(),
-            success: function(response){            
+            data: $('.form3').serialize(),
+            complete: function(response){
                 $("#newEducation").modal('hide');
                 $("#newEducation").load(location.href+" #newEducation>*","");
                 $("#educationCard").load(location.href+" #educationCard>*","");
@@ -442,7 +447,7 @@
             type: 'POST',
             url: '/profile/deleteEducation/'+id,
             data: $('.form').serialize(),
-            success: function(response){
+            complete: function(response){
                 $("#educationCard").load(location.href+" #educationCard>*","");
                 $("#newEducation").load(location.href+" #newEducation>*","");
                 btn2.style.background = "#0d6efd";
@@ -462,7 +467,7 @@ function submitWorkAddForm(){
         type: 'POST',
         url: '/profile/storeWork',
         data: $('.form2').serialize(),
-        success: function(response){            
+        complete: function(response){      
             $("#newWork").modal('hide');
             $("#newWork").load(location.href+" #newWork>*","");
             $("#workCard").load(location.href+" #workCard>*","");
@@ -480,7 +485,7 @@ function submitForm3(id){
         type: 'POST',
         url: '/profile/deleteWork/'+id,
         data: $('.form').serialize(),
-        success: function(response){
+        complete: function(response){
             $("#workCard").load(location.href+" #workCard>*","");
             $("#newWork").load(location.href+" #newWork>*","");
             btn3.style.background = "#0d6efd";
