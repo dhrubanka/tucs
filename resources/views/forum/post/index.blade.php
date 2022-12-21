@@ -56,19 +56,19 @@
                                     <div class="card-body">
 
                                         <p class="card-text">{!! $post->content !!}</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins
-                                                ago</small></p>
+                                        <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                                                </small></p>
                                     </div>
                                 </div>
                             </div>
 
                             @Auth
                             @if ($post->profile_id == Auth::user()->profile->id)
-                            <div class="row pb-2">
-                                <div class="col-12 offset-md-3 col-md-3">
+                            <div class="d-flex flex-row">
+                                <div class=" p-1 ">
                                     <a href="/post/{{$post->id}}/edit" class="btn bg-success btn-sm text-white">Edit</a>
                                 </div>
-                                <div class="col-12 col-md-3">
+                                <div class=" p-1 ">
                                     <button type="button" class="btn btn-danger btn-sm text-white" data-bs-toggle="modal" data-bs-target="#confirmDelete">Delete</button>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
                                     <div class="modal-footer">
                                       <form action="/post/{{$post->id}}/delete" method="post">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger">Yes, Delete </button>
+                                        <button type="submit" class="btn btn-danger text-white">Yes, Delete </button>
                                       </form>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                     </div>
