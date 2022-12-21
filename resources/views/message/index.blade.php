@@ -4,7 +4,7 @@
         <div class="row"  style="">
             <div class="card">
                 <div class="card-header d-flex flex-row justify-content-between" style="background: royalblue;margin-left:-12px;margin-right:-12px">
-                    <h1 class="text-white">Messages</h1>
+                    <h1 class="text-white">Messages (Experimental)</h1>
                     <a class="btn btn-light" href="/message/{{Auth::user()->profile->id}}/create" role="button"   
                        style="margin-top: 5px" ><i class="fas fa-pencil-alt"></i> SEND MESSAGE
                     </a>
