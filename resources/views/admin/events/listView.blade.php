@@ -23,7 +23,26 @@
                             Offline
                         </h6>
                         <h6>Venue: {{$event->venue}}</h6>
-                    @endif
+                        @endif
+                        <hr>
+                        <a href="/event/{{$event->id}}/edit" class="btn btn-warning">Edit</a>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">Delete</button>
+                        <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-body" >
+                                  <h5 class="text-center">Are you sure you want to delete {{ $event->title }} ?</h5>
+                                </div>
+                                <div class="modal-footer">
+                                  <form action="/event/{{$event->id}}/delete" method="post">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Yes, Delete </button>
+                                  </form>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

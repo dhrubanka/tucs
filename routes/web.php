@@ -91,6 +91,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/event/list/{id}',  [EventController::class, 'listView'])->name('event-listView');
         Route::get('/event/create',  [EventController::class, 'create'])->name('event-create');
         Route::post('/event/store',  [EventController::class, 'store'])->name('event-store');
+        Route::get('/event/{id}/edit', [EventController::class, 'edit'])->name('event.edit');
+        Route::post('/event/{id}/delete', [EventController::class, 'delete'])->name('event.delete');
+        Route::post('/event/{id}/update', [EventController::class, 'update'])->name('event.update');
+
     });
 
     Route::group(['middleware' => ['role:student|alumni|professor']], function () {
@@ -121,6 +125,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/post/create', [PostController::class, 'create']);
         Route::post('/post/store', [PostController::class, 'store']);
+        Route::get('/post/{id}/edit', [PostController::class, 'edit'])->name('post.edit');
+        Route::post('/post/{id}/delete', [PostController::class, 'delete'])->name('post.delete');
+        Route::post('/post/{id}/update', [PostController::class, 'update'])->name('post.update');
 
         //post upvote
         Route::post('/post/like', [LikeController::class, 'like']);
@@ -141,6 +148,9 @@ Route::middleware('auth')->group(function () {
         //blog creation
         Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
         Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
+        Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+        Route::post('/blog/{id}/delete', [BlogController::class, 'delete'])->name('blog.delete');
+        Route::post('/blog/{id}/update', [BlogController::class, 'update'])->name('blog.update');
 
         //message
         Route::get('/message', [ConversationController::class, 'index'])->name('conversation');

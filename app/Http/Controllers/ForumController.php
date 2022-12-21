@@ -34,11 +34,11 @@ class ForumController extends Controller
         //     $join3->on('posts.id', '=', 'dislikes.post_id')
         //     ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
         // })
+        ->select('posts.profile_id','posts.*')
         ->paginate(5);
-                
 
-        
-        // ddd($posts);
+        // dd($posts);
+
         $communities = Community::query()
         ->join('subscriptions', function ($join) {
             $join->on('communities.id', '=', 'subscriptions.community_id')
@@ -57,7 +57,6 @@ class ForumController extends Controller
         //     ->where('dislikes.profile_id', '=', Auth::user()->profile->id);
         // })->get();
 
-        // dd($posts);
         return view('forum.index', ['posts' => $posts, 'communities' => $communities]);
     }else{
 

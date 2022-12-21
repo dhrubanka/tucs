@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -57,15 +58,23 @@ class BlogController extends Controller
 
     }
 
+    public function delete($id)
+    {
+        $blog = Blog::find($id);
+        Blog::where('id', $id)->delete();
+
+        return redirect()->route('blog');
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit($id)
     {
-        //
+        $blog = Blog::where('id','=',$id)->first();
+        return view('blog.edit', ['blog' => $blog]);
     }
 
     /**
@@ -75,9 +84,13 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
-        //
+        DB::table('blogs')
+              ->where('id', $id)
+              ->update(['title' => request('title') , 'content' => request('content')]);
+
+              return redirect()->route('blog');
     }
 
     /**

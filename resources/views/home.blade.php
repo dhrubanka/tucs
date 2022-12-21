@@ -60,9 +60,10 @@
             </p>
         </div>
         <div class="col-sm-12 col-md-4 p-4">
-            <img src="/images/dept2.jpg"   alt="" style="   max-width: 100%;
-            display: block;
-            object-fit: cover;">
+
+            <img src="/images/dept2.jpg"  alt="" style="max-width: 100%; display: block; object-fit: cover;">
+
+
         </div>
     </div>
     </div>
