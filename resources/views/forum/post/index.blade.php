@@ -56,7 +56,7 @@
                                     <div class="card-body">
 
                                         <p class="card-text">{!! $post->content !!}</p>
-                                        <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                                        <p class="card-text"><small class="text-muted">Last updated {{ Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}
                                                 </small></p>
                                     </div>
                                 </div>
