@@ -39,7 +39,7 @@
                         <h4>Skills</h4>
                         <div class="ms-auto">
                             @if(auth()->user()->id == $profile->user->id) 
-                            <button  class="btn btn-primary rounded text-white" id="activateSkillsDelete"> Edit </button>
+                            <button  class="btn rounded text-white" id="activateSkillsDelete" style="background: royalblue;"> Edit </button>
                             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newSkill" id="addSkill">Add</button> @endif
                         </div>
 
@@ -90,7 +90,7 @@
                         <h4>Education</h4>
                         <div class="ms-auto">
                             @if(auth()->user()->id == $profile->user->id) 
-                            <button  class="btn btn-primary rounded text-white" id="activateEducationDelete"> Edit </button>
+                            <button  class="btn rounded text-white" id="activateEducationDelete" style="background: royalblue;"> Edit </button>
                             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newEducation" id="addEducation">Add</button>@endif
                         </div>
 
@@ -153,7 +153,7 @@
                         <h4>Work</h4>
                         <div class="ms-auto">
                             @if(auth()->user()->id == $profile->user->id)
-                            <button  class="btn btn-primary rounded text-white" id="activateWorkDelete"> Edit </button>
+                            <button  class="btn  rounded text-white" id="activateWorkDelete" style="background: royalblue;"> Edit </button>
                             <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#newWork" id="addWork">Add</button> @endIf
                         </div>
 
@@ -288,21 +288,21 @@
                         <h2>Forum Activity</h2>@if(auth()->user()->id == $profile->user->id) <button class="btn btn-light">Add </button> @endif
                     </div>
               
-                    <div class="card-body" style="background: rgb(236, 232, 232)">
+                    <div class="card-body" >
                         @foreach ($posts as $post)
                         <div class="card m-2">
                             <div class="card-body">
                             
                                     <h5 class="card-title">{{$post->title}}</h5>
                                     <p class="card-text">{{$post->description}}</p>
-                                    <a href="{{$post->url}}" class="btn btn-primary text-white">Check it out</a>
+                                    <a href="/post/{{$post->id}}" class="btn btn-primary text-white" style="background: royalblue;">Check it out</a>
                             
                             </div>
 
                         </div>
                         @endforeach
                         <div class="card-footer d-flex justify-content-center">
-                            <a href="/forum"><h5> See All Posts </h5></a>
+                            <a href="/forum">See All Posts </a>
                         </div>
                     </div>
                 </div>
