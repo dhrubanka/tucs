@@ -3,7 +3,7 @@
 <div class="col-7 col-md-7" style="margin-top: 150px;">
      
                 
-     <!------------------------------------------ posts ---------------------------------------->
+     <!----------------------------------------- posts ---------------------------------------->
          <div class="row forumPostCreate">
              <div class="card col-12 col-md-12">
                  <div class="card-header row" style="padding-top: 25px;">
@@ -31,7 +31,6 @@
              </div>
          </div>
 
-         
 
  </div>
 
