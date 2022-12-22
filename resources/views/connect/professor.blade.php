@@ -111,7 +111,7 @@
                               display: inline; margin :1px;" >{{$studentskill->skill->name}} </div>  
                          @endforeach
                      </div>
-                     <div class="rounded" style="background: rgb(65, 52, 52); color:white; padding: 5px 15px 5px 15px; display: inline; margin:3px"><i class="fa-solid fa-code" style="color: white"> </i>  {{count($professor->profile->projects)}} Projects  </div>
+                     <div class="d-block d-md-inline-block rounded"style="background: rgb(65, 52, 52); color:white; padding: 5px 15px 5px 15px; margin:3px"><i class="fa-solid fa-code" style="color: white"> </i>  {{count($professor->profile->projects)}} Projects  </div>
                      
                  </div>
                  </div>

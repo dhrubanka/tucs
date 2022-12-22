@@ -134,14 +134,14 @@
                          
                          <div class="  " style="margin-top: 10px; margin-bottom: 10px ;word-wrap: break-word;" >
                             @foreach($student->profile->userSkills as $studentskill)
-                               <div class="text-white " style=" background: rgb(1, 99, 132) ;
+                               <div class="d-block d-md-inline-block rounded text-white " style=" background: rgb(1, 99, 132) ;
                                 border-radius: 30px;
                                 padding: 3px 15px 3px 15px; 
                                  display: inline; margin :1px;" >{{$studentskill->skill->name}} </div>  
                             @endforeach
                         </div>
-                        <div class="rounded" style="background: rgb(65, 52, 52); color:white; padding: 5px 15px 5px 15px; display: inline; margin:3px"><i class="fa-solid fa-code" style="color: white"> </i>  {{count($student->profile->projects)}} Projects  </div>
-                        <div class="rounded" style="background: rgb(69, 90, 55); color:white; padding: 5px 15px 5px 15px; display: inline; margin:3px"><i class="fa-solid fa-briefcase" style="color: white"> </i>  {{count($student->profile->works)}} Work Experience </i> </div>
+                        <div class="d-block d-md-inline-block rounded" style="background: rgb(65, 52, 52); color:white; padding: 5px 15px 5px 15px; margin:3px"><i class="fa-solid fa-code" style="color: white"> </i>  {{count($student->profile->projects)}} Projects  </div>
+                        <div class="d-block d-md-inline-block rounded" style="background: rgb(69, 90, 55); color:white; padding: 5px 15px 5px 15px;margin:3px"><i class="fa-solid fa-briefcase" style="color: white"> </i>  {{count($student->profile->works)}} Work Experience </i> </div>
                     </div>
                     </div>
                     </div>
