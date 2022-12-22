@@ -30,8 +30,8 @@ class PermissionSeeder extends Seeder
            // create demo users
         $user = \App\Models\User::factory()->create([
             'username' => 'admin',
-            'email' => 'dhrubankachutia@gmail.com',
-            'password' =>  Hash::make('debayan@007'),
+            'email' => 'admin@tucs.org',
+            'password' =>  Hash::make('admin'),
         ]);
         $user->assignRole($role1);
 
