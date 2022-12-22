@@ -52,7 +52,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::get('/about', function (){
+    return view('about');
+});
+Route::get('/developers', function (){
+    return view('developers');
+});
 Route::middleware('auth')->group(function () {
     
     Route::group(['middleware' => ['role:admin|moderator']], function () {

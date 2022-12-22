@@ -240,8 +240,8 @@
           <div class="col">
             <h5>More Information</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Developers</a></li>
+              <li class="nav-item mb-2"><a href="/about" class="nav-link p-0 text-muted">About</a></li>
+              <li class="nav-item mb-2"><a href="/developers" class="nav-link p-0 text-muted">Developers</a></li>
               <li class="nav-item mb-2"><a href="/report-bug" class="nav-link p-0 text-muted">Report a Bug</a></li>
               <li class="nav-item mb-2"><a href="/community-request" class="nav-link p-0 text-muted">Request a Community</a></li>
               <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Contact</a></li>

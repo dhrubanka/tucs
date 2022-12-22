@@ -53,12 +53,8 @@
                 <div class="col-sm-12 col-md-8 p-4">
                     <h1> About </h1>
                     <p>
-                        The TUCS website consists different communities where people can interact about different
-                        topics.
-                        People can also write blogs in this website.
-                        Also, they can be aware of the different past and future events that had been and will be
-                        organized by TUCS.
-                        Moreover, students can showcase their own projects to the alumni of CSE department.
+                        The Tezpur University Computer Society (TUCS) is an organization at Tezpur University that aims to promote the study and understanding of computer science and related fields. 
+                        Established in 1997, TUCS aims to become a hub for resources, events, and communication for students and professionals in the field. <a href="/about">Learn More</a>
                     </p>
                 </div>
                 <div class="col-sm-12 col-md-4 p-4">
