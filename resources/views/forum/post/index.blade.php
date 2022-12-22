@@ -142,10 +142,8 @@
                                     </div>
 
                                     {{-- <div class="col-2"><a href="" style="text-decoration: none"><i class="far fa-thumbs-down"></i> 12</a></div> --}}
-                                    <div class="col-2"><a href="" style="text-decoration: none"><i
-                                                class="far fa-comments fa-2x"></i></i> {{ $comments }}</a></div>
-                                    <div class="col-2"><a href="" style="text-decoration: none"><i
-                                                class="fas fa-share fa-2x"></i> Share</a></div>
+                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="far fa-comments fa-2x mt-1"></i> {{ $comments }}</a></div>
+                                    <div class="col-2"><a href="" style="text-decoration: none"><i class="fas fa-share fa-2x mt-1"></i> Share</a></div>
                                 </div>
                             </div>
 
