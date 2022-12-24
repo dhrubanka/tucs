@@ -130,6 +130,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Add</button>
+            <a class="btn btn-warning" href="/event/list">Back</a>
 
         </form>
 

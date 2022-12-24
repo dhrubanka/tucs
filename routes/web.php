@@ -73,12 +73,20 @@ Route::middleware('auth')->group(function () {
         Route::get('/user/show/{id}',  [UserController::class, 'show']);
 
         //forum parent community
-        Route::get('/parent-community',  [ParentCommunityController::class, 'index']);
-        Route::post('/parent-community/store',  [ParentCommunityController::class, 'store']);
+        Route::get('/parent-community',  [ParentCommunityController::class, 'index'])->name('parentCommunity');
+        Route::get('/parent-community/create',  [ParentCommunityController::class, 'create'])->name('parentCommunity-create');
+        Route::post('/parent-community/store',  [ParentCommunityController::class, 'store'])->name('parentCommunity-store');
+        Route::get('/parent-community/{id}/edit', [ParentCommunityController::class, 'edit'])->name('parentCommunity-edit');
+        Route::post('/parent-community/{id}/delete', [ParentCommunityController::class, 'delete'])->name('parentCommunity-delete');
+        Route::post('/parent-community/{id}/update', [ParentCommunityController::class, 'update'])->name('parentCommunity-update');
 
         //forum community
-        Route::get('/community',  [CommunityController::class, 'index']);
-        Route::post('/community/store',  [CommunityController::class, 'store']);
+        Route::get('/community',  [CommunityController::class, 'index'])->name('community');
+        Route::get('/community/create',  [CommunityController::class, 'create'])->name('community-create');
+        Route::post('/community/store',  [CommunityController::class, 'store'])->name('community-store');
+        Route::get('/community/{id}/edit', [CommunityController::class, 'edit'])->name('community-edit');
+        Route::post('/community/{id}/delete', [CommunityController::class, 'delete'])->name('community-delete');
+        Route::post('/community/{id}/update', [CommunityController::class, 'update'])->name('community-update');
 
         //skillset
         Route::get('/skillset', [SkillsetController::class, 'index'])->name('skillset');

@@ -8,6 +8,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommunityController extends Controller
 {
@@ -30,7 +31,8 @@ class CommunityController extends Controller
      */
     public function create()
     {
-        //
+        $parentCommunity = ParentCommunity::orderBy('name')->get();
+        return view('admin.forum.community.create', ['parentCommunities' => $parentCommunity]);
     }
 
     /**
@@ -54,7 +56,7 @@ class CommunityController extends Controller
             'image' => request('communityPhoto')
         ]);
 
-        return back()->with('success', 'Successfully inserted a new community!');
+        return redirect()->route('community')->with('success', 'Successfully added a new community!');
 
     }
 
@@ -103,31 +105,31 @@ class CommunityController extends Controller
      * @param  \App\Models\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function edit(Community $community)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Community  $community
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Community $community)
-    {
-        //
-    }
+     public function edit($id)
+     {
+         $community = Community::where('id','=',$id)->first();
+         $parentCommunity = ParentCommunity::orderBy('name')->get();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Community  $community
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Community $community)
-    {
-        //
-    }
+         return view('admin.forum.community.edit', ['parentCommunities' => $parentCommunity, 'community' => $community]);
+     }
+  
+  
+  
+      public function update(Request $request, $id)
+      {
+          DB::table('communities')
+                ->where('id', $id)
+                ->update(['name' => request('communityTitle') , 'parent_community_id' => request('parentId') , 'description' => request('communityDesc') , 'slug' => request('slug')]);
+                return redirect()->route('community')->with('success', 'Successfully updated community!');
+      }
+  
+      public function delete($id)
+      {
+        Community::where('id', $id)->delete();
+  
+          return redirect()->route('community');
+      }
+ 
+
 }
