@@ -1,7 +1,7 @@
 <x-layouts.admin>
     <div class="d-flex" style="padding: 1em;">
         <div><h3> Communites</h3>  </div>
-        <div class="ms-auto"> <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#newCommunity">Add New</button> </div>
+        <div class="ms-auto"> <a class="btn btn-info text-white" href="/community/create">Add New</a> </div>
     </div>
 
     @if ($message = Session::get('success'))
@@ -65,7 +65,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
                 <th scope="col">Parent Community</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -75,7 +75,25 @@
                     <td>{{$community->name}}</td>
                     <td>{{$community->description}}</td>
                     <td>{{$community->parentCommunity->name}}</td>
-                    <td>@mdo</td>
+                    <td class="col-1"><a class="btn btn-warning" href="community/{{$community->id}}/edit">Edit</a></td>
+                    <td class="col-1"><a class="btn btn-danger deleteButton" onclick="deleteCommunity({{$community->id}})">Delete</a></td>
+                    {{-- <td class="col-1"><button type="button" class="btn btn-danger deleteButton" data-bs-toggle="modal" data-id="{{$ParentCommunity->id}}" data-bs-target="#confirmDelete">Delete {{ $ParentCommunity->id }} </button></td> --}}
+                    <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body" >
+                              <h5 class="text-center">Are you sure you want to delete ?</h5>
+                            </div>
+                            <div class="modal-footer">
+                              <form method="post" id="deleteForm" action="">
+                                @csrf
+                                <button type="button" class="btn btn-danger" onclick="confirmDeleteCommunity()">Yes, Delete </button>
+                              </form>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
                   </tr>
                 @endforeach
             </tbody>
@@ -85,5 +103,23 @@
     </div>
 </div>
     </div>
+    <script>
+      var ID;
+
+      function deleteCommunity($id) {
+        console.log($id);
+        ID = $id;
+        $("#confirmDelete").modal("show");
+      }
+
+      function confirmDeleteCommunity() {
+        $("#deleteForm").attr('action', "/community/"+ID+"/delete");
+        $("#deleteForm").submit();
+        // document.getElementById("#deleteForm").action="/parent-community/"+ID+"/delete";
+        // console.log(document.getElementById("#deleteForm").action);
+        // document.getElementById("#deleteForm").submit();
+      }
+
+  </script>
 
     </x-layouts.admin>

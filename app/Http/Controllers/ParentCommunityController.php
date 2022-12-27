@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ParentCommunity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class ParentCommunityController extends Controller
 {
@@ -16,6 +17,7 @@ class ParentCommunityController extends Controller
     public function index()
     {
         $parentCommunity = ParentCommunity::orderBy('created_at', 'desc')->paginate(15);
+
         return view('admin.forum.parent_community.index', ['ParentCommunites' => $parentCommunity]);
     }
 
@@ -26,7 +28,7 @@ class ParentCommunityController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.forum.parent_community.create');
     }
 
     /**
@@ -48,7 +50,7 @@ class ParentCommunityController extends Controller
             'image' => request('communityPhoto')
         ]);
 
-        return back()->with('success', 'Successfully inserted a new parent community!');
+        return redirect()->route('parentCommunity')->with('success', 'Successfully inserted a new parent community!');
 
 
     }
@@ -70,31 +72,32 @@ class ParentCommunityController extends Controller
      * @param  \App\Models\ParentCommunity  $parentCommunity
      * @return \Illuminate\Http\Response
      */
-    public function edit(ParentCommunity $parentCommunity)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ParentCommunity  $parentCommunity
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ParentCommunity $parentCommunity)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\ParentCommunity  $parentCommunity
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ParentCommunity $parentCommunity)
+    public function edit($id)
     {
-        //
+        $parentCommunity = ParentCommunity::where('id','=',$id)->first();
+        return view('admin.forum.parent_community.edit', ['parentCommunity' => $parentCommunity]);
     }
+ 
+ 
+ 
+     public function update(Request $request, $id)
+     {
+         DB::table('parent_communities')
+               ->where('id', $id)
+               ->update(['name' => request('communityTitle') , 'description' => request('communityDesc') , 'slug' => request('slug')]);
+ 
+               return redirect()->route('parentCommunity')->with('success', 'Successfully updated community!');
+             }
+ 
+     public function delete($id)
+     {
+        ParentCommunity::where('id', $id)->delete();
+ 
+         return redirect()->route('parentCommunity')->with('success', 'Successfully deleted parent community!');
+
+     }
+  
+
 }

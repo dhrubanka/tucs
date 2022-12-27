@@ -13,6 +13,7 @@ class EventController extends Controller
         $event = Event::query()
         ->orderBy('start_date_time')
         ->get();
+
         return view('events.index', ['events' => $event]);
     }
 
@@ -60,7 +61,7 @@ class EventController extends Controller
             'user_id' => Auth::user()->id
         ]);
 
-        return back()->with('success', 'Successfully inserted a new event!');
+        return redirect()->route('event-list')->with('success', 'Successfully inserted a new event!');
     }
 
     public function edit($id)
@@ -75,14 +76,15 @@ class EventController extends Controller
               ->where('id', $id)
               ->update(['title' => request('title') , 'description' => request('description') , 'start_date_time' => request('start_date_time') , 'end_date_time' => request('end_date_time') , 'organizer' => request('organizer') , 'mode' => request('mode') , 'venue' => request('venue') , 'link' => request('link')]);
 
-              return redirect()->route('event-list');
-    }
+              return redirect()->route('event-list')->with('success', 'Successfully updated event!');
+            }
 
     public function delete($id)
     {
         Event::where('id', $id)->delete();
 
-        return redirect()->route('event-list');
+        return redirect()->route('event-list')->with('success', 'Successfully deleted event!');
+        
     }
 
 
