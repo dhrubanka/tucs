@@ -38,7 +38,7 @@
             <p>Dr Debojit Boro is the President of the Tezpur University Computer Society (TUCS) and has played a key role in taking the organization's activities online.
                  With his guidance and leadership, TUCS has been able to adapt to the challenges of the digital age and continue to provide resources and opportunities for its members.
 
-               <br> <br> Dhrubanka and Debayan are students of Tezpur University and the founders of the TUCS online platform project. They have worked tirelessly to build a web platform that serves as a hub for resources, events, and communication for the TUCS community. Through their dedication and hard work, they have helped to ensure that TUCS remains a vital and active organization for students, alumni, and professionals in the field of computer science.</p>
+               <br> <br> Dhrubanka and Debayan are students of Tezpur University and the founders of the TUCS online platform project. They have worked to build a web platform that serves as a hub for resources, events, and communication for the TUCS community.</p>
         </div>
     </div>
 </div>
