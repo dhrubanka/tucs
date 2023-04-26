@@ -122,7 +122,7 @@ class ProfileController extends Controller
         $image = NULL;
             if (request('image')) {
                 Storage::delete($profile->image);
-                $image = request('image')->store('profile_images');
+                $image = request('image')->store('public/profile_images');
             }
             if(request('password') != null){
                 $user->update([
