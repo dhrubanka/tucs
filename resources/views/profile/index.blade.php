@@ -26,7 +26,7 @@
                              @if ($profile->image == NULL)
                              <img src="https://avatars.dicebear.com/api/{!! ($profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" style=" width: 10em; border-radius: 50%;">
                              @else
-                             <img class="card-img" src="{{ asset(str_replace('public/', '', $profile->image)) }}" alt="Profile image" style=" width: 10em; border-radius: 50%;">
+                             <img class="card-img" src="{{ asset(str_replace('public/', 'storage/', $profile->image)) }}" alt="Profile image" style=" width: 10em; border-radius: 50%;">
                              @endif
                              
                            
