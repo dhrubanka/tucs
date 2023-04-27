@@ -76,8 +76,13 @@
                         @Auth
                         <li class="nav-item d-flex flex-row" style="  background: rgb(185, 193, 215); border-radius: 25px;" id="profile-nav" >
                             <a class="nav-link" href="/profile/show/{{Auth::user()->id}}" id="profile-nav-pic">
-                                <img src="https://avatars.dicebear.com/api/{!! (Auth::user()->profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" 
+                                @if ($profile->image == NULL)
+                                    <img src="https://avatars.dicebear.com/api/{!! (Auth::user()->profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" 
                                 style="height:40px; width: 40px; border-radius: 50%;">
+                                @else
+                             <img class="card-img" src="{{ asset(str_replace('public/', 'storage/', $profile->image)) }}" alt="Profile image" 
+                             style="height:40px; width: 40px; border-radius: 50%;">
+                             @endif
                             </a>
                                 <!-- <img id="user_img" src="/storage/logo.png" style="height:40px; width: 40px; border-radius: 50%;"> -->
                             <div class="" >
