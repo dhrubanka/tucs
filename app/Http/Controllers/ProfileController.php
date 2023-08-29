@@ -122,7 +122,7 @@ class ProfileController extends Controller
         $image = NULL;
             if (request('image')) {
                 $request->validate([
-                    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:20048',
                 ]);
                 Storage::delete($profile->image);
                 $image = request('image')->store('public/profile_images');

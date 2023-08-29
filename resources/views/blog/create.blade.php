@@ -1,6 +1,5 @@
 <x-layouts.app>
-    <div class="p-4"  style="  background: rgb(192,174,238);
-    background: linear-gradient(90deg, rgba(192,174,238,1) 26%, rgba(148,187,233,1) 100%);">
+    <div class="p-4"  style="  background: #f8f9fa;">
     <!------------------------------------------ posts ---------------------------------------->
         <div class="row">
            @if ($message = Session::get('success'))
@@ -9,7 +8,7 @@
                <strong>{{ $message }}</strong>
            </div>
            @endif
-            <div class="card col-12 offset-md-2 col-md-8" style=" background-color: rgba(255,255,255, 0.2) !important;" >
+            <div class="card col-12 offset-md-2 col-md-8">
                 <div class="card-header row" style="padding-top: 25px ;  color:white;background-color: royalblue">
                     <h5 class="card-title col-12 col-md-8">CREATE A POST</h5>
                 </div>

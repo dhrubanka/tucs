@@ -1,9 +1,8 @@
 <x-layouts.app>
-    <div style="background: rgb(192,174,238);
-    background: linear-gradient(90deg, rgba(192,174,238,1) 26%, rgba(148,187,233,1) 100%); padding: 2em">
+    <div style="background: f8f9fa;  padding: 2em">
      <!------------------------------------------ posts ---------------------------------------->
     
-             <div class="card col-12 offset-md-2 col-md-8" style=" background-color: rgba(255,255,255, 0.2) !important;" >
+             <div class="card col-12 offset-md-2 col-md-8">
                 <div class="card-header row" style="margin: 0%; background-color: royalblue; color:white  ">
                      <h5 class="card-title col-12 col-md-8 p-1">UPDATE POST</h5>
                      @Auth
@@ -18,7 +17,7 @@
                         <div class="mb-3">
                              <textarea class="form-control" required name="content" id="content" placeholder="CONTENT" rows="3">{{$post->content}}</textarea>
                         </div>
-                        <div class="mb-3 text-center">
+                        <div class="mb-3">
                              <button type="submit" class="btn " style=" background-color: royalblue; color:white ">POST</button>
                         </div>
                 </form>

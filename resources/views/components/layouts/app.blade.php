@@ -80,7 +80,7 @@
                                     <img src="https://avatars.dicebear.com/api/{!! (Auth::user()->profile->gender == 'M')? 'male' : 'female'; !!}/:seed.svg" 
                                 style="height:40px; width: 40px; border-radius: 50%;">
                                 @else
-                             <img class="card-img" src="{{ asset(str_replace('public/', 'storage/', Auth::user()->profile->image)) }}" alt="Profile image" 
+                             <img class="card-img" src="{{ asset('storage/'. Auth::user()->profile->image) }}" alt="Profile image" 
                              style="height:40px; width: 40px; border-radius: 50%;">
                              @endif
                             </a>
